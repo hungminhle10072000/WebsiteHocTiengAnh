@@ -65,12 +65,35 @@ function UserStatisticalPage() {
                 "monthNow": value,
             })
         }
+        console.log("MONTHNOW: ",userInfo)
+        StatisticalService.getStatisticalByUserId(16,userInfo.monthNow,userInfo.yearNow)
+            .then(res => {         
+                let data = res.data;
+                let newScoreOfDays = initialScoreOfDays;
+                const userInfo = {
+                    "fullname": data.fullname,
+                    "process": data.process,
+                    "streak": data.streak,
+                    "currentScore": data.currentScore,
+                    "monthNow": data.monthNow,
+                    "yearNow": data.yearNow,
+                    "email":data.email
+                }
+                setUserInfo(userInfo)
+                data.statisticalDtoList.forEach(element => {
+                    let date = new Date(element.dateCreateDate)
+                    console.log("Days: ",date.getDate())
+                    newScoreOfDays[date.getDate()-1].y += element.score;
+                });
+                setScoreOfDays(newScoreOfDays)
+            })
         console.log(`selected ${value}`);
       };
     useEffect(() => {
-        StatisticalService.getStatisticalByUserId(16)
+        StatisticalService.getStatisticalByUserId(16,-1,-1)
             .then(res => {         
                 let data = res.data;
+                console.log("DATA:",data)
                 let newScoreOfDays = initialScoreOfDays;
                 const userInfo = {
                     "fullname": data.fullname,
@@ -143,7 +166,7 @@ function UserStatisticalPage() {
                                             Chọn tháng
                                         </label>
                                         <br/>
-                                        <Select defaultValue={"Tháng "+ userInfo ? userInfo.monthNow : ''} value={"Tháng "+ userInfo ? userInfo.monthNow : ''} style={{ width: 120 }} onChange={handleChange}>
+                                        <Select defaultValue={"Tháng "+ userInfo ? userInfo.monthNow : ''}  style={{ width: 120 }} onChange={handleChange}>
                                             {initialMonths.map(month => <Option key={month} value={month}>Tháng {month}</Option>)}
                                         </Select>
                                     </div>
@@ -154,7 +177,7 @@ function UserStatisticalPage() {
                                             Chọn năm
                                         </label>
                                         <br/>
-                                        <Select defaultValue={userInfo ? userInfo.yearNow : ''} value={userInfo ? userInfo.yearNow : ''} style={{ width: 120 }} onChange={handleChange}>
+                                        <Select defaultValue={userInfo ? userInfo.yearNow : ''}  style={{ width: 120 }} onChange={handleChange}>
                                             {initialYears.map(year => <Option key={year} value={year}>{year}</Option>)}
                                         </Select>
                                     </div>

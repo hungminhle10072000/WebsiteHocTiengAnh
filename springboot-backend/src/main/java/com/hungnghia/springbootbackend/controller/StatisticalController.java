@@ -25,9 +25,10 @@ public class StatisticalController {
   }
 
 
-  @GetMapping("/getStatisticalByUserId/{userId}")
-  public StatisticalMasterDto getStatisticalByUserId(@PathVariable Long userId) {
-    return statisticalService.findStatisticalOfMonthByUserId(userId);
+  @GetMapping("/getStatisticalByUserId/{userId}/{monthNow}/{yearNow}")
+  public StatisticalMasterDto getStatisticalByUserId(@PathVariable Long userId,@PathVariable int monthNow,@PathVariable int yearNow) {
+    yearNow -=1900;
+    return statisticalService.findStatisticalOfMonthByUserId(userId,monthNow,yearNow);
   }
   @GetMapping("/getStatisticalOfWeekByUserId/{userId}")
   public StatisticalMasterDto getStatisticalOfWeekByUserId(@PathVariable Long userId) {

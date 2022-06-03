@@ -16,8 +16,8 @@ class StatisticalService {
         })
     }
 
-    getStatisticalByUserId(userId) {
-        return axios.get(STATISTICAL_API_BASE_URL+'/getStatisticalByUserId/'+userId,{
+    getStatisticalByUserId(userId,monthNow,yearNow) {
+        return axios.get(STATISTICAL_API_BASE_URL+'/getStatisticalByUserId/'+userId+"/"+monthNow+"/"+yearNow,{
             headers: {...headers, ...authHeader()},
         })
     }
