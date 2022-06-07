@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.group-chat {
+    font-family: 'Courier New', Courier, monospace; 
+    width: 80%;
+    height: calc(100vh - 120px);
+    background-color: #fff;
+    margin: auto;
+    position: relative;
+    margin-top: 20px;
+    border-radius: 5px 5px 0 0 ;
+    border: 0.5px solid #c8c8c8;
+    font-family: 'inherit';
+}
+
+.group-chat .group-title {
+    font-family: 'Courier New', Courier, monospace; 
+    min-height: 30px;
+    width: 100%;
+    border-bottom: 2px solid #c8c8c8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.group-chat .group-title h1{
+    margin: 0;
+}
+
+.group-chat .group-content{
+    padding: 20px;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: auto;
+    height: calc(100% - 30px - 75px);
+    position: relative;
+}
+
+.group-chat .group-content .time-date {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #adacac;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.group-chat .group-content .time-date hr {
+    width: 30%;
+}
+
+.group-chat .group-content .time-date span {
+    padding: 0 20px;
+}
+
+.group-chat .group-content .mes {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px 0;
+    justify-content: flex-start;
+}
+
+.group-chat .group-content .mes.me{
+    justify-content: flex-end;
+}
+
+
+
+.group-chat .group-content .mes .mes-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.group-chat .group-content .mes img {
+    width: 300px;
+    height: auto;
+    cursor: pointer;
+}
+
+.group-chat .group-content .mes .mes-content {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.group-chat .group-content .mes .mes-content .mes-value {
+    padding: 5px 10px;
+    border-radius: 20px;
+    background-color: #c8c8c8;
+    word-wrap: break-word;
+    margin: 0;
+    max-width: 70%;
+}
+
+.group-chat .group-content .mes .mes-content .mes-name {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    font-size: 12px;
+    color: #adacac;
+}
+
+.group-chat .group-content .mes.me .mes-content {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.group-chat .group-content .mes.me>.mes-content>.mes-name {
+    position: absolute;
+    bottom: -25px;
+    left: calc( 100% - 200px);   
+}
+
+
+.group-chat .send-mes {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    min-height: 30px;
+    width: 100%;
+    border-top: 1px solid #c8c8c8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}   
+
+.group-chat .send-mes input {
+    border: none;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size: 16px;
+    padding: 10px 0;
+    width: 80%;
+}
+
+.group-chat .send-mes input:focus {
+    outline: none;
+}
+
+.group-chat .send-mes .send-mes-icon {
+    display: flex;
+    align-items: center;
+}
+
+.group-chat .send-mes .send-mes-icon svg{
+    font-size: 30px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.image-upload > input {
+    display: none;
+}
+
+.modal-content {
+    background-color: #777777;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body img {
+    width: 100%;
+    height: auto;
+}

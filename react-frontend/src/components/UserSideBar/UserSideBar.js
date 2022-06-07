@@ -39,6 +39,12 @@ export const UserSideBar = [
     cName: 'nav-user-text'
   },
   {
+    title: 'Nhóm học tập',
+    path: '/user/groupchat',
+    icon: <GiPrayer color='black'/>,
+    cName: 'nav-user-text'
+  },
+  {
     title: 'Thống kê',
     path: '/user/statistical',
     icon: <FcStatistics color='black'/>,
