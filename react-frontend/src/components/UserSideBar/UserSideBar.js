@@ -6,6 +6,7 @@ import {FaAdversal} from 'react-icons/fa'
 import {GiPrayer} from 'react-icons/gi'
 import {AiTwotoneHome} from 'react-icons/ai'
 import { FcStatistics } from "react-icons/fc"
+import {GrGroup} from "react-icons/gr"
 
 export const UserSideBar = [
   {
@@ -39,9 +40,9 @@ export const UserSideBar = [
     cName: 'nav-user-text'
   },
   {
-    title: 'Nhóm học tập',
+    title: 'Trao đổi',
     path: '/user/groupchat',
-    icon: <GiPrayer color='black'/>,
+    icon: <GrGroup color='black'/>,
     cName: 'nav-user-text'
   },
   {

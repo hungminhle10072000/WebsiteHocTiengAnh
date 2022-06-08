@@ -82,9 +82,9 @@ p {
     border-radius: 50%;
 }
 
-.group-chat .group-content .mes img {
-    width: 300px;
-    height: auto;
+.group-chat .group-content .mes .mes-img {
+    width: 200px;
+    height: 250px;
     cursor: pointer;
 }
 
