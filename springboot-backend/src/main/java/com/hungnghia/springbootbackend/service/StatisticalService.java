@@ -8,9 +8,18 @@ import com.hungnghia.springbootbackend.entities.Use_Statistical_Key;
 import com.hungnghia.springbootbackend.entities.UserEntity;
 import com.hungnghia.springbootbackend.repository.StatisticalRepository;
 import com.hungnghia.springbootbackend.repository.UserRepository;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.*;
+
+class SortByTotalScoreOfWeek implements Comparator<StatisticalMasterDto> {
+
+  @Override
+  public int compare(StatisticalMasterDto o1, StatisticalMasterDto o2) {
+    return o2.getTotalScoreOfWeek() - o1.getTotalScoreOfWeek();
+  }
+}
 
 @Component
 public class StatisticalService {
@@ -28,7 +37,7 @@ public class StatisticalService {
     if (month == -1 && year == -1) {
       dateNow = new Date();
     } else {
-      dateNow = new Date(year,month,0);
+      dateNow = new Date(year,month-1,1);
     }
     Date[] daysOfMonth = getDaysOfMonth(dateNow,1);
     StatisticalMasterDto statisticalMasterDto = new StatisticalMasterDto();
@@ -93,9 +102,10 @@ public class StatisticalService {
     if (user != null) {
       statisticalMasterDto.setEmail(user.getEmail());
       statisticalMasterDto.setFullname(user.getFullname());
+      statisticalMasterDto.setAvatar(user.getAvartar());
     }
     if (month != -1) {
-      statisticalMasterDto.setMonthNow(month+1);
+      statisticalMasterDto.setMonthNow(month);
     } else {
       statisticalMasterDto.setMonthNow(new Date().getMonth()+1);
     }
@@ -113,6 +123,103 @@ public class StatisticalService {
     }
     return false;
   }
+
+  public List<StatisticalMasterDto> findStatisticalOfWeekMaster(long userId, int weekAgo) {
+    List<UserEntity> users = userRepository.findAll();
+    List<StatisticalMasterDto> statisticalMasterDtos = new ArrayList<>();
+    if (users != null && users.size() > 0) {
+      for (int i =0 ; i< users.size(); i++) {
+        StatisticalMasterDto statisticalMasterDto = findStatisticalOfWeekByUserIdAndDay(users.get(i).getId(),weekAgo);
+        if (statisticalMasterDto.getStatisticalDtoList().size() > 0) {
+          int totalScoreOfWeek = 0;
+          for (int j = 0; j < statisticalMasterDto.getStatisticalDtoList().size(); j++) {
+            totalScoreOfWeek += statisticalMasterDto.getStatisticalDtoList().get(j).getScore();
+          }
+          statisticalMasterDto.setTotalScoreOfWeek(totalScoreOfWeek);
+          statisticalMasterDtos.add(statisticalMasterDto);
+        }
+      }
+    }
+    Collections.sort(statisticalMasterDtos, new SortByTotalScoreOfWeek());
+    int NUM_OF_ELEMENT = 5;
+    List<StatisticalMasterDto> subListStatisticalMasterDto =  statisticalMasterDtos.size() > NUM_OF_ELEMENT ? statisticalMasterDtos.subList(0,NUM_OF_ELEMENT) : statisticalMasterDtos;
+    boolean flag = false;
+    for (int i=0; i< subListStatisticalMasterDto.size(); i ++) {
+      if (subListStatisticalMasterDto.get(i).getStatisticalDtoList().get(0).getUserId() == userId) {
+        flag = true;
+      }
+    }
+    if (!flag) {
+      subListStatisticalMasterDto.set(4,findStatisticalOfWeekByUserIdAndDay(userId,weekAgo));
+    }
+    return subListStatisticalMasterDto;
+  }
+
+  public StatisticalMasterDto findStatisticalOfWeekByUserIdAndDay(long userId, int weekAgo) {
+    Date dayAgo = new Date(new Date().getTime() - weekAgo * 7 * 24 * 60 * 60 * 1000);
+    Date refDate = dayAgo;
+    Date[] days = getDaysOfWeek(refDate, 2);
+
+    List<StatisticalEntity> statisticalEntitiesOfWeek = new ArrayList<>();
+    List<StatisticalEntity> statisticalEntities = statisticalRepository.findStatisticalEntitiesByUserEntity_Id(userId);
+    UserEntity user = userRepository.findById(userId).get();
+
+    if (statisticalEntities != null && statisticalEntities.size() > 0) {
+      for (Date day : days) {
+        System.out.println(day);
+        boolean flag =false;
+        int tmpDay = day.getDate();
+        int tmpMonth = day.getMonth();
+        int tmpYear = day.getYear();
+        System.out.println(tmpDay+"-"+tmpMonth+"-"+tmpYear);
+        for (int i=0 ;i < statisticalEntities.size();i++) {
+          Date dbDate =statisticalEntities.get(i).getUse_statistical_key().getDateCreateId();
+          if (dbDate.getDate() == tmpDay &&
+                  dbDate.getMonth() == tmpMonth &&
+                  dbDate.getYear() == tmpYear) {
+            statisticalEntitiesOfWeek.add(statisticalEntities.get(i));
+            flag = true;
+          }
+        }
+        if (flag == false) {
+          StatisticalEntity statisticalEntity = new StatisticalEntity();
+          Use_Statistical_Key useStatisticalKey= new Use_Statistical_Key();
+          useStatisticalKey.setUserId(userId);
+          useStatisticalKey.setDateCreateId(day);
+          statisticalEntity.setUse_statistical_key(useStatisticalKey);
+          statisticalEntity.setScore(0);
+          statisticalEntitiesOfWeek.add(statisticalEntity);
+        }
+      }
+    }
+    List<StatisticalDto> statisticalDtos = new ArrayList<>();
+    if (statisticalEntitiesOfWeek.size() > 0) {
+      statisticalDtos = statisticalConverter.toListDtos(statisticalEntitiesOfWeek);
+    }
+
+    StatisticalMasterDto statisticalMasterDto = new StatisticalMasterDto();
+    statisticalMasterDto.setStatisticalDtoList(statisticalDtos);
+    statisticalMasterDto.setFullname(user.getFullname());
+    statisticalMasterDto.setAvatar(user.getAvartar());
+    if (statisticalEntities != null && statisticalEntities.size() > 0) {
+      int indexDayCurrent = statisticalEntities.size()-1;
+      StatisticalEntity statisticalCurrent = statisticalEntities.get(indexDayCurrent);
+      if (statisticalCurrent.getUse_statistical_key().getDateCreateId().getDate() == refDate.getDate() ) {
+
+        statisticalMasterDto.setProcess((double)statisticalCurrent.getScore() / TARGET);
+        statisticalMasterDto.setCurrentScore(statisticalCurrent.getScore());
+        for (int i = indexDayCurrent; i >=0; i--) {
+          if (statisticalEntities.get(i).getScore() >= TARGET) {
+            statisticalMasterDto.setStreak(statisticalMasterDto.getStreak()+1);
+          } else {
+            break;
+          }
+        }
+      }
+    }
+    return statisticalMasterDto;
+  }
+
 
   public StatisticalMasterDto findStatisticalOfWeekByUserId(long userId) {
     Date refDate = new Date();

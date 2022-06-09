@@ -11,7 +11,24 @@ public class StatisticalMasterDto {
   private int monthNow;
   private int yearNow;
   private String email;
+  private int totalScoreOfWeek;
+  private String avatar;
 
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(String avatar) {
+    this.avatar = avatar;
+  }
+
+  public int getTotalScoreOfWeek() {
+    return totalScoreOfWeek;
+  }
+
+  public void setTotalScoreOfWeek(int totalScoreOfWeek) {
+    this.totalScoreOfWeek = totalScoreOfWeek;
+  }
 
   public StatisticalMasterDto() {
     this.process = 0.0;

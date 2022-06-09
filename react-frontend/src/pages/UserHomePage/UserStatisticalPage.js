@@ -1,45 +1,52 @@
-import useSelection from 'antd/lib/table/hooks/useSelection';
 import { CanvasJSChart } from 'canvasjs-react-charts'
 import { useEffect, useState } from 'react';
+import { Avatar, List } from 'antd';
 import StatisticalService from './../../services/StatisticalService'
-import { Row, Col } from 'antd'
-import { Select } from 'antd';
 import './css/UserStatistical.css'
-const initialScoreOfDays = [
-{ x: 1, y: 0 },
+import {GiTrophyCup} from  "react-icons/gi";
+var scoreOfDays = [
 { x: 2, y: 0 },
-{ x: 3, y: 0 },
+{ x: 3, y: 100 },
 { x: 4, y: 0 },
 { x: 5, y: 0 },
-{ x: 6, y: 0 },
+{ x: 6, y: 10 },
 { x: 7, y: 0 },
-{ x: 8, y: 0 },
-{ x: 9, y: 0 },
-{ x: 10, y: 0 },
-{ x: 11, y: 0 },
-{ x: 12, y: 0 },
-{ x: 13, y: 0 },
-{ x: 14, y: 0 },
-{ x: 15, y: 0 },
-{ x: 16, y: 0 },
-{ x: 17, y: 0 },
-{ x: 18, y: 0 },
-{ x: 19, y: 0 },
-{ x: 20, y: 0 },
-{ x: 21, y: 0 },
-{ x: 22, y: 0 },
-{ x: 23, y: 0 },
-{ x: 24, y: 0 },
-{ x: 25, y: 0 },
-{ x: 26, y: 0 },
-{ x: 27, y: 0 },
-{ x: 28, y: 0 },
-{ x: 29, y: 0 },
-{ x: 30, y: 0 },
-{ x: 31, y: 0 },]
+{ x: 8, y: 0 }]
 
-const initialMonths = [1,2,3,4,5,6,7,8,9,10,11,12];
-const initialYears = [2021,2022,2023];
+var listFullName = [
+    {
+        index: 1,  
+        title: 'Ant Design Title 1',
+        totalScoreOfWeek:0,
+        avatar: ''
+    },
+    {
+        index: 2,  
+        title: 'Ant Design Title 1',
+        totalScoreOfWeek:0,
+        avatar: ''
+    },
+    {
+        index: 3,  
+        title: 'Ant Design Title 1',
+        totalScoreOfWeek:0,
+        avatar: ''
+    },
+    {
+        index: 4,  
+        title: 'Ant Design Title 1',
+        totalScoreOfWeek:0,
+        avatar: ''
+    },
+    {
+        index: 5,  
+        title: 'Ant Design Title 1',
+        totalScoreOfWeek:0,
+        avatar: ''
+    }
+  ];
+  
+
 const initialUserInfo = {
     "fullname": 'Bùi Văn Nghĩa',
     "process": 1,
@@ -49,152 +56,118 @@ const initialUserInfo = {
     "yearNow": 2022,
     "email":'nghia@gmail.com'
 }
-const { Option } = Select;
 function UserStatisticalPage() {
-    const [scoreOfDays, setScoreOfDays] = useState([])
+    var userId = localStorage.getItem('idUser')
     const [userInfo, setUserInfo] = useState(initialUserInfo)
-    const handleChange = (value) => {
-        if (value > 1000) {
-            setUserInfo({
-                ...userInfo,
-                "yearNow": value,
-            })
-        } else {
-            setUserInfo({
-                ...userInfo,
-                "monthNow": value,
-            })
-        }
-        console.log("MONTHNOW: ",userInfo)
-        StatisticalService.getStatisticalByUserId(16,userInfo.monthNow,userInfo.yearNow)
-            .then(res => {         
-                let data = res.data;
-                let newScoreOfDays = initialScoreOfDays;
-                const userInfo = {
-                    "fullname": data.fullname,
-                    "process": data.process,
-                    "streak": data.streak,
-                    "currentScore": data.currentScore,
-                    "monthNow": data.monthNow,
-                    "yearNow": data.yearNow,
-                    "email":data.email
-                }
-                setUserInfo(userInfo)
-                data.statisticalDtoList.forEach(element => {
-                    let date = new Date(element.dateCreateDate)
-                    console.log("Days: ",date.getDate())
-                    newScoreOfDays[date.getDate()-1].y += element.score;
-                });
-                setScoreOfDays(newScoreOfDays)
-            })
-        console.log(`selected ${value}`);
-      };
+    const [statisticalMasterList, setStatisticalMasterList] = useState([])
+    const [weekAgo,setWeekAgo] = useState(0)
+    const handleChange = async(value) => {
+        setWeekAgo(value)
+    };
     useEffect(() => {
-        StatisticalService.getStatisticalByUserId(16,-1,-1)
+        StatisticalService.getStatisticalByUserId(userId,weekAgo)
             .then(res => {         
                 let data = res.data;
-                console.log("DATA:",data)
-                let newScoreOfDays = initialScoreOfDays;
-                const userInfo = {
-                    "fullname": data.fullname,
-                    "process": data.process,
-                    "streak": data.streak,
-                    "currentScore": data.currentScore,
-                    "monthNow": data.monthNow,
-                    "yearNow": data.yearNow,
-                    "email":data.email
-                }
-                setUserInfo(userInfo)
-                data.statisticalDtoList.forEach(element => {
-                    let date = new Date(element.dateCreateDate)
-                    console.log("Days: ",date.getDate())
-                    newScoreOfDays[date.getDate()-1].y += element.score;
-                });
-                setScoreOfDays(newScoreOfDays)
+                setStatisticalMasterList(data)
             })
-    }, [])
+    }, [weekAgo])
     console.log("USERINFO: ",userInfo)
+    for( let i=0; i< statisticalMasterList.length; i++) {
+        if (statisticalMasterList[i].statisticalDtoList[0].userId == userId) {
+            let statisticalDtoList = statisticalMasterList[i].statisticalDtoList;
+            scoreOfDays = statisticalDtoList.map((item,index)=> {
+                return {x:index+2,y:item.score}
+            } )
+        }
+        listFullName[i].title = statisticalMasterList[i].fullname;
+        listFullName[i].totalScoreOfWeek = statisticalMasterList[i].totalScoreOfWeek;
+        listFullName[i].avatar = statisticalMasterList[i].avatar;
+    }
+
+    console.log("SCOREOFDAYS: ",scoreOfDays)
+
     const options = {
         animationEnabled: true,
         exportEnabled: true,
         theme: "light2",
         title: {
-            text: "Thống kê điểm luyện tập của tháng"
+            text: "Điểm luyện tập trong tuần"
         },
         axisY: {
             title: "Điểm",
             // suffix: "%"
         },
         axisX: {
-            title: "Tháng của năm",
-            prefix: "Ngày",
+            title: "Thứ trong tuần",
+            prefix: "Thứ ",
             interval: 1
         },
         data: [{
-            type: "line",
-            toolTipContent: "Ngày {x}: {y} điểm",
+            type: "column",
+            toolTipContent: "Thứ {x}: {y} điểm",
             dataPoints: scoreOfDays
         }]
     }
     return (
         <>
-            <div className='card-header-right'>
-                <Row>
-                    <Col span={12}>
-                        <div className='card-header'>
+            <div className='statistical-layout'>
+                <div className='statistical-layout__chart'>
+                    <div className='statistical-layout__card'>
+                        <h3>Báo cáo học tập</h3>
+                        <div className='statistical-layout__card__title'>
                             <div className='card-header-item'>
                                 <div>
-                                    <span>Họ tên:</span>
-                                    <span className='font-weight-bold'>{userInfo ? userInfo.fullname: ''}</span>
+                                    <label className='span__lbl--item'>Họ tên:</label>
+                                    <span className='font-weight-bold'>{userInfo ? userInfo.fullname : ''}</span>
                                 </div>
                                 <div>
-                                    <span>Email:</span>
+                                    <label className='span__lbl--item'>Email:</label>
                                     <span className='font-weight-bold'>{userInfo ? userInfo.email : ''}</span>
                                 </div>
                             </div>
+                            <div className='statistical-layout__list-week'>
+                                <button className='statistical-layout__week-item' onClick={()=>handleChange(0)}>Tuần này</button>
+                                <button className='statistical-layout__week-item' onClick={()=>handleChange(1)}>Một tuần trước</button>
+                                <button className='statistical-layout__week-item' onClick={()=>handleChange(2)}>Hai tuần trước</button>
+                                <button className='statistical-layout__week-item' onClick={()=>handleChange(3)}>Ba tuần trước</button>
+                            </div>
                         </div>
-                    
-                    </Col>
-                    <Col span={12}>
-                        <Row>
-                        <Col span={12}></Col>
-                        <Col span={12}>
-                            <Row>
-                                <Col span={12}>
-                                    <div>
-                                        <label>
-                                            Chọn tháng
-                                        </label>
-                                        <br/>
-                                        <Select defaultValue={"Tháng "+ userInfo ? userInfo.monthNow : ''}  style={{ width: 120 }} onChange={handleChange}>
-                                            {initialMonths.map(month => <Option key={month} value={month}>Tháng {month}</Option>)}
-                                        </Select>
-                                    </div>
-                                </Col>
-                                <Col span={12}>
-                                    <div>
-                                        <label>
-                                            Chọn năm
-                                        </label>
-                                        <br/>
-                                        <Select defaultValue={userInfo ? userInfo.yearNow : ''}  style={{ width: 120 }} onChange={handleChange}>
-                                            {initialYears.map(year => <Option key={year} value={year}>{year}</Option>)}
-                                        </Select>
-                                    </div>
-                                </Col>
-                                
-                            </Row>    
-                        </Col>
-                        </Row>
-                    </Col>
-                    
-                </Row>
+                    </div>
+                    <div className='statistical-layout__chart__item'>
+                        <CanvasJSChart options={options} />
+                    </div>
+                </div>
+                <div className='statistical-layout__leader-board'>
+                    <div className='leaderboard-header'>
+                        <span><GiTrophyCup></GiTrophyCup></span>
+                        <span>Leaderboard</span>
+                    </div>
+                    <List
+                        itemLayout="horizontal"
+                        dataSource={listFullName}
+                        renderItem={item => (
+                            <List.Item>
+                                <List.Item.Meta
+                                    avatar={<Avatar src={item.avatar} />}
+                                    title={
+                                        // <a href="https://ant.design">
+                                            <label className='card-ranking'>
+                                                <span className='card-ranking__ranking'>{item.index}. </span>
+                                                <span className='card-ranking__name'>{item.title}</span>
+                                                <span className='card-ranking__total-score'>{item.totalScoreOfWeek}</span>
+                                            </label>
+                                        
+                                        // </a>
+                                        }
+                                    // description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                                />
+                            </List.Item>
+                        )}
+                    />
+                </div>
+
             </div>
-            <div className='chart-months'>
-                <Row>
-                    <CanvasJSChart options={options} />
-                </Row>
-            </div>    
+              
         </>
     )
 }
