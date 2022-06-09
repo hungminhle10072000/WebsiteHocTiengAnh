@@ -1,0 +1,18 @@
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.card-header {
+    margin: 1%;
+    background-color: white;
+}
+.card-header-item {
+    background-color: white;
+}
+.card-header-right {
+    margin-top: 1%;
+    background-color: white;
+}
+.chart-month {
+    background-color: white !important;
+}

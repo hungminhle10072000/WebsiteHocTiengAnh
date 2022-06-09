@@ -17,3 +17,92 @@
     top: 50%;
     left: 50%;
 }
+.statistical-layout {
+    display: flex;
+}
+
+.statistical-layout__chart {
+    flex: 3;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: white; 
+}
+
+.statistical-layout__leader-board {
+    flex: 1;
+    background-color: white;
+    margin: 30px;
+    padding-left: 20px;
+}
+.statistical-layout__card__title {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.statistical-layout__select {
+    display: flex;
+}
+.statistical-layout__select-item {
+    margin: 0 10px;
+}
+.statistical-layout__list-week {
+    display: flex;
+    justify-content: space-between;
+}
+.statistical-layout__week-item {
+    flex-basis: 25%;
+    border: white;
+    margin: 1px;
+    height: 35px;
+    border-radius: 10px;
+}
+.statistical-layout__week-item:hover {
+    background-color: pink;
+    color: white;
+}
+.statistical-layout__week-item:active {
+    color: white;
+    background-color: pink;
+}
+.statistical-layout__week-item:focus {
+    color: white;
+    background-color: palevioletred;
+}
+.span__lbl--item {
+    min-width: 50px;
+}
+.card-ranking span {
+    margin-left: 0;
+}
+.card-ranking {
+    margin-top: 5px !important;
+    display: flex;
+
+}
+.card-ranking__total-score {
+    align-self: flex-end;
+}
+.card-ranking__ranking {
+    margin-right: 15px !important;
+    font-weight: bold;
+}
+.ant-list-item-meta-avatar {
+    margin-right: 0 !important;
+}
+.card-ranking__name {
+    min-width: 170px;
+}
+.leaderboard-header {
+    font-size: 28px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+.leaderboard-header span svg {
+    font-size: 40px;
+}
+.leaderboard-header span {
+    margin: auto;
+    
+}
+

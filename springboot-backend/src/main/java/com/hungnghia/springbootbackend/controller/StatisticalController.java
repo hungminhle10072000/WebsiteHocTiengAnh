@@ -5,6 +5,8 @@ import com.hungnghia.springbootbackend.dto.StatisticalMasterDto;
 import com.hungnghia.springbootbackend.service.StatisticalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -25,12 +27,18 @@ public class StatisticalController {
   }
 
 
-  @GetMapping("/getStatisticalByUserId/{userId}")
-  public List<StatisticalDto> getStatisticalByUserId(@PathVariable Long userId) {
-    return statisticalService.findStatisticalOfMonthByUserId(userId);
+  @GetMapping("/getStatisticalByUserId/{userId}/{monthNow}/{yearNow}")
+  public StatisticalMasterDto getStatisticalByUserId(@PathVariable Long userId,@PathVariable int monthNow,@PathVariable int yearNow) {
+    yearNow -=1900;
+    return statisticalService.findStatisticalOfMonthByUserId(userId,monthNow,yearNow);
   }
   @GetMapping("/getStatisticalOfWeekByUserId/{userId}")
   public StatisticalMasterDto getStatisticalOfWeekByUserId(@PathVariable Long userId) {
     return statisticalService.findStatisticalOfWeekByUserId(userId);
+  }
+  @GetMapping("/findStatisticalOfWeekByUserIdAndDay/{userId}/{weekAgo}")
+  public List<StatisticalMasterDto> findStatisticalOfWeekByUserIdAndDay(@PathVariable long userId, @PathVariable int weekAgo) {
+    List<StatisticalMasterDto> statisticalMasterDtos = statisticalService.findStatisticalOfWeekMaster(userId, weekAgo);
+    return statisticalMasterDtos;
   }
 }

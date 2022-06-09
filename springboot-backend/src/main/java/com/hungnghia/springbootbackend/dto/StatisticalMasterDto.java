@@ -8,6 +8,27 @@ public class StatisticalMasterDto {
   private double process;
   private int streak;
   private int currentScore;
+  private int monthNow;
+  private int yearNow;
+  private String email;
+  private int totalScoreOfWeek;
+  private String avatar;
+
+  public String getAvatar() {
+    return avatar;
+  }
+
+  public void setAvatar(String avatar) {
+    this.avatar = avatar;
+  }
+
+  public int getTotalScoreOfWeek() {
+    return totalScoreOfWeek;
+  }
+
+  public void setTotalScoreOfWeek(int totalScoreOfWeek) {
+    this.totalScoreOfWeek = totalScoreOfWeek;
+  }
 
   public StatisticalMasterDto() {
     this.process = 0.0;
@@ -58,5 +79,29 @@ public class StatisticalMasterDto {
 
   public void setCurrentScore(int currentScore) {
     this.currentScore = currentScore;
+  }
+
+  public int getMonthNow() {
+    return monthNow;
+  }
+
+  public void setMonthNow(int monthNow) {
+    this.monthNow = monthNow;
+  }
+
+  public int getYearNow() {
+    return yearNow;
+  }
+
+  public void setYearNow(int yearNow) {
+    this.yearNow = yearNow;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 }
