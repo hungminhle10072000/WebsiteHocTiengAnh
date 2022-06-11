@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import '../css/UserCSS.css'
 import { Card, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import {splitString} from '../../utils/index'
+import './UserComponent.css'
 class UserItemCourse extends Component {
 
     constructor(props) {
@@ -19,21 +21,18 @@ class UserItemCourse extends Component {
 
     render() {
         return (
-            <div className='col-3 mb-2'>
-                 <Link to={`/user/learning/${this.props.course.id}`} style={{ textDecoration: 'none' }}>
-                    <Card style={{borderRadius: '2rem', height: '100%'}}>
-                        <Card.Img style={{ height: '10rem' }} variant="top" src={this.state.course.image} />
-                        <Card.Body>
-                            <Card.Title >{this.state.course.name}</Card.Title>
-                            <Card.Text>
-                                {this.state.course.introduce}
-                            </Card.Text>
-                            {/* <Button variant="primary">Go somewhere</Button> */}
-                        </Card.Body>
-                    </Card>
-                 </Link>
-            </div>
-
+            <Link  to={`/user/learning/${this.props.course.id}`} style={{ textDecoration: 'none', margin: "5px 10px" }}>
+            <Card className='card-master-outline'>
+                <Card.Img className='img-card-outline' variant="top" src={this.state.course.image} />
+                <Card.Body className='pa--5'>
+                    <Card.Title >{splitString(this.state.course.name,20)}</Card.Title>
+                    <Card.Text>
+                        {splitString(this.state.course.introduce,60)}
+                    </Card.Text>
+                    {/* <Button variant="primary">Go somewhere</Button> */}
+                </Card.Body>
+            </Card>
+            </Link>
         )
     }
 }
