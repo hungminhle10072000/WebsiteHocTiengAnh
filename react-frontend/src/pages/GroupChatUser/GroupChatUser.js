@@ -56,15 +56,13 @@ function GroupChatUser() {
       <div className="group-content">
         {messages.map(({time, message, type, email}) => {
           const checkUser = email === userCurrent.username
-          const checkTime = time != null;
           return(
             (type === 'text') ?
               <div className={checkUser ? "mes me" : "mes"} key={time}>
                   {checkUser ? null : <img className="mes-avatar" src={avata} />}
                   <div className="mes-content">
                     <span className="mes-name">
-                      {email}
-                      {/* - {new Date(time.toDate()).toDateString()} {" "} */}
+                      {email} -  {time && new Date(time.toDate()).toDateString()}
                     </span>
                     <div className="mes-value">
                       {" "}
@@ -77,8 +75,7 @@ function GroupChatUser() {
                 {checkUser ? null : <img className="mes-avatar" src={avata} />}
                 <div className="mes-content">
                   <span className="mes-name">
-                    {email} 
-                    {/* - {new Date(time.toDate()).toDateString()} {" "} */}
+                    {email} -  {time && new Date(time.toDate()).toDateString()}
                   </span>
                   <img  src={message} className="mes-img" onClick={handleShow} />
                 </div>
