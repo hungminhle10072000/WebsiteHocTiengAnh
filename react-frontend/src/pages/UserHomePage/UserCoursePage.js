@@ -3,6 +3,9 @@ import UserItemCourse from '../../components/UserComponents/UserItemCourse'
 import './css/UserHome.css'
 import allActions from '../../actions';
 import { connect } from 'react-redux'
+import '../../App.css'
+import {splitString} from '../../utils/index'
+import '../../components/UserComponents/UserComponent.css'
 class UserHomePage extends Component {
     constructor(props) {
         super(props);
@@ -86,24 +89,24 @@ class UserHomePage extends Component {
 
             <div>
                 {this.state.userCurrent.id !== -1 ? (
-                    <div className='container-fluid main-content-user-courses'>
-                        <h2>Khoá đang học</h2>
-                        <div className='row'>
+                    <div className='container-fluid main-content-user-courses bg-white'>
+                        <div className='title-size-l'>Khoá đang học</div>
+                        <div className='flex-outline'>
                             {this.showItemsCourse(coursesOfUser)}
                         </div>
                         <br />
                         {this.props.match.params.type == 0 && 
                         <div>
-                            <h2>Khoá học chưa đăng ký</h2>
-                            <div className='row'>
+                            <div className='title-size-l'>Khoá học chưa đăng ký</div>
+                            <div className='flex-outline'>
                                 {this.showItemsCourse(coursesOtherwise)}
                             </div>
                         </div>}
                     </div>
                 ) : (
-                    <div className='container-fluid main-content-user-courses'>
-                        <h2>Tất cả khoá học</h2>
-                        <div className='row'>
+                    <div className='container-fluid main-content-user-courses bg-white'>
+                        <div className='title-size-l'>Tất cả khoá học</div>
+                        <div className='flex-outline'>
                             {this.showItemsCourse(this.state.courses)}
                         </div>
                     </div>

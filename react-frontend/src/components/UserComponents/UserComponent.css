@@ -1,0 +1,20 @@
+.pa--5 {
+    padding: 5px !important;
+}
+.img-card-outline {
+    border-radius: 15px !important;
+    height: 160px;
+}
+.card-master-outline {
+    border-radius: 15px !important;
+    height: 100%;
+    width: 300px !important;
+
+    /* max-width: 310px !important; */
+}
+.flex-outline {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 24% !important;
+    justify-content: start !important;
+}

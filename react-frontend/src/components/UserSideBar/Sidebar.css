@@ -5,7 +5,7 @@
     justify-content: center;
 
     /* Thêm để tạo fix header và sidebar */
-    width: 114px;
+    width: 125px;
 
   }
   
@@ -18,12 +18,12 @@
     top: 6rem;
   }
   
-  .nav-user-text {
+  .nav-menu-user-items .nav-user-text {
     display: flex;
     justify-content: start;
     align-items: center;
     flex-direction: column;
-    padding: 8px 0px 8px 0px;
+    padding: 0;
     list-style: none;
     height: 60px;
   }
@@ -43,7 +43,12 @@
   }
   
   .nav-user-text a:hover {
-    background-color: #1a83ff;
+    background-color: white;
+  }
+  
+  .nav-user-text a:focus {
+    background-color: white;
+    color: #1da1f2;
   }
   
   .nav-menu-user-items {

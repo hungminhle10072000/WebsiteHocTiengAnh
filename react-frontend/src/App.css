@@ -42,3 +42,25 @@
 .css-td-table {
   text-align: center;
 }
+
+/* css background white */
+.bg-white {
+  background-color: white;
+  margin: 0 !important;
+}
+.title-size-l {
+  color: #000000d9;
+  font-size: 34px;
+  font-weight: 500;
+  border-bottom: 2px solid #aaa;
+  margin: 0 0 20px 0;
+}
+.user-layout {
+  display: flex;
+}
+.user-nav-bar {
+  flex:1;
+}
+.user-layout-content {
+  flex:9;
+}
