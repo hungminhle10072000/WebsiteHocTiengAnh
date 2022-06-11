@@ -8,7 +8,6 @@ import com.hungnghia.springbootbackend.entities.Use_Statistical_Key;
 import com.hungnghia.springbootbackend.entities.UserEntity;
 import com.hungnghia.springbootbackend.repository.StatisticalRepository;
 import com.hungnghia.springbootbackend.repository.UserRepository;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.*;
