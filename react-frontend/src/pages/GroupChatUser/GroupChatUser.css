@@ -84,8 +84,10 @@ p {
 
 .group-chat .group-content .mes .mes-img {
     width: 200px;
-    height: 250px;
+    /* height: 250px; */
     cursor: pointer;
+    object-fit: cover;
+
 }
 
 .group-chat .group-content .mes .mes-content {
@@ -98,10 +100,15 @@ p {
 .group-chat .group-content .mes .mes-content .mes-value {
     padding: 5px 10px;
     border-radius: 20px;
-    background-color: #c8c8c8;
+    background-color: #5db154;
     word-wrap: break-word;
     margin: 0;
     max-width: 70%;
+    color: #fff;
+}
+
+.group-chat .group-content .mes.me .mes-content .mes-value{
+    background-color: #0084ff;
 }
 
 .group-chat .group-content .mes .mes-content .mes-name {
@@ -110,6 +117,7 @@ p {
     left: 0;
     font-size: 12px;
     color: #adacac;
+    margin-left: 0;
 }
 
 .group-chat .group-content .mes.me .mes-content {
@@ -121,7 +129,7 @@ p {
 .group-chat .group-content .mes.me>.mes-content>.mes-name {
     position: absolute;
     bottom: -25px;
-    left: calc( 100% - 200px);   
+    left: calc(100% - 139px);
 }
 
 

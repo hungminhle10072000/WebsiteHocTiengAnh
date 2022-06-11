@@ -8,15 +8,18 @@ import avata from "../../assets/images/logo.jpg";
 import {Button, Modal} from 'react-bootstrap';
 import { collection, addDoc, getDocs, limit, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase'
-import { message } from "antd";
-import SendMessage from "../../components/SendMessages/SendMessage";
+
 
 function GroupChatUser() {
 
   const [show, setShow] = useState(false);
   const [msg, setMsg] =useState('');
+  const [srcImage, setSrcImage] = useState('');
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (srcMessage) => {
+    setSrcImage(srcMessage.message);
+    setShow(true);
+  }
   const [messages, setMessages] = useState([])
   const userCurrent = useSelector((state) => state.itemUserLogin);
 
@@ -69,7 +72,7 @@ function GroupChatUser() {
                       {message}
                     </div>
                   </div>
-                  {checkUser ? <img className="mes-avatar" src={avata} /> : null}
+                  {/* {checkUser ? <img className="mes-avatar" src={avata} /> : null} */}
               </div> :
               <div className={checkUser ? "mes me" : "mes"} key={time}>
                 {checkUser ? null : <img className="mes-avatar" src={avata} />}
@@ -77,23 +80,23 @@ function GroupChatUser() {
                   <span className="mes-name">
                     {email} -  {time && new Date(time.toDate()).toDateString()}
                   </span>
-                  <img  src={message} className="mes-img" onClick={handleShow} />
+                  <img  src={message} className="mes-img" onClick={() => handleShow({message})} />
                 </div>
-                {checkUser ? <img className="mes-avatar" src={avata} /> : null}
+                {/* {checkUser ? <img className="mes-avatar" src={avata} /> : null} */}
               </div>
           )
         })}
       </div>
 
-
+        
       <div className="send-mes">
         <input type="text" value={msg} placeholder="Nhập tin nhắn...." onChange={(e) => setMsg(e.target.value)}/>
         <div className="send-mes-icon">
           <div className="image-upload">
-            <label htmlFor="file-input">
+            <label htmlFor="file-input" >
               <BiImageAlt />
             </label>
-            <input id="file-input" type="file" />
+            <input id="file-input" type="file" accept="image/*"/>
           </div>
           <BiSend onClick={() => sendMessage()}/>
         </div>
@@ -101,10 +104,11 @@ function GroupChatUser() {
 
       {/* <SendMessage /> */}
 
-      {/* <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton></Modal.Header>
-        <Modal.Body><img  src={message}/></Modal.Body>
-      </Modal> */}
+        <Modal.Body><img  src={srcImage}/>
+        </Modal.Body>
+      </Modal>
 
     </div>
     }
