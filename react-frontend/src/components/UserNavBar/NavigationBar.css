@@ -125,3 +125,8 @@ img.display-user {
     height: 60px;
     border-radius: 50px;
 }
+
+.dislay-setting:hover {
+    opacity: 0.8;
+    color: white !important;
+}

@@ -4,6 +4,7 @@ import { Avatar, List } from 'antd';
 import StatisticalService from './../../services/StatisticalService'
 import './css/UserStatistical.css'
 import {GiTrophyCup} from  "react-icons/gi";
+import { useSelector,useDispatch } from 'react-redux';
 var scoreOfDays = [
 { x: 2, y: 0 },
 { x: 3, y: 100 },
@@ -64,6 +65,7 @@ function UserStatisticalPage() {
     const handleChange = async(value) => {
         setWeekAgo(value)
     };
+    const userCurrent = useSelector((state) => state.itemUserLogin);
     useEffect(() => {
         StatisticalService.getStatisticalByUserId(userId,weekAgo)
             .then(res => {         
@@ -110,6 +112,11 @@ function UserStatisticalPage() {
     }
     return (
         <>
+        {userCurrent.id === -1 ?
+            <div style={{textAlign:'center', marginTop:'150px'}}>
+                <h2> Vui lòng đăng nhập để sử dụng chức năng này.</h2>
+                <button className='button-user-login' onClick={()=>window.location.pathname = ('/login')}>Đăng nhập</button>
+            </div> :
             <div className='statistical-layout'>
                 <div className='statistical-layout__chart'>
                     <div className='statistical-layout__card'>
@@ -167,7 +174,7 @@ function UserStatisticalPage() {
                 </div>
 
             </div>
-              
+        }        
         </>
     )
 }

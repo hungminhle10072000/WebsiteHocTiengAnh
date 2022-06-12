@@ -81,6 +81,15 @@
 .bg-w {
   background-color: white !important;
 }
+.mt--5 {
+  margin-top: 5px !important;
+}
+.mt--25 {
+  margin-top: 25px !important;
+}
+.ml--15 {
+  margin-left: 15px !important;
+}
 .ml--25 {
   margin-left: 25px !important;
 }
@@ -92,4 +101,75 @@
 }
 .pl--125 {
   padding-left: 125px !important;
+}
+
+.btnn {
+  border: none;
+  background-color: transparent;
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  padding: 12px 48px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s linear;
+  min-width: 150px;
+  text-align: center;
+}
+
+.btnn:hover {
+  opacity: 0.8;
+}
+
+.btnn--success {
+  background-color: #71be34;
+}
+
+.btnn--warning {
+  background-color: #ffb702;
+}
+
+.btnn--danger {
+  background-color: #ff623b;
+}
+
+.btnn--normal {
+  background-color: #1da1f2;
+}
+
+/* .btnn + .btnn {
+  margin-left: 16px;
+} */
+
+/* .btn-disabled {
+  opacity: 0.5 !important;
+  cursor: default;
+  background-color: red !important;
+} */
+/* 
+.btnn-disabled .btnn[disabled] {
+  opacity: 0.5 !important;
+  cursor: default;
+} */
+
+.btnn:disabled {
+  opacity: 0.5 !important;
+  cursor: default;
+}
+
+.btnn--size-s {
+  padding: 8px 32px;    
+}
+
+.btnn--size-m {
+  padding: 12px 48px;
+}
+
+.btnn--size-l {
+  padding: 16px 56px;
+}
+
+.modal-body {
+  display: block !important;
 }

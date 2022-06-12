@@ -19,15 +19,15 @@ function UserTopicExercisePage() {
     return(
         <>
             <div className='title-size-l ml--25 mr--25'>Bài tập rèn luyện</div>
-            <div className='user-layout'>
+            
             {userCurrent.id === -1 ?
-            <div style={{textAlign:'center', marginTop:'150px'}}>
+            <div style={{textAlign:'center', marginTop:'80px'}}>
                 <h2> Vui lòng đăng nhập để sử dụng chức năng này.</h2>
                 <button className='button-user-login' onClick={()=>window.location.pathname = ('/login')}>Đăng nhập</button>
             </div> 
             :
-            (exercises.map(x=> {
-                console.log("X ",x)
+            <div className='user-layout'>
+            {(exercises.map(x=> {
                 let status =0;
                 results.forEach(y => {
                     if (y.exerciseId === x.id) {
@@ -35,9 +35,10 @@ function UserTopicExercisePage() {
                     }
                 })
              return <UserItemTopicExercise key={x.id} id={x.id} img={x.image} name={x.name} description={x.description} status={status} />
-            }))
+            }))}
+             </div>
             }  
-         </div>
+        
         </>
         
     )
