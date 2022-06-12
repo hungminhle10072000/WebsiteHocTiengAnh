@@ -122,15 +122,28 @@ function UserStatisticalPage() {
                     <div className='statistical-layout__card'>
                         <div className='title-size-l'>Báo cáo học tập</div>
                         <div className='statistical-layout__card__title'>
-                            <div className='card-header-item'>
+                            <div className='card-header-item display-flex'>
                                 <div>
-                                    <label className='span__lbl--item'>Họ tên:</label>
-                                    <span className='font-weight-bold'>{userInfo ? userInfo.fullname : ''}</span>
+                                    <div>
+                                        <label className='span__lbl--item font-weight-bold'>Họ tên:</label>
+                                        <span className='font-weight-bold'>{userInfo ? userInfo.fullname : ''}</span>
+                                    </div>
+                                    <div>
+                                        <label className='span__lbl--item font-weight-bold'>Email:</label>
+                                        <span className='font-weight-bold'>{userInfo ? userInfo.email : ''}</span>
+                                    </div>
                                 </div>
                                 <div>
-                                    <label className='span__lbl--item'>Email:</label>
-                                    <span className='font-weight-bold'>{userInfo ? userInfo.email : ''}</span>
+                                <div>
+                                        <label className='span__lbl--item font-weight-bold cl--orange'>{userInfo ? userInfo.streak : ''} Streak</label>
+                                        <span className='font-weight-bold'></span>
+                                    </div>
+                                    <div>
+                                        <label className='span__lbl--item font-weight-bold cl--green'>{userInfo ? userInfo.currentScore : ''} XP</label>
+                                        <span className='font-weight-bold'></span>
+                                    </div>
                                 </div>
+
                             </div>
                             <div className='statistical-layout__list-week'>
                                 <button className='statistical-layout__week-item' onClick={()=>handleChange(0)}>Tuần này</button>
