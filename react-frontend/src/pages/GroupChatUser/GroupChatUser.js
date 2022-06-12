@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector,useDispatch } from 'react-redux';
 import "./GroupChatUser.css";
 import { BiSend } from "react-icons/bi";
@@ -23,6 +23,9 @@ function GroupChatUser() {
   const [messages, setMessages] = useState([])
   const userCurrent = useSelector((state) => state.itemUserLogin);
 
+  const messageRef = useRef();
+
+
   async function sendMessage() {
     let collectionMessages = collection(db, 'Messages')
     await addDoc(collectionMessages, {
@@ -35,6 +38,11 @@ function GroupChatUser() {
   }
 
   useEffect(() => {
+    if (messageRef.current) {
+    messageRef.current.scrollTop = messageRef.current.scrollHeight;
+    }
+  })
+  useEffect(() => {
     async function fetchDataMessages() {
       const collectionMessages = query(collection(db, 'Messages'), orderBy('time'), limit(50));
       onSnapshot(collectionMessages, (querySnapshot) => {
@@ -43,6 +51,7 @@ function GroupChatUser() {
     }
     fetchDataMessages();
   }, [])
+
 
   return (
     <>
@@ -56,7 +65,7 @@ function GroupChatUser() {
       <div className="group-title">
         <h1>Diễn đàn trao đổi</h1>
       </div>
-      <div className="group-content">
+      <div id="content-group-chat" className="group-content" ref={messageRef}>
         {messages.map(({time, message, type, email}) => {
           const checkUser = email === userCurrent.username
           return(

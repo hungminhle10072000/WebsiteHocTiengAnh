@@ -173,3 +173,8 @@
 .modal-body {
   display: block !important;
 }
+
+.display-flex {
+  display: flex;
+  justify-content: space-between;
+}
