@@ -24,3 +24,8 @@ span.item-date-comment {
     font-size: 0.95rem;
     font-size: 600;
 }
+
+.comment-form {
+    /* width: 50% !important; */
+    display: flex;
+}

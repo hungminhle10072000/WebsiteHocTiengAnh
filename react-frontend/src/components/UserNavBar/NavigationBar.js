@@ -91,13 +91,13 @@ class NavigationBar extends Component {
                                     <img className='display-user' src={this.props.itemUserLogin.avartar}/>
                                     <span style={{fontWeight: 600, color: 'black', fontSize: '1rem'}}>{this.props.itemUserLogin.fullname}</span>
                                 </div>
-                                <div className="setting-user-item setting-edit-info" onClick={() => this.handleRedirectInfo()}>
+                                <div className="dislay-setting setting-user-item setting-edit-info" onClick={() => this.handleRedirectInfo()}>
                                     <FaUserEdit/> <span>Thay đổi thông tin</span>
                                 </div>
-                                <div className="setting-user-item"  onClick={() => this.handleRedirectMyCourse()}>
+                                <div className="dislay-setting setting-user-item"  onClick={() => this.handleRedirectMyCourse()}>
                                     <MdOndemandVideo/> <span>Khóa học của tôi</span>
                                 </div>
-                                <div className="setting-user-item setting-logout" onClick={e => this.logout(e)}> 
+                                <div className="dislay-setting setting-user-item setting-logout" onClick={e => this.logout(e)}> 
                                     <HiOutlineLogout/> <span>Đăng xuất</span>
                                 </div>
                             </div>

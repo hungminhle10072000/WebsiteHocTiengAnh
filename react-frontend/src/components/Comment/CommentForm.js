@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './../../App.css'
 
 const CommentForm = ({handleSubmit,submitLabel,hasCancelButton = false,handleCancel,initialText=""}) => {
     const [text,setText] = useState(initialText)
@@ -9,22 +10,25 @@ const CommentForm = ({handleSubmit,submitLabel,hasCancelButton = false,handleCan
         setText("")
     }
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="comment-form">
             <textarea
                 className="comment-form-textarea"
                 value= {text}
                 onChange={(e) =>setText(e.target.value)}
             />
-            <button className="comment-form-button" disabled={isTextareaDisabled}>{submitLabel}</button>
-            {hasCancelButton && (
-                <button 
-                    type="button" 
-                    className="comment-form-button comment-form-cancel-button"
-                    onClick={handleCancel}
-                >
-                    Cancel
-                </button>
-            )}
+            <div className="ml--15 mt--5">
+                <button className="btnn btnn--normal btnn--size-s" disabled={isTextareaDisabled}>{submitLabel}</button>
+                {hasCancelButton && (
+                    <button 
+                        type="button" 
+                        className="btnn btnn--normal btnn--size-s mt--5"
+                        onClick={handleCancel}
+                    >
+                        Cancel
+                    </button>
+                )}
+            </div>
+            
         </form>
     )
 }
