@@ -21,7 +21,7 @@ class UserItemCourse extends Component {
 
     render() {
         return (
-            <Link  to={`/user/learning/${this.props.course.id}`} style={{ textDecoration: 'none', margin: "5px 10px" }}>
+            <Link  to={`/user/learning/${this.props.course.id}`} style={{ textDecoration: 'none', margin: "10px 15px" }}>
             <Card className='card-master-outline'>
                 <Card.Img className='img-card-outline' variant="top" src={this.state.course.image} />
                 <Card.Body className='pa--5'>

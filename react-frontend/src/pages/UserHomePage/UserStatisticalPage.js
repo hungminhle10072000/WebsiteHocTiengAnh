@@ -113,7 +113,7 @@ function UserStatisticalPage() {
             <div className='statistical-layout'>
                 <div className='statistical-layout__chart'>
                     <div className='statistical-layout__card'>
-                        <h3>Báo cáo học tập</h3>
+                        <div className='title-size-l'>Báo cáo học tập</div>
                         <div className='statistical-layout__card__title'>
                             <div className='card-header-item'>
                                 <div>

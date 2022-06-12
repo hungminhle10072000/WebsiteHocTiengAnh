@@ -57,10 +57,39 @@
 }
 .user-layout {
   display: flex;
+  flex-wrap: wrap;
+  background-color: white;
 }
 .user-nav-bar {
   flex:1;
 }
 .user-layout-content {
   flex:9;
+}
+.ma--10 {
+  margin: 10px;
+}
+.ma--20 {
+  margin: 20px !important;
+}
+.pa--0 {
+  padding: 0 !important;
+}
+.pl--25 {
+  padding-left: 25px !important;
+}
+.bg-w {
+  background-color: white !important;
+}
+.ml--25 {
+  margin-left: 25px !important;
+}
+.mr--25 {
+  margin-right: 25px !important;
+}
+.ml--125 {
+  margin-left: 125px !important;
+}
+.pl--125 {
+  padding-left: 125px !important;
 }
