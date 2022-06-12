@@ -51,10 +51,10 @@ class UserHomePage extends Component {
                         <NavigationBar/>
                         <div className='container-fluid'>
                             <div className="main-sidebar-user row">
-                                <div className="sideBar-user col-md-1" style={{paddingRight: 0, paddingLeft: 0}}>
+                                <div className="sideBar-user" style={{paddingRight: 0, paddingLeft: 0}}>
                                     <Sidebar />
                                 </div>
-                                <div className="col-md-11 offset-md-1 content-user">
+                                <div className="content-user pa--0 pl--125 bg-w">
                                     {this.state.statusCheckItemLoading ? <ReactBootstrap.Spinner animation="border" className='item-loading'/> : ''}
                                     <UserRoutes />
                                 </div>

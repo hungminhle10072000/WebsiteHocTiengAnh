@@ -5,8 +5,7 @@ import './UserComponent.css'
 import {splitString} from '../../utils/index'
 function UserItemTopicExercise({id,img, name,description, status}) {
     return(        
-        // <div style={{width:300+'px' ,display: 'inline-block', margin:10+'px'}}>
-        <div className='col-md-3 mb-2'>
+        <div className='ma--20'>
             <Link to={"/user/exercise/"+id} style={{ textDecoration: 'none' }}>     
             <Card className='card-master-outline' >
                 <CardImg style={{width:300+'px', height:200+'px'}}
@@ -31,7 +30,6 @@ function UserItemTopicExercise({id,img, name,description, status}) {
             </Card>  
             </Link>
         </div> 
-        
     )
 }
 

@@ -17,7 +17,9 @@ function UserTopicExercisePage() {
     },[userCurrent])
 
     return(
-        <div className='row mt-3'>
+        <>
+            <div className='title-size-l ml--25 mr--25'>Bài tập rèn luyện</div>
+            <div className='user-layout'>
             {userCurrent.id === -1 ?
             <div style={{textAlign:'center', marginTop:'150px'}}>
                 <h2> Vui lòng đăng nhập để sử dụng chức năng này.</h2>
@@ -36,6 +38,8 @@ function UserTopicExercisePage() {
             }))
             }  
          </div>
+        </>
+        
     )
 }
 
