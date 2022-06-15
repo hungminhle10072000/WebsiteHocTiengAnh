@@ -10,7 +10,11 @@ import {
     SmileOutlined,
     SyncOutlined,
     LoadingOutlined,
+    AccountBookOutlined
 } from '@ant-design/icons';
+
+import {AiFillSnippets} from 'react-icons/gi';
+import { TbVocabulary } from "react-icons/tb";
 
 import { Row, Col } from 'antd';
   
