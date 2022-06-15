@@ -23,6 +23,11 @@ class AdminNavBar extends Component {
         }
     }
 
+    redirectUserHome = (e) => {
+        e.preventDefault();
+        window.location.pathname = "/user/home";
+    }
+
     logout = (e) => {
         e.preventDefault();
         localStorage.removeItem("token");
@@ -64,7 +69,17 @@ class AdminNavBar extends Component {
                                             </Link>
                                         </li>
                                     )
-                                } else {
+                                } else if (item.path === '/user/home'){
+                                    return(
+                                        <li key={index} className={item.cName}>
+                                            <Link to={item.path} onClick={(e) => {this.redirectUserHome(e)}}>
+                                                {item.icon}
+                                                <span>{item.title}</span>
+                                            </Link>
+                                        </li>
+                                    )
+                                } 
+                                else {
                                     return (
                                         <li key={index} className={item.cName}>
                                         <Link to={item.path} >

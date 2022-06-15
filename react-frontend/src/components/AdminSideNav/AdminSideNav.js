@@ -5,8 +5,15 @@ import {GoBook} from 'react-icons/go'
 import {FaAdversal} from 'react-icons/fa'
 import {FaUserEdit} from 'react-icons/fa'
 import {GiPrayer} from 'react-icons/gi'
+import {AiOutlineHome} from 'react-icons/ai'
 
 export const AdminSideNav = [
+  {
+    title: 'Trang người dùng',
+    path: '/user/home',
+    icon: <AiOutlineHome />,
+    cName: 'nav-text'
+  },
   {
     title: 'Quản lí tài khoản',
     path: '/admin/account',
