@@ -1,0 +1,60 @@
+version: "3"
+
+#NETWORK
+networks:
+  my-network:
+    driver: bridge
+
+#VOLUMES
+# volumes:
+#   dir-site:
+#     driver_opts:
+#       device: \WebsiteHocTiengAnh\sites\
+#       type: bind
+#       o: bind
+
+#SERVICES
+
+services:
+  backend-product:
+    container_name: backend-product
+    build:
+      dockerfile: Dockerfile
+      context: .\springboot-backend\
+    hostname: be
+    restart: always
+    networks:
+      - my-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - db-mysql
+  reactjs:
+    container_name: reactjs
+    build:
+      dockerfile: Dockerfile
+      context: .\react-frontend\
+    hostname: fe
+    restart: always
+    networks:
+      - my-network
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend-product
+  db-mysql:
+    container_name: db-mysql
+    image: "mysql:latest"
+    hostname: mysql
+    restart: always
+    networks: 
+      - my-network
+    volumes:
+      - .\db:/var/lib/mysql
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=english
+      # - MYSQL_USER=siteuser
+      # - MYSQL_PASSWORD=sitepass
