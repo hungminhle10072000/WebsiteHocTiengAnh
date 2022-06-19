@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import '../css/UserCSS.css'
 import { Space } from 'antd';
 import {Link} from "react-router-dom"
+import { Tooltip } from 'antd';
 
 import {
     FileDoneOutlined,
@@ -10,7 +11,11 @@ import {
     SmileOutlined,
     SyncOutlined,
     LoadingOutlined,
+    AccountBookOutlined
 } from '@ant-design/icons';
+
+import {AiFillSnippets} from 'react-icons/gi';
+import { TbVocabulary } from "react-icons/tb";
 
 import { Row, Col } from 'antd';
   
@@ -36,32 +41,38 @@ class UserLessonItem extends Component {
             <div>
                 <Row>
                     <Col span={20}>
-                    <div style={{ padding: '0px' }} onClick={() => this.props.isSub && this.props.changedVideo(this.state.lesson.video, this.state.lesson.id, this.state.lesson.name)}>
-                    <span style={{ fontWeight: 400, paddingRight: '5px' }}>{this.state.lesson.number}.</span>
-                    <img src="/svg/schedule_black_24dp.svg" alt="" height="15" style={{ marginRight: '5px' }} />
-                    <label className='title-lesson-name' title={this.state.lesson.name}>{this.state.lesson.name}</label>
-                    <hr style={{ marginBottom: '8px', marginTop: '8px', color: '#dddddd', height: '1px' }} />
+                        <div style={{ padding: '0px' }} onClick={() => this.props.isSub && this.props.changedVideo(this.state.lesson.video, this.state.lesson.id, this.state.lesson.name)}>
+                            <span style={{ fontWeight: 400, paddingRight: '5px' }}>{this.state.lesson.number}.</span>
+                            <img src="/svg/schedule_black_24dp.svg" alt="" height="15" style={{ marginRight: '5px' }} />
+                            <label className='title-lesson-name' title={this.state.lesson.name}>{this.state.lesson.name}</label>
+                            <hr style={{ marginBottom: '8px', marginTop: '8px', color: '#dddddd', height: '1px' }} />
 
-                </div>
+                        </div>
                     </Col>
                     <Col span={3}>
-                    <Space>
-                    <Link to={"/user/exercise/1"} style={{ textDecoration: 'none' }}>    
-                    <HomeOutlined className='icon-css'/>
-                    </Link>
-                    <Link to={"/user/topic-vocabulary/1/shopping"} style={{ textDecoration: 'none' }}>  
-                        <SettingFilled className='icon-css'/>
-                    </Link>
-                        <SmileOutlined className='icon-css'/>
-                    
-                    </Space>
+                        <Space >
+                            <Link className={this.props.isSub ? 'lesson-action lesson-action--enable' : 'lesson-action lesson-action--disable'} to={"/user/exercise/1"} style={{ textDecoration: 'none' }}>
+                                <Tooltip title="Bài tập">
+                                    <FileDoneOutlined className='icon-css' />
+                                </Tooltip>
+                            </Link>
+                            <Link className={this.props.isSub ? 'lesson-action lesson-action--enable' : 'lesson-action lesson-action--disable'} to={"/user/topic-vocabulary/1/shopping"} style={{ textDecoration: 'none', marginLeft: "0 !important" }}>
+                                <Tooltip title="Từ vựng">
+                                    <AccountBookOutlined className='icon-css' />
+                                </Tooltip>
+                            </Link>
+                            <Link className={this.props.isSub ? 'lesson-action lesson-action--enable' : 'lesson-action lesson-action--disable'} to={"/user/grammar"} style={{ textDecoration: 'none' }}>
+                                <Tooltip title="Lý thuyết">
+                                    <span style={{ marginLeft: '16px !important' }}>
+                                        <TbVocabulary className='icon-css' />
+                                    </span>
+                                </Tooltip>
+                            </Link>
+                        </Space>
                     </Col>
                     <Col span={1}>
                     </Col>
                 </Row>
-
-
-                
             </div>
 
         )

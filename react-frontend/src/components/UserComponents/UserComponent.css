@@ -18,3 +18,15 @@
     flex-basis: 24% !important;
     justify-content: start !important;
 }
+.lesson-action {
+    color: black !important;
+}
+
+.lesson-action--enable {
+    cursor: pointer;
+}
+
+.lesson-action--disable {
+    cursor: default;
+    pointer-events: none;
+}
