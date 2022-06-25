@@ -16,6 +16,8 @@ function GroupChatUser() {
   const [msg, setMsg] =useState('');
   const [srcImage, setSrcImage] = useState('');
   const handleClose = () => setShow(false);
+  const [selectImages, setSelectImages] = useState([]);
+  const [fileChooseArray, setFileChooseArray] = useState([]);
   const handleShow = (srcMessage) => {
     setSrcImage(srcMessage.message);
     setShow(true);
@@ -28,13 +30,18 @@ function GroupChatUser() {
 
   async function sendMessage() {
     let collectionMessages = collection(db, 'Messages')
-    await addDoc(collectionMessages, {
-        email: userCurrent.username || null,
-        message: msg || null,
-        time: serverTimestamp(),
-        type: "text" || null
-    })
-    setMsg('')
+    if(msg.trim().length > 0){
+      await addDoc(collectionMessages, {
+          email: userCurrent.username || null,
+          message: msg || null,
+          time: serverTimestamp(),
+          type: "text" || null
+      })
+      setMsg('')
+    }
+    if(fileChooseArray.length > 0){
+      setSelectImages([])
+    }
   }
 
   useEffect(() => {
@@ -44,7 +51,7 @@ function GroupChatUser() {
   })
   useEffect(() => {
     async function fetchDataMessages() {
-      const collectionMessages = query(collection(db, 'Messages'), orderBy('time'), limit(50));
+      const collectionMessages = query(collection(db, 'Messages'), orderBy('time'));
       onSnapshot(collectionMessages, (querySnapshot) => {
         setMessages(querySnapshot.docs.map(doc => doc.data()));
       });
@@ -52,6 +59,23 @@ function GroupChatUser() {
     fetchDataMessages();
   }, [])
 
+  const imageHandleChange = (e) => {
+    if(e.target.files) {
+      const arrTemp = Array.from(e.target.files)
+      setFileChooseArray( arr => arr.concat(arrTemp))
+      const fileArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
+      setSelectImages((prevImages) => prevImages.concat(fileArray))
+      Array.from(e.target.files).map(
+        (file) => URL.revokeObjectURL(file)
+      )
+    }
+  }
+
+  const renderPhotos = (source) => {
+    return source.map((photo) => {
+      return <img src={photo} key={photo} style={{width: '150px', height: '150px', marginRight: '1rem'}}/>
+    })
+  }
 
   return (
     <>
@@ -97,15 +121,15 @@ function GroupChatUser() {
         })}
       </div>
 
-        
       <div className="send-mes">
+        {renderPhotos(selectImages)}
         <input type="text" value={msg} placeholder="Nhập tin nhắn...." onChange={(e) => setMsg(e.target.value)}/>
         <div className="send-mes-icon">
           <div className="image-upload">
             <label htmlFor="file-input" >
               <BiImageAlt />
             </label>
-            <input id="file-input" type="file" accept="image/*"/>
+            <input id="file-input" multiple type="file" accept="image/*" onChange={(e) => imageHandleChange(e)}/>
           </div>
           <BiSend onClick={() => sendMessage()}/>
         </div>
