@@ -71,5 +71,23 @@ module.exports = function (app) {
             changeOrigin: true
         })
     );
+    app.use("/api/users",
+        createProxyMiddleware({
+            target: `${API_BASE}`,
+            changeOrigin: true
+        })
+    );
+    app.use("/authenticate",
+        createProxyMiddleware({
+            target: `${API_BASE}`,
+            changeOrigin: true
+        })
+    );
+    app.use("/api/users/check-username-email",
+        createProxyMiddleware({
+            target: `${API_BASE}`,
+            changeOrigin: true
+        })
+    );
     
 };
