@@ -27,7 +27,6 @@ class UserChapterItem extends Component {
         return this.state.chapter.lessons.sort((a,b) => a.numPriority - b.numPriority).map((lesson)=><UserLessonItem key={lesson.id} lesson={lesson} changedVideo={this.props.changedVideo} isSub={this.props.isSub}></UserLessonItem>)
     }
     render() {
-        
         return(
             <div>
                 <div className="card-header header-chapter" style={{padding:'8px',paddingLeft:'15px'}} onClick={this.onClick}>

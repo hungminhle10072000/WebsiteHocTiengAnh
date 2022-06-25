@@ -48,38 +48,6 @@ class ResultService {
         })
     }
 
-    // getResultById(id) {
-    //     return axios.get(RESULT_API_BASE_URL + '/getResultById/' + id,{
-    //         headers: {...headers, ...authHeader()},
-    //     });
-    // }
-
-    // deleteResult(id) {
-    //     return axios.delete(RESULT_API_BASE_URL+'/delete/'+id,{
-    //         headers: {...headers, ...authHeader()},
-    //     });
-    // }
-
-    // updateResult(result) {
-    //     console.log('Service: ',result)
-        
-    //     console.log('Header:',authHeader())
-    //     let formData = new FormData()
-    //     const jsonResult = JSON.stringify(result)
-    //     const blob = new Blob([jsonResult], {
-    //         type: 'application/json'
-    //     });
-        
-    //     formData.append("resultDto",blob)
-    //     return axios.put(RESULT_API_BASE_URL+'/update',formData,{
-    //         headers: {
-    //             ...headers,
-    //             'Content-Type': 'multipart/form-data',
-    //             ...authHeader()
-    //         },
-    //     })
-    // }
-
 }
 
 export default new ResultService()

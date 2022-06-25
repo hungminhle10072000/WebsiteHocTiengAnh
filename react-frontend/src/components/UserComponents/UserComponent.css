@@ -18,3 +18,21 @@
     flex-basis: 24% !important;
     justify-content: start !important;
 }
+.lesson-action {
+    color: black !important;
+}
+
+.lesson-action--enable {
+    cursor: pointer;
+}
+
+.lesson-action--disable {
+    cursor: default !important;
+    pointer-events: none;
+}
+.lesson-item-disable {
+    background-color: rgba(0,0,0,.08);
+    color: grey;
+    margin: 0 30px;
+    cursor: default !important;
+}

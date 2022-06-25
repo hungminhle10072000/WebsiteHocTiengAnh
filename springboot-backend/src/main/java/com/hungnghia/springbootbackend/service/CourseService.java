@@ -1,6 +1,8 @@
 package com.hungnghia.springbootbackend.service;
 import com.hungnghia.springbootbackend.converter.CourseConverter;
+import com.hungnghia.springbootbackend.dto.ChapterDto;
 import com.hungnghia.springbootbackend.dto.CourseDto;
+import com.hungnghia.springbootbackend.dto.LessonDto;
 import com.hungnghia.springbootbackend.entities.CourseEntity;
 import com.hungnghia.springbootbackend.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class CourseService  {
     private CourseConverter courseConverter;
     @Autowired
     private AmazonClient amazonClient;
+    @Autowired
+    private ResultService resultService;
 
     public CourseDto addCourse(CourseDto course, MultipartFile file) {
         CourseEntity courseEntity = courseConverter.toEntity(course);
@@ -61,6 +65,29 @@ public class CourseService  {
     public CourseDto getCourseById(long id) {
         CourseEntity courseEntity = courseRepository.getById(id);
         return courseConverter.toDto(courseEntity);
+    }
+    public CourseDto getCourseByIdAndUserId(long id,Long userId) {
+        CourseEntity courseEntity = courseRepository.getById(id);
+        CourseDto courseDtos =  courseConverter.toDto(courseEntity);
+        List<ChapterDto> chapterDtos = courseDtos.getChapters();
+        if (chapterDtos != null && chapterDtos.size() > 0) {
+            for (ChapterDto chapter: chapterDtos) {
+                List<LessonDto> lessonDtos = chapter.getLessons();
+                if (lessonDtos !=null && lessonDtos.size() > 0) {
+                    for (LessonDto lessonDto : lessonDtos) {
+                        if (lessonDto.getExerciseId() != null && lessonDto.getExerciseId() > 0) {
+                            Long exerciseId = lessonDto.getExerciseId();
+                            if (exerciseId !=null && exerciseId > 0) {
+                                boolean isDoneExercise = resultService.isDoneExercise(userId,exerciseId);
+                                lessonDto.setDoneExercise(isDoneExercise);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        return courseDtos;
     }
 
     public CourseDto deleteCourse(long id) {

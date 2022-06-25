@@ -86,17 +86,12 @@ class AdminEditCoursePage extends React.Component {
     validateAll = () => {
         const msg = {}
 
-        console.log(this.state.course)
-        // console.log(this.state.introduce)
         if (validator.isEmpty(this.state.course.name)) {
             msg.name = "Yêu cầu nhập tên khoá học !"
         }
         if (validator.isEmpty(this.state.course.introduce)) {
             msg.introduce = "Yêu cầu nhập giới thiệu về khoá học !"
         }
-        // if (!this.state.currentFile) {
-        //     msg.image = "Yêu cầu thêm ảnh của khoá học!"
-        // }
         this.setState({
             validationMsg: msg
         })
@@ -105,7 +100,6 @@ class AdminEditCoursePage extends React.Component {
     }
     handleConfirmationBox = (event) => {
         const isValid = this.validateAll()
-        console.log("is Valid: ", isValid)
         if (!isValid) return
         else {
             if (!this.state.confirmDialog) {

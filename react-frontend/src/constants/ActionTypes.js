@@ -68,6 +68,7 @@ export const ADD_COURSE = 'ADD_COURSE';
 export const EDIT_COURSE = 'EDIT_COURSE';
 export const DELETE_COURSE = 'DELETE_COURSE';
 export const UPDATE_COURSE = 'UPDATE_COURSE';
+export const FETCH_COURSE_IS_DONE = 'FETCH_COURSE_IS_DONE';
 //Chapter
 export const FETCH_CHAPTERS = 'FETCH_CHAPTERS';
 export const ADD_CHAPTER = 'ADD_CHAPTER';

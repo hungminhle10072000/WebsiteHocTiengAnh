@@ -43,6 +43,11 @@ class CourseService {
             headers: {...headers, ...authHeader()},
         });
     }
+    getCourseByIdAndUserId(id,userId) {
+        return axios.get(COURSE_API_BASE_URL + '/getCourseByIdAndUserId/' + id+"/"+userId,{
+            headers: {...headers, ...authHeader()},
+        });
+    }
 
     deleteCourse(id) {
         return axios.delete(COURSE_API_BASE_URL+'/delete/'+id,{

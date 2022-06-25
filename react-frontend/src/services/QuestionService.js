@@ -12,7 +12,6 @@ const headers = {
 class QuestionService {
 
     getQuestionByExerciseId(exerciseId) {
-        console.log('AB')
         return axios.get(QUESTION_API_END_POINT+'/findQuestionByExerciseId/'+exerciseId,{
             headers: {...headers, ...authHeader()},
         })    
@@ -58,10 +57,6 @@ class QuestionService {
         formData.append("fileImage", fileImage);
         formData.append("fileAudio", fileAudio);
 
-
-        console.log(questionListenAdd);
-        console.log(fileImage);
-        console.log(fileAudio);
 
         return axios.post(QUESTION_API_END_POINT + '/addQuestionListen',formData,{
             headers:{...headers, ...authHeader(),'Content-Type': 'multipart/form-data'}

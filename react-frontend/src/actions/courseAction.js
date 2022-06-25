@@ -8,7 +8,6 @@ const actFetchCourseRequest = () => {
     return (dispatch) => {
         return (
             CourseService.getCourses().then((res) => {
-                console.log("CourseAction",res.data)
                 dispatch(actFetchCourses(res.data))
             })
         )
@@ -52,7 +51,25 @@ const actGetCourseRequest = (id) => {
         return (
             CourseService.getCourseById(id).then((res) => {
                 dispatch(actGetCourse(res.data));
-                console.log("res:",res.data)
+            })
+        )
+    }
+}
+
+const actGetCourseIsDone = (course) => {
+    return {
+        type:Types.FETCH_COURSE_IS_DONE,
+        course
+    }
+}
+
+// get course by id and userId
+const actGetCourseByIdAndUserIdRequest = (id,userId) => {
+    return dispatch => {
+        return (
+            CourseService.getCourseByIdAndUserId(id,userId).then((res) => {
+                dispatch(actGetCourseIsDone(res.data));
+             
             })
         )
     }
@@ -66,7 +83,6 @@ const actGetCourse = (course) => {
 }
 //update course 
 const actUpdateCourseRequest = (course,image) => {
-    console.log("Update", image)
     return dispatch => {
         CourseService.updateCourse(course,image).then((res) => {
             dispatch(actUpdateCourse(res.data))
@@ -109,5 +125,6 @@ export default {
     actAddCourseRequest,
     actGetCourseRequest,
     actDeleteCourseRequest,
-    actUpdateCourseRequest
+    actUpdateCourseRequest,
+    actGetCourseByIdAndUserIdRequest
 }

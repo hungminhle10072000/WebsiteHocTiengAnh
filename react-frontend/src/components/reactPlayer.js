@@ -5,7 +5,6 @@ import Modal from "react-responsive-modal";
 class Player extends Component {
   render() {
     const { open, toggleModal,linkVideo } = this.props;
-    console.log("H: ",open)
     return (
       <Modal
         open={open}
