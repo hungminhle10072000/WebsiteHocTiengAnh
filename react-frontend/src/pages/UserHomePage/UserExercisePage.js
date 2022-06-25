@@ -37,17 +37,12 @@ function UserExercisePage() {
   const userCurrent = useSelector((state) => state.itemUserLogin)
   const params = useParams()
 
-
-  console.log('UserCurrent: ',userCurrent)
-
   useEffect(() => {
     QuestionService.getQuestionByExerciseId(params.id)
     .then(res => {
-        console.log("QUESTION: ",res)
         quizData.data = res.data;
       })
     ResultService.getResultByUserIdAndExerciseId(userCurrent.id,params.id).then(res=> {
-      console.log('Total', res.data)
         if (res.data.length > 0 && (res.data[0].totalRight > 0 || res.data[0].totalWrong > 0)) {
           ResultDetailService.getResultDetailByUserIdAndExerciseId(userCurrent.id,params.id).then(res=> {
             setAnswers(res.data)
@@ -59,7 +54,6 @@ function UserExercisePage() {
         }
       })
     if (step ===3) {
-      // clearInterval(interval)
       newListAnswer = listAnswer.map(x => {x.userId=userCurrent.id; return x} )
       ResultDetailService.addAnswers(newListAnswer)
     }
@@ -77,7 +71,6 @@ function UserExercisePage() {
       userId:userCurrent.id
     }
     ResultService.addResult(resultDto)
-    // interval = setInterval(() => setTime(prevTime => prevTime+1), 1000);
   }
 
   const resetClickHandler = ()=>{

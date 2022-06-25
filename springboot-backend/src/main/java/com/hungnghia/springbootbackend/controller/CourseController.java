@@ -4,6 +4,7 @@ import com.hungnghia.springbootbackend.dto.CourseDto;
 import com.hungnghia.springbootbackend.entities.CourseEntity;
 import com.hungnghia.springbootbackend.service.AmazonClient;
 import com.hungnghia.springbootbackend.service.CourseService;
+import com.hungnghia.springbootbackend.service.ResultService;
 import com.sun.istack.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,11 @@ public class CourseController {
     @GetMapping("/edit/{id}")
     public CourseDto getCourseById(@PathVariable long id) {
         CourseDto course = courseService.getCourseById(id);
+        return course;
+    }
+    @GetMapping("/getCourseByIdAndUserId/{id}/{userId}")
+    public CourseDto getCourseByIdAndUserId(@PathVariable long id, @PathVariable Long userId) {
+        CourseDto course = courseService.getCourseByIdAndUserId(id,userId);
         return course;
     }
     @DeleteMapping("/delete/{id}")

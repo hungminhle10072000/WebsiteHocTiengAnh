@@ -60,4 +60,9 @@ public class LessonController {
     public LessonDto deleteLesson(@PathVariable long id) {
         return lessonService.deleteLesson(id);
     }
+
+    @GetMapping("/getAllLessonDoneExerciseByUserId/{userId}")
+    public List<LessonDto> getAllLessonDoneExerciseByUserId(@PathVariable Long userId) {
+        return lessonService.getAllLessonDoneExerciseByUserId(userId);
+    }
 }

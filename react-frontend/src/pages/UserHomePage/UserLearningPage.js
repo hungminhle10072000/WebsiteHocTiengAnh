@@ -8,6 +8,7 @@ import './UserLearningPage.css'
 class UserLearningPage extends Component {
     constructor(props){
         super(props);
+        console.log('PROPS: ',props)
 
         this.state = {
             isChapter:true,
@@ -32,7 +33,6 @@ class UserLearningPage extends Component {
     }
     componentDidUpdate(prevProps) {
         var course = this.props.course;
-       
         if (prevProps.course.chapters.length !== this.props.course.chapters.length) {
             if (course.chapters.length > 0 && course.chapters[0].lessons.length >0) {
                 this.changedVideo(course.chapters[0].lessons[0].video,course.chapters[0].lessons[0].id,course.chapters[0].lessons[0].name)
@@ -64,6 +64,17 @@ class UserLearningPage extends Component {
                 userCurrent: this.props.userCurrent
             })
         }
+
+        //Note
+        if (prevProps.userCurrent.id !== this.props.userCurrent.id) {
+            this.props.onFetchCourseIsDone(this.props.match.params.id,this.props.userCurrent.id);
+            var course = this.props.course
+            this.setState({
+                course: course,
+                comments: this.props.comments,
+                userCurrent: this.props.userCurrent
+            })
+        }
    
         if (prevProps.course.id !== this.props.course.id) {
             if (course.chapters.length > 0 && course.chapters[0].lessons.length >0) {
@@ -72,7 +83,7 @@ class UserLearningPage extends Component {
         }
     }
     componentDidMount() {
-        this.props.onEditCourse(this.state.course.id);
+        this.props.onFetchCourseIsDone(this.state.course.id,this.props.userCurrent.id);
         this.props.onGetCommentByLessonId(this.state.learningLessonId)
         var course = this.props.course;
         this.setState({
@@ -96,7 +107,7 @@ class UserLearningPage extends Component {
             })
         }
        
-    }
+    } 
     
     changedVideo = (url,lessonId,name) => {
         this.props.onGetCommentByLessonId(lessonId)
@@ -115,6 +126,7 @@ class UserLearningPage extends Component {
         isComment: true})
     }
     showChapterItem = (isSub) => {
+        console.log("This.Props:", this.props.course)
         return this.state.course.chapters.map((chapter)=><UserChapterItem key={chapter.id} chapter={chapter} changedVideo={this.changedVideo} isSub = {isSub}></UserChapterItem>)
     }
 
@@ -166,7 +178,7 @@ class UserLearningPage extends Component {
                    </div>
                </div>
                <br/>
-               {this.state.isChapter&&this.showChapterItem(!isSub)}
+               {this.state.isChapter && this.showChapterItem(!isSub)}
                {this.state.isComment && (<Comments currentUserId={this.state.userCurrent.id} comments={this.state.comments} learningId={this.state.learningLessonId} type='1'/>)} 
                 <br/>
                 <br/>
@@ -196,6 +208,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onAddUserCourse:(usercourse) => {
             dispatch(allActions.userCourseAction.actAddUserCourseRequest(usercourse))
+        },
+        onFetchCourseIsDone: (id,userId) => {
+            dispatch(allActions.courseAction.actGetCourseByIdAndUserIdRequest(id,userId))
         }
     }
 }

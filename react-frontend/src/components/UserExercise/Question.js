@@ -37,7 +37,6 @@ function Question({data, onAnswerUpdate,numberOfQuestion, activeQuestion, onSetA
             onSetStep(3)
         }
     }
-    console.log("DATA: ",data)
 
     return(
         <div className="card question">

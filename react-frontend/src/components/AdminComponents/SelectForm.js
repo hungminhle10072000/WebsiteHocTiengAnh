@@ -34,7 +34,6 @@ function SelectForm( {onAttachmentData} ) {
   }
       
   function handleChange(value) {
-    console.log(`selected ${value}`);
     var valueArrObj = value.map(x => JSON.parse(x))
     onAttachmentData(valueArrObj)
   }
