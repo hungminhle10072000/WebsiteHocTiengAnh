@@ -2,30 +2,24 @@ import React, { Component } from 'react';
 import { Alert, AlertContainer } from "react-bs-notifier";
 import { connect } from 'react-redux';
 import allActions from '../../actions/index';
-
 class AdminAlertInfo extends Component {
-
-
     handleDismiss = () => {
         this.props.changeAdminAlertOff();
     }
-
     render() {
         if(this.props.AdminAlertShow === false){
             return null
         } else {
             return (
                 <AlertContainer>
-                    <Alert type={this.props.AdminAlertType} onDismiss={() => this.handleDismiss()} timeout={5000}>
+                    <Alert type={this.props.AdminAlertType} onDismiss={()=>this.handleDismiss()} timeout={5000}>
                         {this.props.AdminAlertContent}
                     </Alert>
                 </AlertContainer>
             )
         }
     }
-    
 }
-
 const mapStateToProps = (state, ownProps) => {
     return {
         AdminAlertShow: state.admin_alert_info.AdminAlertShow,
@@ -33,7 +27,6 @@ const mapStateToProps = (state, ownProps) => {
         AdminAlertType: state.admin_alert_info.AdminAlertType
     }
 }
-
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         changeAdminAlertOff : () => {
@@ -41,5 +34,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         }
     }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps) (AdminAlertInfo)
