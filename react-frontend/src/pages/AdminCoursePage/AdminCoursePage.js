@@ -15,7 +15,6 @@ class AdminCoursePage extends Component {
     }
 
     showItemsCourse(courses) {
-        console.log(courses)
         var result = null;
         if (courses!= undefined && courses.length > 0) {
             result = courses.map((course,key) => <AdminItemCourse course={course} key={key}/>) 

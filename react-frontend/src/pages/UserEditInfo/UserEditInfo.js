@@ -118,11 +118,6 @@ class UserEditInfo extends Component {
 
     validatePassWord = () => {
         const msgPassWord = {}
-        // if(!validator.equals(this.props.itemUserEdit.password, this.state.passwordOld)){
-        //     console.log(this.props.itemUserEdit.password + ' ---- ' + this.state.passwordOld)
-        //     console.log(validator.equals(this.state.user.password, this.state.passwordOld))
-        //     msgPassWord.passwordOld = "Mật khẩu cũ không chính xác !"
-        // }
         if(validator.isEmpty(this.state.passwordNew)){
             msgPassWord.passwordNew = "Yêu cầu nhập mật khẩu mới !"
         } else if (!validator.equals(this.state.passwordNew, this.state.repeat_passwordNew)) {

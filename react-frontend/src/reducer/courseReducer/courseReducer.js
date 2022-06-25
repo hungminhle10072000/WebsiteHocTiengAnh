@@ -26,7 +26,6 @@ const courseReducer = (state=initialState, action) => {
             
             return [...state]
         case UPDATE_COURSE:
-            console.log("UpdateReducer:",state)
             for (var i = state.length - 1; i >= 0; i--) {
                 if (state[i].id === action.course.id) {
                     state[i]=action.course;

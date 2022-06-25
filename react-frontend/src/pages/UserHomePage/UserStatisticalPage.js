@@ -73,7 +73,6 @@ function UserStatisticalPage() {
                 setStatisticalMasterList(data)
             })
     }, [weekAgo])
-    console.log("USERINFO: ",userInfo)
     for( let i=0; i< statisticalMasterList.length; i++) {
         if (statisticalMasterList[i].statisticalDtoList[0].userId == userId) {
             let statisticalDtoList = statisticalMasterList[i].statisticalDtoList;
@@ -85,9 +84,6 @@ function UserStatisticalPage() {
         listFullName[i].totalScoreOfWeek = statisticalMasterList[i].totalScoreOfWeek;
         listFullName[i].avatar = statisticalMasterList[i].avatar;
     }
-
-    console.log("SCOREOFDAYS: ",scoreOfDays)
-
     const options = {
         animationEnabled: true,
         exportEnabled: true,

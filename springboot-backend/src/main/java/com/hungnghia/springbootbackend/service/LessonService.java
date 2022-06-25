@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +21,8 @@ public class LessonService {
     private LessonConverter lessonConverter;
     @Autowired
     private AmazonClient amazonClient;
+    @Autowired
+    private ResultService resultService;
 
     public void updateNumOfPriority(LessonDto lessonCurrent) {
         List<LessonEntity> lessonEntities = lessonRepository.getLessonEntitiesByNumPriorityGreaterThanEqualAndChapterEntity_Id(lessonCurrent.getNumPriority(),lessonCurrent.getChapterId());
@@ -124,5 +127,20 @@ public class LessonService {
         } catch (Exception ex) {
             return null;
         }
+    }
+    public List<LessonDto> getAllLessonDoneExerciseByUserId(Long userId) {
+        List<LessonDto> lessonDtosDoneExercise = new ArrayList<>();
+        List<LessonDto> lessonDtos = getAllLesson();
+        if (lessonDtos != null && lessonDtos.size() > 0) {
+            for (int i=0; i < lessonDtos.size(); i++) {
+                Long exerciseId = lessonDtos.get(i).getExerciseId();
+                if ( exerciseId!= null && exerciseId > 0) {
+                    if (resultService.isDoneExercise(userId, exerciseId)) {
+                        lessonDtosDoneExercise.add(lessonDtos.get(i));
+                    }
+                }
+            }
+        }
+        return lessonDtosDoneExercise;
     }
 }

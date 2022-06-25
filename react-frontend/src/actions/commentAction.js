@@ -8,7 +8,6 @@ const actGetCommentByLessonIdRequest = (lessonId) => {
     return dispatch => {
         return (
             CommentService.getCommentByLessonId(lessonId).then((res) => {
-                console.log("ResData",res.data)
                 dispatch(actGetCommentByLessonId(res.data));
             })
         )
@@ -29,7 +28,6 @@ const actGetCommentByTopicIdRequest = (lessonId) => {
         return (
             CommentService.getCommentByTopicId(lessonId).then((res) => {
                 dispatch(actGetCommentByTopicId(res.data));
-                // console.log("Giá trị của comment:" + res.data.length)
             })
         )
     }
@@ -47,7 +45,6 @@ const actGetCommentByGrammarIdRequest = (grammarId) => {
     return dispatch => {
         return (
             CommentService.getCommentByGrammarId(grammarId).then((res) => {
-                // console.log("ResData",res.data)
                 dispatch(actGetCommentByGrammarId(res.data));
             })
         )
@@ -109,7 +106,6 @@ const actGetCommentRequest = (id) => {
 }
 
 const actGetComment = (comment) => {
-    console.log('Comment2: ',comment)
     return {
         type:Types.EDIT_COMMENT,
         comment

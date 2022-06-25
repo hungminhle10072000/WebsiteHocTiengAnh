@@ -88,8 +88,6 @@ class AdminLessonPage extends Component {
              }
         });
 
-        console.log("Re-render")
-
         return(
             <div className="container-fluid content-admin-acconut">
                  <Player open={this.state.open} toggleModal={this.onOpenModal} linkVideo={this.state.linkVideo} />

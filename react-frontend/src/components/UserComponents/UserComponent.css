@@ -27,6 +27,12 @@
 }
 
 .lesson-action--disable {
-    cursor: default;
+    cursor: default !important;
     pointer-events: none;
+}
+.lesson-item-disable {
+    background-color: rgba(0,0,0,.08);
+    color: grey;
+    margin: 0 30px;
+    cursor: default !important;
 }

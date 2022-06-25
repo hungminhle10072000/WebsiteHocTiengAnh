@@ -19,7 +19,6 @@ class VideoContainer extends Component {
             open: !prevState.open,
             linkVideo: video
         }));
-        console.log(this.state.open)
     };
     render() {
         return (

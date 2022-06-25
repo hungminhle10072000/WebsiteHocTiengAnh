@@ -56,7 +56,6 @@ const actGetChapterRequest = (id) => {
 }
 
 const actGetChapter = (chapter) => {
-    console.log('Chapter2: ',chapter)
     return {
         type:Types.EDIT_CHAPTER,
         chapter

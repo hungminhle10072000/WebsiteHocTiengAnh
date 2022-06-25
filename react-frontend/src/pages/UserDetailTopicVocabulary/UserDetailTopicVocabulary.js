@@ -22,42 +22,12 @@ class UserDetailTopicVocabulary extends Component {
         })
     }
 
-    // componentDidUpdate(prevProps) {
-    //     var course = this.props.course;
-    //     if (prevProps.comments.length ===0 && this.props.comments.length !==0) {
-    //         console.log("DK1")
-    //         this.setState({
-
-    //             comments: this.props.comments,
-    //             userCurrent: this.props.userCurrent
-    //         })
-    //     }
-    //     if ( prevProps.comments[0] && this.props.comments[0] && prevProps.comments[0].id !== this.props.comments[0].id) {
-    //         console.log("DK2")
-    //         this.setState({
-    //             comments: this.props.comments,
-    //             userCurrent: this.props.userCurrent
-    //         })
-    //     }
-    //     if (prevProps.comments.length !== this.props.comments.length) {
-    //         console.log("DK3")
-    //         this.setState({
-    //             comments: this.props.comments,
-    //             userCurrent: this.props.userCurrent
-    //         })
-    //     }
-    // }
 
     componentDidMount() {
         const {nameTopicPara,idTopic} = this.state
         this.props.onOpenItemLoading()
         this.props.userGetVocaWithTopic(nameTopicPara,idTopic);
         this.props.onGetCommentByTopicId(idTopic)
-        // this.setState({
-        //     comments: this.props.comments,
-        //     userCurrent: this.props.userCurrent,
-        //     learningTopicId: idTopic
-        // })
     }
 
     componentWillReceiveProps(nextProps) {

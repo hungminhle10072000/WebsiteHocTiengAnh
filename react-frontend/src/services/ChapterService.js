@@ -54,9 +54,6 @@ class ChapterService {
     }
 
     updateChapter(chapter) {
-        console.log('Service: ',chapter)
-        
-        console.log('Header:',authHeader())
         let formData = new FormData()
         const jsonChapter = JSON.stringify(chapter)
         const blob = new Blob([jsonChapter], {
