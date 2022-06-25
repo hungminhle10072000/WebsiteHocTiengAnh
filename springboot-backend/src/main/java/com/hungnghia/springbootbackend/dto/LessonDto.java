@@ -22,5 +22,6 @@ public class LessonDto {
     private Long exerciseId;
     private Long grammarId;
     private Long vocabularyTopicId;
+    private boolean isDoneExercise;
 //    private List<AttachmentDto> attachments;
 }

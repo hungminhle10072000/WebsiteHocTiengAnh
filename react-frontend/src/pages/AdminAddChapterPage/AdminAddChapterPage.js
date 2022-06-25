@@ -109,7 +109,6 @@ class AdminAddChapterPage extends React.Component {
     handleConfirmationBox = (event) => {
 
         const isValid = this.validateAll()
-        console.log("is Valid: ", isValid)
         if (!isValid) return
         else {
             if (!this.state.confirmDialog) {
@@ -210,7 +209,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         onGetCourseById: (courseId) => {
             dispatch(allActions.courseAction.actGetCourseRequest(courseId))
-            console.log("Dispath: ",allActions.courseAction.actGetCourseRequest(courseId))
         },
         onOpenButtonLoading: () => {
             dispatch(allActions.statusButtonLoadingAction.openButtonLoading())

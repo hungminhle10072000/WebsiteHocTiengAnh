@@ -38,4 +38,20 @@ public class ResultService {
         List<ResultEntity> resultEntities = resultRepository.findResultEntitiesByUserEntity_IdAndExerciseEntity_Id(userId, exerciseId);
         return resultConverter.toListDtos(resultEntities);
     }
+    public boolean isDoneExercise(Long userId, Long exerciseId) {
+        List<ResultDto> resultDtos = findResultsByUserIdAndExerciseId(userId,exerciseId);
+        if (resultDtos == null) {
+            return  false;
+        }
+        if (resultDtos.size() < 1) {
+            return false;
+        } else {
+            for(ResultDto item : resultDtos) {
+                if (item.getTotalRight() + item.getTotalWrong() > 0) {
+                    return  true;
+                }
+            }
+        }
+        return false;
+    }
 }

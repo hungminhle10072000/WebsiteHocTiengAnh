@@ -45,7 +45,6 @@ class AdminAddLessonPage extends React.Component {
     }
 
     handleChangeGrammarId = (grammarId) => {
-        console.log("GrammarId: ",grammarId)
         this.setState({
             lesson: {
                 ... this.state.lesson,
