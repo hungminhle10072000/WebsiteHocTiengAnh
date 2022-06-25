@@ -1,13 +1,8 @@
 import axios from "axios";
 import {authHeader} from './auth-header'
 const USER_API_END_POINT = "/api/users";
-<<<<<<< HEAD
-const USER_API_LOGIN = "http://backend-product:8080/authenticate";
-const USER_API_ForgetPassWord = 'http://backend-product:8080/api/users/check-username-email';
-=======
 const USER_API_LOGIN = `/authenticate`
 const USER_API_ForgetPassWord = `/api/users/check-username-email`;
->>>>>>> master
 
 const headers = {
     'Content-Type': 'application/json;charset=UTF-8',
@@ -96,11 +91,7 @@ class UserService {
         formData.append("userDto",blob);
         formData.append("file",file);
 
-<<<<<<< HEAD
-        return axios.post('http://backend-product:8080/register', formData,{
-=======
         return axios.post(`/register`, formData,{
->>>>>>> master
             headers:{'Content-Type': 'multipart/form-data'}
         })
     }
