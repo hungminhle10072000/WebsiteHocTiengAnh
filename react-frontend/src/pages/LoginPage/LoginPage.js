@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import { Modal, Button} from 'react-bootstrap';
 import FormSendMail from '../../components/FormSendMail/FormSendMail';
 import * as ReactBootstrap from 'react-bootstrap'
+import Hotkeys from 'react-hot-keys';
 
 class LoginPage extends Component {
 
@@ -25,6 +26,17 @@ class LoginPage extends Component {
             showForm: false,
             statusCheckItemLoading: false
         }
+    }
+    handleKeyPress = e => {
+        e.keyCode === 13 &&
+        this.handleLogin();
+    }
+
+    componentDidMount() {
+        document.addEventListener("keydown", this.handleKeyPress);
+    }
+    componentWillUnmount() {
+        document.removeEventListener("keydown", this.handleKeyPress);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -104,7 +116,10 @@ class LoginPage extends Component {
             window.location.pathname = ('/');
         }  
         return (
-            <div className="container-fluid container-login">
+            <Hotkeys 
+                onKeyDown={(e)=> this.handleKeyPress(e)}
+            >
+                 <div className="container-fluid container-login">
                 {this.state.statusCheckItemLoading ? <ReactBootstrap.Spinner animation="border" className='item-loading'/> : ''}
                 <AdminAlertInfo />
                 <div className="login-form">
@@ -171,7 +186,9 @@ class LoginPage extends Component {
                             </Button>
                     </Modal.Footer>
                 </Modal>
-            </div>
+                </div>
+            </Hotkeys>
+           
         )
     }
 }

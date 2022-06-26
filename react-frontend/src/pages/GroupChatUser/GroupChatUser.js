@@ -67,7 +67,9 @@ function GroupChatUser() {
       });
     }
     fetchDataMessages();
-  }, []);
+    document.addEventListener("keydown", handleKeyPress);
+    return document.removeEventListener("keydown", handleKeyPress);
+  }, [])
 
   const imageHandleChange = (e) => {
     if (e.target.files) {
@@ -91,6 +93,9 @@ function GroupChatUser() {
       );
     });
   };
+  const handleKeyPress = e => {
+    e.keyCode===13 && e.ctrlKey && sendMessage(e)
+}
 
   return (
     <div className="chat">
@@ -148,6 +153,17 @@ function GroupChatUser() {
                 </div>
               );
             })}
+      </div>
+
+      <div className="send-mes">
+        {renderPhotos(selectImages)}
+        <input onKeyDown={handleKeyPress} type="text" value={msg} placeholder="Nhập tin nhắn...." onChange={(e) => setMsg(e.target.value)}/>
+        <div className="send-mes-icon">
+          <div className="image-upload">
+            <label htmlFor="file-input" >
+              <BiImageAlt />
+            </label>
+            <input id="file-input" multiple type="file" accept="image/*" onChange={(e) => imageHandleChange(e)}/>
           </div>
 
           <div className="send-mes">
@@ -176,9 +192,6 @@ function GroupChatUser() {
               </div>
             </div>
           </div>
-
-          {/* <SendMessage /> */}
-
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton></Modal.Header>
             <Modal.Body>
@@ -188,7 +201,10 @@ function GroupChatUser() {
         </div>
       )}
     </div>
-  );
+    </div>
+    )}
+  </div>
+  )
 }
 
 export default GroupChatUser;
