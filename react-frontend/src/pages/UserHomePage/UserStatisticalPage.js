@@ -7,10 +7,10 @@ import {GiTrophyCup} from  "react-icons/gi";
 import { useSelector,useDispatch } from 'react-redux';
 var scoreOfDays = [
 { x: 2, y: 0 },
-{ x: 3, y: 100 },
+{ x: 3, y: 0 },
 { x: 4, y: 0 },
 { x: 5, y: 0 },
-{ x: 6, y: 10 },
+{ x: 6, y: 0 },
 { x: 7, y: 0 },
 { x: 8, y: 0 }]
 

@@ -8,7 +8,7 @@
 .card-master-outline {
     border-radius: 15px !important;
     height: 100%;
-    width: 300px !important;
+    width: 281px !important;
 
     /* max-width: 310px !important; */
 }
@@ -35,4 +35,20 @@
     color: grey;
     margin: 0 30px;
     cursor: default !important;
+}
+.footer {
+
+    background-color: gray !important;
+    height: 150px;
+    width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    margin-top: 30px;
+}
+.footer--item {
+    flex-basis: 18%;
+    display: block;
+    
 }

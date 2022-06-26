@@ -14,6 +14,7 @@ import AdminAlertInfo from '../../components/AdminAlertInfo/AdminAlertInfo'
 import * as ReactBootstrap from 'react-bootstrap'
 import { connect } from 'react-redux';
 import Slider from '../../components/Slider/Slider';
+import Footer from '../../components/UserComponents/Footer'
 
 class UserHomePage extends Component {
 
@@ -59,7 +60,8 @@ class UserHomePage extends Component {
                                     <UserRoutes />
                                 </div>
                             </div>
-                        </div>                    
+                        </div>      
+                        <Footer/>              
                 </Router>
             </div>
         )

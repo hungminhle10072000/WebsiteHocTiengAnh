@@ -57,6 +57,8 @@ function GroupChatUser() {
       });
     }
     fetchDataMessages();
+    document.addEventListener("keydown", handleKeyPress);
+    return document.removeEventListener("keydown", handleKeyPress);
   }, [])
 
   const imageHandleChange = (e) => {
@@ -76,6 +78,9 @@ function GroupChatUser() {
       return <img src={photo} key={photo} style={{width: '150px', height: '150px', marginRight: '1rem'}}/>
     })
   }
+  const handleKeyPress = e => {
+    e.keyCode===13 && e.ctrlKey && sendMessage(e)
+}
 
   return (
     <>
@@ -123,7 +128,7 @@ function GroupChatUser() {
 
       <div className="send-mes">
         {renderPhotos(selectImages)}
-        <input type="text" value={msg} placeholder="Nhập tin nhắn...." onChange={(e) => setMsg(e.target.value)}/>
+        <input onKeyDown={handleKeyPress} type="text" value={msg} placeholder="Nhập tin nhắn...." onChange={(e) => setMsg(e.target.value)}/>
         <div className="send-mes-icon">
           <div className="image-upload">
             <label htmlFor="file-input" >
