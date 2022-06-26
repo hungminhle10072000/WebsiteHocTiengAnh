@@ -1,8 +1,9 @@
 import axios from "axios";
 import {authHeader} from './auth-header'
+import {API_BASE} from './env';
 const USER_API_END_POINT = "/api/users";
-const USER_API_LOGIN = `/authenticate`
-const USER_API_ForgetPassWord = `/api/users/check-username-email`;
+const USER_API_LOGIN = `${API_BASE}/authenticate`
+const USER_API_ForgetPassWord = `${API_BASE}/api/users/check-username-email`;
 
 const headers = {
     'Content-Type': 'application/json;charset=UTF-8',
@@ -91,7 +92,7 @@ class UserService {
         formData.append("userDto",blob);
         formData.append("file",file);
 
-        return axios.post(`/register`, formData,{
+        return axios.post(`${API_BASE}/register`, formData,{
             headers:{'Content-Type': 'multipart/form-data'}
         })
     }

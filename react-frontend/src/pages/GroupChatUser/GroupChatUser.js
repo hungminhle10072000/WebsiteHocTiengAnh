@@ -83,6 +83,10 @@ function GroupChatUser() {
     }
   };
 
+  const handleKeyPress = e => {
+    e.keyCode===13 && e.ctrlKey && sendMessage(e)
+  }
+
   const renderPhotos = (source) => {
     return source.map((photo) => {
       return (
@@ -93,10 +97,6 @@ function GroupChatUser() {
       );
     });
   };
-
-  const handleKeyPress = e => {
-    e.keyCode===13 && e.ctrlKey && sendMessage(e)
-  }
 
   return (
     <div className="chat">
@@ -124,15 +124,15 @@ function GroupChatUser() {
               const checkUser = email === userCurrent.username;
               return type === "text" ? (
                 <div className={checkUser ? "mes me" : "mes"} key={time}>
+                  <div className="mes-content">
                   {checkUser ? null : (
                     <img className="mes-avatar" src={avata} />
                   )}
-                  <div className="mes-content">
-                    <span className="mes-name">
-                      {email} - {time && new Date(time.toDate()).toDateString()}
-                    </span>
                     <div className="mes-value"> {message}</div>
                   </div>
+                  <span className="mes-name">
+                      {email} - {time && new Date(time.toDate()).toDateString()}
+                  </span>
                   {/* {checkUser ? <img className="mes-avatar" src={avata} /> : null} */}
                 </div>
               ) : (
@@ -141,15 +141,15 @@ function GroupChatUser() {
                     <img className="mes-avatar" src={avata} />
                   )}
                   <div className="mes-content">
-                    <span className="mes-name">
-                      {email} - {time && new Date(time.toDate()).toDateString()}
-                    </span>
                     <img
                       src={message}
                       className="mes-img"
                       onClick={() => handleShow({ message })}
                     />
                   </div>
+                  <span className="mes-name">
+                      {email} - {time && new Date(time.toDate()).toDateString()}
+                    </span>
                   {/* {checkUser ? <img className="mes-avatar" src={avata} /> : null} */}
                 </div>
               );

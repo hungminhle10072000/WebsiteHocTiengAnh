@@ -12,7 +12,6 @@ p {
     height: calc(100vh - 120px);
     background-color: #fff;
     margin: auto;
-    position: relative;
     margin-top: 20px;
     border-radius: 5px 5px 0 0 ;
     font-family: 'inherit';
@@ -40,40 +39,16 @@ p {
     overflow: scroll;
     overflow-x: auto;
     height: calc(100% - 30px - 75px);
-    position: relative;
-}
-
-.group-chat .group-content .time-date {
-    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #adacac;
-    font-size: 14px;
-    padding: 5px;
-}
-
-.group-chat .group-content .time-date hr {
-    width: 30%;
-}
-
-.group-chat .group-content .time-date span {
-    padding: 0 20px;
+    flex-direction: column;
 }
 
 .group-chat .group-content .mes {
     width: 100%;
     display: flex;
-    align-items: flex-end;
     padding: 20px 0;
-    justify-content: flex-start;
+    flex-direction: column;
 }
-
-.group-chat .group-content .mes.me{
-    justify-content: flex-end;
-}
-
-
 
 .group-chat .group-content .mes .mes-avatar {
     width: 50px;
@@ -83,17 +58,15 @@ p {
 
 .group-chat .group-content .mes .mes-img {
     width: 200px;
-    /* height: 250px; */
     cursor: pointer;
     object-fit: cover;
 
 }
 
 .group-chat .group-content .mes .mes-content {
-    position: relative;
     display: flex;
     justify-content: flex-start;
-    width: 100%;
+    align-items: flex-end;
 }
 
 .group-chat .group-content .mes .mes-content .mes-value {
@@ -106,37 +79,37 @@ p {
     color: #fff;
 }
 
+.group-chat .group-content .mes.me .mes-name {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
 .group-chat .group-content .mes.me .mes-content .mes-value{
     background-color: #0084ff;
 }
 
-.group-chat .group-content .mes .mes-content .mes-name {
-    position: absolute;
-    bottom: -25px;
-    left: 0;
+.mes-name {
     font-size: 12px;
     color: #adacac;
     margin-left: 0;
+    margin-top: 4px;
+}
+
+.mes .mes-name {
+    padding-left: 50px;
 }
 
 .group-chat .group-content .mes.me .mes-content {
     display: flex;
     justify-content: flex-end;
-    position: relative;
 }
 
-.group-chat .group-content .mes.me>.mes-content>.mes-name {
-    position: absolute;
-    bottom: -25px;
-    left: calc(100% - 139px);
-}
 
 .send-mes {
     display: flex;
     flex-direction: column;
     border-top: 1px solid black;
-    /* border-left: 0.5px solid #c8c8c8;
-    border-right: 0.5px solid #c8c8c8; */
 }
 
 .list-img {
