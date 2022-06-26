@@ -19,6 +19,7 @@ import {
 } from "firebase/firestore";
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import { db, storage} from "../firebase";
+import { async } from "@firebase/util";
 
 function GroupChatUser() {
   const [show, setShow] = useState(false);
@@ -102,10 +103,16 @@ function GroupChatUser() {
               );
           },
           (err) => console.log(err),
-          () => {
+          async () => {
+              let collectionMessages = collection(db, "Messages");
               // download url
-              getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-                  console.log(url);
+              await getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                  addDoc(collectionMessages, {
+                      email: userCurrent.username || null,
+                      message: url || null,
+                      time: serverTimestamp(),
+                      type: "img" || null,
+                  });
               });
           }
       );
