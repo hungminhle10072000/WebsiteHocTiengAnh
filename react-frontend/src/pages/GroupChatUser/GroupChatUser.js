@@ -17,7 +17,8 @@ import {
   query,
   serverTimestamp,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+import { db, storage} from "../firebase";
 
 function GroupChatUser() {
   const [show, setShow] = useState(false);
@@ -36,8 +37,6 @@ function GroupChatUser() {
   const messageRef = useRef();
 
   async function sendMessage() {
-    console.log(selectImages)
-    console.log(fileChooseArray)
     let collectionMessages = collection(db, "Messages");
     if (msg.trim().length > 0) {
       await addDoc(collectionMessages, {
@@ -49,6 +48,7 @@ function GroupChatUser() {
       setMsg("");
     }
     if (fileChooseArray.length > 0 && selectImages.length > 0) {
+      handleUpload(fileChooseArray);
       setFileChooseArray([]);
       setSelectImages([]);
     }
@@ -85,6 +85,32 @@ function GroupChatUser() {
       Array.from(e.target.files).map((file) => URL.revokeObjectURL(file));
     }
   };
+
+  function handleUpload(fileChooseArray) {
+      if (fileChooseArray.length <= 0) {
+          alert("Please choose a file first!")
+      }
+      fileChooseArray.map(async (file) => {
+        const storageRef = ref(storage, `/files/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+              const percent = Math.round(
+                  (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+              );
+          },
+          (err) => console.log(err),
+          () => {
+              // download url
+              getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+                  console.log(url);
+              });
+          }
+      );
+      })
+  }
 
   const handleKeyPress = e => {
     e.keyCode===13 && e.ctrlKey && sendMessage(e)
