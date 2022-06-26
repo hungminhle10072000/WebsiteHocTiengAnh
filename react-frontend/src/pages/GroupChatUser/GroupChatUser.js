@@ -36,6 +36,8 @@ function GroupChatUser() {
   const messageRef = useRef();
 
   async function sendMessage() {
+    console.log(selectImages)
+    console.log(fileChooseArray)
     let collectionMessages = collection(db, "Messages");
     if (msg.trim().length > 0) {
       await addDoc(collectionMessages, {
@@ -46,7 +48,8 @@ function GroupChatUser() {
       });
       setMsg("");
     }
-    if (fileChooseArray.length > 0) {
+    if (fileChooseArray.length > 0 && selectImages.length > 0) {
+      setFileChooseArray([]);
       setSelectImages([]);
     }
   }
@@ -87,11 +90,16 @@ function GroupChatUser() {
     e.keyCode===13 && e.ctrlKey && sendMessage(e)
   }
 
+  const removeImage = (index) => {
+		setSelectImages(selectImages.filter((o, i) => index !== i));
+    setFileChooseArray(fileChooseArray.filter((o, i) => index !== i));
+	};
+
   const renderPhotos = (source) => {
-    return source.map((photo) => {
+    return source.map((photo, id) => {
       return (
-        <div className="list-img-item">
-          <span className="list-img-item-close"><AiFillCloseCircle /></span>
+        <div className="list-img-item" key={id}>
+          <span className="list-img-item-close" onClick={() => removeImage(id)}><AiFillCloseCircle/></span>
           <img className="list-img-item-img" src={photo} key={photo} />
         </div>
       );
