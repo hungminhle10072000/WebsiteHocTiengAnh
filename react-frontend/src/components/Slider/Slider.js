@@ -40,9 +40,6 @@ export default function Slider() {
                         >
                             <img 
                             src={process.env.PUBLIC_URL + `/Imgs/img${index + 1}.png`} 
-                            // src={process.env.PUBLIC_URL + `/Imgs/6578012_16_1.png`} 
-
-                            // src='https://drive.google.com/file/d/1JRlmMM7v4ejHJqIgz_-3YurQFdNo5Tw6/view?usp=sharing'
                             />
                         </div>
                     )
