@@ -211,7 +211,9 @@ public class StatisticalService {
           if (statisticalEntities.get(i).getScore() >= TARGET) {
             statisticalMasterDto.setStreak(statisticalMasterDto.getStreak()+1);
           } else {
-            break;
+            if (indexDayCurrent != i) {
+              break;
+            }
           }
         }
       }
