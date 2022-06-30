@@ -18,6 +18,7 @@ import UserTopicExercisePage from '../pages/UserHomePage/UserTopicExercisePage';
 import HomePage from '../pages/HomePage/HomePage';
 import UserStatisticalPage from '../pages/UserHomePage/UserStatisticalPage';
 import GroupChatUser from '../pages/GroupChatUser/GroupChatUser';
+import UserPracticeVocabulary from '../pages/UserPracticeVocabulary/UserPracticeVocabulary';
 
 export default class UserRoutes extends Component {
     render() {
@@ -36,6 +37,7 @@ export default class UserRoutes extends Component {
                     <Route exact path="/user/exercise/:id" component={UserExercisePage}/>   
                     <Route exact path="/user/statistical" component={UserStatisticalPage}/>
                     <Route exact path="/user/groupchat" component={GroupChatUser}/>
+                    <Route exact path="/user/practice-vocabulary/:idTopic/:nameTopic" component={UserPracticeVocabulary}/>
                     {/* <Route exact path="/" component={ContentPage} />
                     <Route path="*" component={NotFoundPage} /> */}
                 </Switch>   
