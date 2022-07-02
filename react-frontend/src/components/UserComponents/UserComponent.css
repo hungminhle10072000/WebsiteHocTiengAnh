@@ -36,7 +36,7 @@
     margin: 0 30px;
     cursor: default !important;
 }
-.footer {
+.footer-cus {
 
     background-color: gray !important;
     height: 150px;
@@ -44,11 +44,20 @@
     z-index: 999;
     display: flex;
     justify-content: space-evenly;
-    padding: 20px;
+    padding: 10px;
     margin-top: 60px;
 }
 .footer--item {
     flex-basis: 18%;
+    flex-direction: column;
+    color: white;
+
+}
+.list-item {
+    margin: 5px 0;
     display: block;
-    
+}
+.footer--title {
+    font-weight: 600;
+    margin-left: -15px;
 }
