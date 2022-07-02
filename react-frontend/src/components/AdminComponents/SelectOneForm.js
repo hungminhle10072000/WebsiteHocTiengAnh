@@ -117,7 +117,7 @@ function SelectOneForm({
     return (
         <>
             <Row>
-                <Col span={8}>
+                {/* <Col span={8}>
                     <label>Lý thuyết</label>
                     <Select
                         value={valueGrammar}
@@ -138,9 +138,9 @@ function SelectOneForm({
                         
                         {grammarDtos.map(x => <Option key={JSON.stringify(x)}>{x.title}</Option>)}
                     </Select>
-                </Col>
-                <Col span={8}>
-                    <label>Từ vựng</label>
+                </Col> */}
+                <Col span={12}>
+                    <label style={{marginRight: '10px'}}>Từ vựng:</label>
                     <Select
                         value={valueVocaTopic}
                         // defaultValue={vocaTopicDto ? vocaTopicDto.title : null}
@@ -160,8 +160,8 @@ function SelectOneForm({
                         {vocaTopicDtos.map(x => <Option key={JSON.stringify(x)}>{x.title}</Option>)}
                     </Select>
                 </Col>
-                <Col span={8}>
-                    <label>Bài tập</label>
+                <Col span={12}>
+                    <label style={{marginRight: '10px'}}>Bài tập:</label>
                     <Select
                         value={valueExercise}
                         allowClear

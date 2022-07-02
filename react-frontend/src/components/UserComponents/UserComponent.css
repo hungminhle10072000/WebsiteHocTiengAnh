@@ -37,9 +37,8 @@
     cursor: default !important;
 }
 .footer-cus {
-
     background-color: gray !important;
-    height: 150px;
+    height: 180px;
     width: 100%;
     z-index: 999;
     display: flex;
@@ -48,16 +47,26 @@
     margin-top: 60px;
 }
 .footer--item {
-    flex-basis: 18%;
+    flex-basis: 15%;
     flex-direction: column;
     color: white;
+}
+.footer--item--larger {
+    flex-basis: 48%;
+    flex-direction: column;
+    color: white;
+}
 
+.footer--item-link {
+    text-decoration: none;
+    color: white;
 }
 .list-item {
     margin: 5px 0;
     display: block;
 }
 .footer--title {
-    font-weight: 600;
-    margin-left: -15px;
+    font-size: large;
+    font-weight: 700;
+    margin-left: -25px;
 }
