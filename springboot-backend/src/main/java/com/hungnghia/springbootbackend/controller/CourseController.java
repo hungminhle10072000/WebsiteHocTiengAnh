@@ -1,12 +1,16 @@
 package com.hungnghia.springbootbackend.controller;
 
 import com.hungnghia.springbootbackend.dto.CourseDto;
+import com.hungnghia.springbootbackend.dto.CourseNewDto;
 import com.hungnghia.springbootbackend.entities.CourseEntity;
+import com.hungnghia.springbootbackend.entities.VocabularyTopicEntity;
 import com.hungnghia.springbootbackend.service.AmazonClient;
 import com.hungnghia.springbootbackend.service.CourseService;
 import com.hungnghia.springbootbackend.service.ResultService;
+import com.hungnghia.springbootbackend.service.UserCourseService;
 import com.sun.istack.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +22,9 @@ import java.util.List;
 public class CourseController {
     @Autowired
     private CourseService courseService;
+
+    @Autowired
+    private UserCourseService userCourseService;
 
 
     @PostMapping("/add")
@@ -41,6 +48,13 @@ public class CourseController {
     @GetMapping("/getAll")
     public List<CourseDto> getAllCourses() {
         return courseService.getAllCourse();
+    }
+
+    /*Get new course*/
+    @GetMapping("/user-course-new")
+    public ResponseEntity<List<CourseNewDto>> listCourseNew() {
+        List<CourseNewDto> courseEntities = userCourseService.getNewCourse();
+        return ResponseEntity.ok(courseEntities);
     }
 
     @GetMapping("/edit/{id}")

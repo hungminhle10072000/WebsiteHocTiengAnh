@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import TopicVocabularyNew from "../TopicVocabularyNew/TopicVocabularyNew";
+import UserItemCourseNew from "../UserItemCourseNew/UserItemCouseNew";
 import './SlideSwipper.css';
 
 export default class SliderSwipper extends Component {
   render() {
     const listTopicNews = this.props.dataTopicsNew
+    const dataCouseNew = this.props.dataCouseNew
     const settings = {
       className: "center",
       infinite: true,
@@ -21,6 +23,15 @@ export default class SliderSwipper extends Component {
     return (
       <div>
         <Slider {...settings} className='div-slide-swipper' >
+            {
+                dataCouseNew != null
+                &&
+                dataCouseNew.map((course, index) => {
+                    return (
+                      <UserItemCourseNew course={course} key={index} />
+                    )
+                })
+            }
             {
               listTopicNews != null 
               &&

@@ -1,5 +1,6 @@
 import axios from "axios";
 import {authHeader} from './auth-header';
+const USER_COURSE_NEW_API_END_POINT = '/api/course/user-course-new';
 
 const headers = {
     'Content-Type': 'application/json;charset=UTF-8',
@@ -29,6 +30,9 @@ class UserCourseService {
         })
     }
 
+    useGetCourseNew = () => {
+        return axios.get(USER_COURSE_NEW_API_END_POINT);
+    }
 
 }
 

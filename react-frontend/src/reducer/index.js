@@ -41,6 +41,7 @@ import itemQuestionEditReducer from './QuestionReducer/itemQuestionEditReducer'
 import statusItemLoading from './statusItemLoading'
 import statusButtonLoading from './statusButtonLoading'
 import topicVocaNew from "./VocabularyTopicReducer/topicVocabuarlyNew"
+import courseNew from "./courseReducer/courseNew"
 
 const appReducers = combineReducers({
     users,
@@ -77,6 +78,7 @@ const appReducers = combineReducers({
     itemQuestionEditReducer,
     statusItemLoading,
     statusButtonLoading,
-    topicVocaNew
+    topicVocaNew,
+    courseNew
 });
 export default appReducers;
