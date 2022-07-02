@@ -1,1 +1,1 @@
-export const API_BASE = "http://backend-product:8080";
+export const API_BASE = "http://34.125.65.192:8080";
