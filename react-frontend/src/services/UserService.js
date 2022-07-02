@@ -116,6 +116,11 @@ class UserService {
             headers:{...headers,...authHeader()}
         })
     }
+
+    // write score
+    writeScoreService(totalCorrect, userId){
+        return axios.put(`${API_BASE}/api/user-vocabulary/write-score/` + userId + '/' + totalCorrect, {headers: {...headers,...authHeader()}})
+    }
     
 }
 
