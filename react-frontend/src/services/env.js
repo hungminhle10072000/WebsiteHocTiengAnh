@@ -1,0 +1,1 @@
+export const API_BASE = "http://backend-product:8080";

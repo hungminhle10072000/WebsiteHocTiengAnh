@@ -13,6 +13,15 @@ public class StatisticalMasterDto {
   private String email;
   private int totalScoreOfWeek;
   private String avatar;
+  private long userId;
+
+  public long getUserId() {
+    return userId;
+  }
+
+  public void setUserId(long userId) {
+    this.userId = userId;
+  }
 
   public String getAvatar() {
     return avatar;

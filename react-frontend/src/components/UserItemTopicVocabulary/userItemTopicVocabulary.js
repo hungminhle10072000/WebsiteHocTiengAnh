@@ -14,6 +14,10 @@ class userItemTopicVocabulary extends Component {
         this.props.history.push('/user/topic-vocabulary/' + this.props.id + '/' + convertURL(this.props.name));
     }
 
+    handleDetailPractice = () => {
+        this.props.history.push('/user/practice-vocabulary/' + this.props.id + '/' + convertURL(this.props.name));
+    }
+
     static propTypes = {
         match: PropTypes.object.isRequired,
         location: PropTypes.object.isRequired,
@@ -37,6 +41,12 @@ class userItemTopicVocabulary extends Component {
                                 <div>
                                     <button onClick={() => this.handleDetailTopic()}
                                     className='btn btn-success btn-detail-topic'>Xem chi tiết</button>
+                                    <button 
+                                    onClick={() => this.handleDetailPractice()}
+                                    className='btn btn-warning btn-practice-topic'
+                                    style={{color: 'white'}}
+                                    >Luyện tập
+                                    </button>
                                 </div>
                             </div>
                     </animated.div>}

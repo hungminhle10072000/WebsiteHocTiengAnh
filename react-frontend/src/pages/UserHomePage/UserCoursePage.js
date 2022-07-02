@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import '../../App.css'
 import {splitString} from '../../utils/index'
 import '../../components/UserComponents/UserComponent.css'
+import Footer from '../../components/UserComponents/Footer';
 class UserHomePage extends Component {
     constructor(props) {
         super(props);
