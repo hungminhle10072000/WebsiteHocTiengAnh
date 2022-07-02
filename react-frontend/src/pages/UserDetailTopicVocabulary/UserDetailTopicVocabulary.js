@@ -10,9 +10,9 @@ import convertURL from '../../constants/convertUrl'
 class UserDetailTopicVocabulary extends Component {
 
 
-    handleDetailTopic = () => {
-        this.props.history.push('/user/practice-vocabulary/' + this.state.idTopic + '/' + convertURL(this.state.nameTopicPara));
-    }
+    // handleDetailTopic = () => {
+    //     this.props.history.push('/user/practice-vocabulary/' + this.state.idTopic + '/' + convertURL(this.state.nameTopicPara));
+    // }
 
     static propTypes = {
         match: PropTypes.object.isRequired,
@@ -104,9 +104,9 @@ class UserDetailTopicVocabulary extends Component {
                     <div className="col-sm-4 user-title-name-detail-topic">BÀI {this.state.nameTopic.toUpperCase()}</div>
                 </div>
                 {this.showItemVocabulary()}
-                <button className='btn btn-success'
+                {/* <button className='btn btn-success'
                 onClick={() => this.handleDetailTopic()}
-                >Luyện tập</button>
+                >Luyện tập</button> */}
                 <Comments currentUserId={this.state.userCurrent.id} comments={this.state.comments} learningId={this.state.idTopic} type="2"/>
             </div>
         )

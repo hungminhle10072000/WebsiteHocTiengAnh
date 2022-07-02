@@ -6,7 +6,7 @@ import Image from 'react-bootstrap/Image';
 import ReactAudioPlayer from 'react-audio-player';
 import { BiSkipPreviousCircle, BiSkipNextCircle} from "react-icons/bi";
 import UserService from "../../services/UserService";
-import { Form } from "reactstrap";
+import Swal from 'sweetalert2'; 
 
 function UserPracticeVocabulary() {
 
@@ -19,6 +19,26 @@ function UserPracticeVocabulary() {
   const btnWriteScore = useRef();
   const [mapResult, setMapResult] = useState();
   const dispatch =  useDispatch();
+
+  //Button Click Function
+  function opensweetalert(count)
+  {
+    Swal.fire({
+      title: `Kết quả: ${count} / ${userVocabularyWithTopic.vocasWithTopic.length}`,
+      text: `Bạn đã đạt được ${count * 10} điểm !!!`,
+      type: 'success',
+    })
+  }
+
+  //Button Click Function
+  function opensweetalertdanger(count)
+  {
+    Swal.fire({
+      title: `Kết quả: ${count} / ${userVocabularyWithTopic.vocasWithTopic.length}`,
+      text: "Ghi điểm thất bại!!! \n Xin hãy thử lại",
+      type: 'warning',
+    })
+  }
 
   const createResult = (listVoca) => {
     let temp = [];
@@ -63,14 +83,14 @@ function UserPracticeVocabulary() {
     .then(
       response => {
         dispatch(allActions.userItemLoadingAction.closeItemLoading())
-        alert(`Bạn đã ghi điểm thành công ${count * 10}`)
+        opensweetalert(count)
         btnWriteScore.current.disabled = false
       }
       )
     .catch(
       error => {
         dispatch(allActions.userItemLoadingAction.closeItemLoading())
-        alert("Bạn đã ghi điểm thất bại !!!")
+        opensweetalertdanger(count)
         btnWriteScore.current.disabled = false
       }
     )
