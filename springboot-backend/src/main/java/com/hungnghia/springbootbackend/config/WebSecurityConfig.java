@@ -53,7 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/course/edit/**", "/api/comment/getCommentByLessonId/**", "/api/comment/getCommentByVocabularyTopicId/**",
                         "/api/comment/getCommentByGrammarId/**", "/api/question/findQuestionByExerciseId/**",
                         "/api/resultdetail/addAnswers", "/api/result/findResultsByUserIdAndExerciseId", "/api/exercise/reset/**",
-                        "/api/course/**", "/api/exercise", "/api/exercise/getAll", "/api/user-topic-vocas-new"
+                        "/api/course/**", "/api/exercise", "/api/exercise/getAll", "/api/user-topic-vocas-new",
+                        "/api/course/user-course-new"
                         , "/registerMobile", "/api/user-vocabulary/random/**","/api/user-vocabulary/write-score/**","/api/statistical/**"
                         ,"/api/statistical/**","/api/usersMobile","/api/usersMobile2", "/api/users/change-passWord-mobile", "/api/**"
 //                        , "/api/users/change-passWord"

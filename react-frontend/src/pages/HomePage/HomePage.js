@@ -11,12 +11,14 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      listTopicNews: []
+      listTopicNews: [],
+      listCourseNews: []
     }
 }
 
   componentDidMount() {
     this.props.getAllVocaTopicsNew()
+    this.props.getAllCourseNew()
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,6 +28,12 @@ class HomePage extends Component {
           listTopicNews: topicVocaNew
         })
     }
+    if(nextProps && nextProps.courseNew){
+      let {courseNew} = nextProps
+      this.setState({
+        listCourseNews: courseNew
+      })
+  }
 }
 
   render() {
@@ -35,7 +43,7 @@ class HomePage extends Component {
           <div className="row mt-3">
             <div className='col-sm-12'>
                   <h2 className='label-course-new'>Khóa học mới</h2>
-                  <SliderSwipper />
+                  <SliderSwipper dataCouseNew={this.state.listCourseNews}/>
             </div>
           </div>
           <div className='row mt-3'>
@@ -52,7 +60,8 @@ class HomePage extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    topicVocaNew: state.topicVocaNew
+    topicVocaNew: state.topicVocaNew,
+    courseNew: state.courseNew
   }
 }
 
@@ -61,6 +70,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       getAllVocaTopicsNew: () => {
           dispatch(allActions.userVocabularyTopicAction.actUserFetchTopicsVocaNewRequest());
       },
+      getAllCourseNew: () => {
+          dispatch(allActions.userCourseAction.actUserFetchCourseNewRequest());
+      }
   }
 }
 

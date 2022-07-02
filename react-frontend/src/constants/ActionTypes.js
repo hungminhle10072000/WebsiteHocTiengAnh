@@ -91,6 +91,7 @@ export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 
 //User Course
 export const ADD_USERCOURSE = 'ADD_USERCOURSE'
+export const USER_FETCH_COURSE_TOPIC_NEW = 'USER_FETCH_COURSE_TOPIC_NEW';
 
 
 // Admin Exercise
