@@ -69,9 +69,11 @@ public class ResultDetailService {
                     resultRepository.save(result);
                 }
             }
-            statisticalDto.setUserId(userId);
-            statisticalDto.setScore(numCorrect*10);
-            statisticalService.addScore(statisticalDto);
+            if (userId != null && userId > 1) {
+                statisticalDto.setUserId(userId);
+                statisticalDto.setScore(numCorrect*10);
+                statisticalService.addScore(statisticalDto);
+            }
         }
         return true;
     }
