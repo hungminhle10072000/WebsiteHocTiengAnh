@@ -146,6 +146,7 @@ class UserLearningPage extends Component {
 
 
     render() {
+        let hasLesson = this.state.course.chapters.length > 0 && this.state.course.chapters[0].numOfLesson > 0
         var isSub = true;
         if (this.state.course.users != null && this.state.course.users.length > 0) {
             for (let x of this.state.course.users) {
@@ -174,8 +175,8 @@ class UserLearningPage extends Component {
                }
                <div className='row'>
                    <div className='col-3 col-btn-learn'>
-                        <button className='btn btn-success' onClick={() => this.changedIsChapter()} >Tổng quan</button>
-                        <button style={{marginLeft: '2%'}} className='btn btn-warning' onClick={() => this.changedIsComment()}>Bình luận</button>
+                        <button className={hasLesson ? 'btn btn-success' : 'btn btn-success disabled'}  onClick={() => this.changedIsChapter()} >Tổng quan</button>
+                        <button style={{marginLeft: '2%'}} className={hasLesson ? 'btn btn-warning' : 'btn btn-warning disabled'} onClick={() => this.changedIsComment()}>Bình luận</button>
                    </div>
                </div>
                <br/>
