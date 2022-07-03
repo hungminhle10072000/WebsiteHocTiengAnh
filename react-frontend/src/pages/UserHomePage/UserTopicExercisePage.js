@@ -3,7 +3,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import ExerciseService from '../../services/ExerciseService'
 import UserItemTopicExercise from '../../components/UserComponents/UserItemTopicExercise';
 import ResultService from '../../services/ResultService';
-
+import { Spin } from 'antd';
 function UserTopicExercisePage() {
     const [exercises,setExercises] = useState([])
     const [results,setResults] = useState([])
@@ -15,9 +15,9 @@ function UserTopicExercisePage() {
             ResultService.getResultByUserId(userCurrent.id).then(res=> setResults(res.data))
         } 
     },[userCurrent])
-
-    return(
+    return(  
         <>
+        {exercises.length < 1 && <Spin style={{position:'absolute', top:'50%', left:'50%'}} size="large" /> }    
             <div className='title-size-l ml--25 mr--25'>Bài tập rèn luyện</div>
             
             {userCurrent.id === -1 ?
