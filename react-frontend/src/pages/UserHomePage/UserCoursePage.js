@@ -4,9 +4,9 @@ import './css/UserHome.css'
 import allActions from '../../actions';
 import { connect } from 'react-redux'
 import '../../App.css'
-import {splitString} from '../../utils/index'
 import '../../components/UserComponents/UserComponent.css'
-import Footer from '../../components/UserComponents/Footer';
+import { Spin } from 'antd';
+
 class UserHomePage extends Component {
     constructor(props) {
         super(props);
@@ -89,6 +89,7 @@ class UserHomePage extends Component {
            
 
             <div>
+                {this.state.courses.length < 1 && <Spin style={{position:'absolute', top:'50%', left:'50%'}} size="large" /> }    
                 {this.state.userCurrent.id !== -1 ? (
                     <div className='container-fluid main-content-user-courses bg-white'>
                         <div className='title-size-l'>Khoá đang học</div>

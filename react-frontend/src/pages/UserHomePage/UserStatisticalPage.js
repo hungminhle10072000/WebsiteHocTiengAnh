@@ -5,6 +5,7 @@ import StatisticalService from './../../services/StatisticalService'
 import './css/UserStatistical.css'
 import {GiTrophyCup} from  "react-icons/gi";
 import { useSelector,useDispatch } from 'react-redux';
+import { Spin } from 'antd';
 var scoreOfDays = [
 { x: 2, y: 0, lable: 'Thứ 2' },
 { x: 3, y: 0, lable: 'Thứ 3' },
@@ -115,6 +116,7 @@ function UserStatisticalPage() {
     }
     return (
         <>      
+        {userInfo.userId == -1 &&  <Spin style={{position:'absolute', top:'50%', left:'50%', zIndex:2}} size="large" />}
         {userCurrent.id === -1 ?
             <div style={{textAlign:'center', marginTop:'150px'}}>
                 <h2> Vui lòng đăng nhập để sử dụng chức năng này.</h2>
