@@ -17,7 +17,13 @@ const Comments = ({currentUserId,comments,learningId,type="1"}) => {
 
     
     useEffect(()=> {
-        setBackendComments(comments)
+        if (type == '1') {
+            CommentService.getCommentByLessonId(learningId).then(
+                (res) => setBackendComments(res.data)
+            )
+        } else {
+            setBackendComments(comments)
+        }       
     }, [comments])
 
     const getReplies = (commentId) =>
