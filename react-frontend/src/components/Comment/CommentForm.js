@@ -32,7 +32,7 @@ const CommentForm = ({handleSubmit,submitLabel,hasCancelButton = false,handleCan
                         className="btnn btnn--normal btnn--size-s mt--5"
                         onClick={handleCancel}
                     >
-                        Cancel
+                        Huỷ bỏ
                     </button>
                 )}
             </div>
