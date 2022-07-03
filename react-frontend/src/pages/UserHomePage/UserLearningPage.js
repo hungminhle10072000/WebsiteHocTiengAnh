@@ -5,10 +5,11 @@ import allActions from '../../actions';
 import { connect } from 'react-redux';
 import Comments from '../../components/Comment/Comments'
 import './UserLearningPage.css'
+
 class UserLearningPage extends Component {
     constructor(props){
         super(props);
-        console.log('PROPS: ',props)
+        // console.log('PROPS: ',props)
 
         this.state = {
             isChapter:true,
@@ -20,7 +21,7 @@ class UserLearningPage extends Component {
             learningLessonName:'',
             comments:[],
             isLogin:true,
-            linkVideo:'https://web-english.s3.ap-southeast-1.amazonaws.com/1637087592056-trumua.mp4',
+            linkVideo:'https://www.youtube.com/watch?v=aXG9VizOJUk',
             course:{
                 id:this.props.match.params.id,
                 name:'Khoa Hoc 1',
@@ -126,7 +127,7 @@ class UserLearningPage extends Component {
         isComment: true})
     }
     showChapterItem = (isSub) => {
-        console.log("This.Props:", this.props.course)
+        // console.log("Chay show lesson: " + this.)
         return this.state.course.chapters.map((chapter)=><UserChapterItem key={chapter.id} chapter={chapter} changedVideo={this.changedVideo} isSub = {isSub}></UserChapterItem>)
     }
 
