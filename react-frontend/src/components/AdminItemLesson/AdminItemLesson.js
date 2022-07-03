@@ -42,7 +42,7 @@ class AdminItemLesson extends Component {
                     <td className="align-middle css-td-table">{this.props.lesson.chapterName}</td>
                     <td className="align-middle css-td-table">{this.props.lesson.courseName}</td>
                     <td className="align-middle css-td-table">        
-                        <button style={{ height: "35px" }} onClick={()=>this.props.onOpenModal(this.props.linkVideo)}>
+                        <button className='btn-primary' style={{padding: '5px',borderRadius:'5px'}} onClick={()=>this.props.onOpenModal(this.props.linkVideo)}>
                             Play Video{" "}</button>
                            
                     </td>
