@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 
 import { Row, Col } from 'antd';
+import { connect } from 'react-redux';
   
 class UserLessonItem extends Component {
     constructor(props){
@@ -29,11 +30,25 @@ class UserLessonItem extends Component {
         }
     }
 
+    
+    componentWillReceiveProps(nextProps) {
+        if(nextProps && nextProps.courseEditReducer){
+            this.setState({
+                lesson: {
+                    ...this.state.lesson,
+                    doneExercise: nextProps.courseEditReducer.chapters[this.props.lesson.chapterId]
+                    .lessons[this.props.lesson.id].doneExercise
+                }
+            })
+        }
+    }
+
     render() {
         let hasExercise = this.props.lesson.exerciseId;
         let hasVocabulary = this.props.lesson.vocabularyTopicId;
-        let isDoneExercise = this.props.lesson.doneExercise;
-        // console.log("isDoneExercise",isDoneExercise)
+        let isDoneExercise = this.state.lesson.doneExercise
+        console.log(this.props.courseEditReducer.chapters[this.props.lesson.chapterId]
+            .lessons[this.props.lesson.id])
         return(
             <div >
                 <Row className={!this.props.isSub ? 'lesson-item-disable' : ''}>
@@ -71,4 +86,11 @@ class UserLessonItem extends Component {
         )
     }
 }
-export default UserLessonItem
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        courseEditReducer: state.courseEditReducer,
+    }
+}
+
+export default connect(mapStateToProps, null) (UserLessonItem)

@@ -13,6 +13,7 @@ const courseEditReducer = (state=course, action) => {
         case EDIT_COURSE:
             return course
         case FETCH_COURSE_IS_DONE:
+            // console.log("Update lai khoa hoc" + course.chapters[0].lessons[0].doneExercise)
             return course
         default:
             return state
