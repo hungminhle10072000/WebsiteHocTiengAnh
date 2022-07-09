@@ -24,3 +24,7 @@ label.radioimage {
     display: block !important;
     margin: auto !important;
 }
+
+.has-background-light {
+    background-color: #6c757d5e !important;
+}
