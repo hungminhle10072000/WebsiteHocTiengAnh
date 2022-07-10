@@ -116,6 +116,7 @@ function GroupChatUser() {
                       message: url || null,
                       time: serverTimestamp(),
                       type: "img" || null,
+                      avatar: userCurrent.avartar || null,
                   });
               });
           }
