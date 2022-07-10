@@ -61,7 +61,7 @@ class UserTopicVocabulary extends Component {
                     <div className='col-md-12'>
                         <h6 className='text-title-topic'>Mời bạn chọn chủ đề cần học nhé!</h6>
                         <Form>
-                            <FormControl 
+                            <FormControl maxLength={255}
                             onChange={(event) => this.callback(event.target.value)} name="searchTopic"
                             type="text" placeholder="Tìm kiếm ..." className='userSearchTopic'/>
                         </Form>

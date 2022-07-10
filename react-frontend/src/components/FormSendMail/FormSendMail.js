@@ -44,6 +44,7 @@ class FormSendMail extends Component {
                 {this.state.statusCheckItemLoading ? <ReactBootstrap.Spinner animation="border" className='item-loading-form-sendmail'/> : ''}
                 <Form.Group>
                     <Form.Control
+                        maxLength={255} 
                         className="form-send-mail"
                         type="text"
                         placeholder="Tên đăng nhập *"
@@ -54,6 +55,7 @@ class FormSendMail extends Component {
                 </Form.Group>
                 <Form.Group>
                     <Form.Control
+                        maxLength={255} 
                         className="form-send-mail"
                         type="email"
                         placeholder="Email *"
