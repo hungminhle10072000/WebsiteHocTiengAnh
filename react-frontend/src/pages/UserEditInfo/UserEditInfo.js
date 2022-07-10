@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import allActions from '../../actions/index'
 import { BiSave, BiReset, BiKey } from "react-icons/bi"
 import validator from 'validator'
+import {isValidStringLength} from './../../utils/index.js'
 
 class UserEditInfo extends Component {
 
@@ -258,19 +259,8 @@ class UserEditInfo extends Component {
 
                                     <label htmlFor="fullname"><b>Họ tên</b></label>      
                                     <input onChange={(event) => this.isChange(event)}
-                                    className="input-field" value={this.state.user.fullname} type="text" placeholder="Họ tên" name="fullname" id="fullname"/>
+                                    className="input-field" value={this.state.user.fullname}  maxLength={255} type="text" placeholder="Họ tên" name="fullname" id="fullname"/>
                                     <p className="msg-error">{validationMsg.fullname}</p>
-
-                                    {/* <label htmlFor="password"><b>Mật khẩu</b></label>
-                                    <input className="input-field" type="password" value={this.state.user.password} onChange={(event) => this.isChange(event)}
-                                    placeholder="Mật khẩu" name="password" id="password" />
-                                    <p className="msg-error">{validationMsg.password}</p>
-
-                                    <label htmlFor="repeat_password"><b>Nhập lại mật khẩu</b></label>
-                                    <input className="input-field" type="password" value={this.state.user.repeat_password} onChange={(event) => this.isChange(event)}
-                                    placeholder="Nhập lại mật khẩu" name="repeat_password" id="repeat_password" />
-                                    <p className="msg-error">{validationMsg.repeat_password}</p> */}
-
                                     <label htmlFor="email"><b>Email</b></label>
                                     <input className="input-field" type="email" value={this.state.user.email} onChange={(event) => this.isChange(event)}
                                     placeholder="Email" id="email" name="email" />
@@ -283,26 +273,17 @@ class UserEditInfo extends Component {
                                         <input  onChange={(event) => this.isChange(event)} type="radio" id="nu" name="gender" value="Nữ" checked={this.state.user.gender === "Nữ"}/>
                                         <label htmlFor="nu">&nbsp;  Nữ</label><br />
                                     </div>
-
-                                     {/* <label htmlFor="role"><b>Quyền</b></label>
-                                    <div>
-                                        <input onChange={(event) => this.isChange(event)} type="radio" id="Admin" name="role" value="Admin" checked={this.state.user.role === "Admin"}/>
-                                        <label htmlFor="Admin">&nbsp; Admin</label> &nbsp; &nbsp; &nbsp;
-                                        <input onChange={(event) => this.isChange(event)} type="radio" id="User" name="role" value="User" checked={this.state.user.role === "User"} />
-                                        <label htmlFor="User">&nbsp;  User</label><br />
-                                    </div>    */}
-
                                 </div>
 
                                 {/* Right */}
                                 <div className="col-sm-6">
                                     <label htmlFor="address"><b>Địa chỉ</b></label>  
                                     <input className="input-field" type="text" value={this.state.user.address} onChange={(event) => this.isChange(event)}
-                                    placeholder="Địa chỉ" name="address" id="address" />
+                                    placeholder="Địa chỉ" name="address" id="address" maxLength={255} />
                                     <p className="msg-error">{validationMsg.address}</p>
 
                                     <label htmlFor="phonenumber"><b>Số điện thoại</b></label>  
-                                    <input className="input-field" type="text" value={this.state.user.phonenumber} onChange={(event) => this.isChange(event)}
+                                    <input className="input-field" type="text" maxLength={255} value={this.state.user.phonenumber} onChange={(event) => this.isChange(event)}
                                     placeholder="Số điện thoại" name="phonenumber" id="phonenumber" />
                                     <p className="msg-error">{validationMsg.phonenumber}</p>
                                     

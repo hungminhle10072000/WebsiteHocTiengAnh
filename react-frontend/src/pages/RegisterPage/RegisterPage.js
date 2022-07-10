@@ -219,30 +219,30 @@ class RegisterPage extends Component {
                                     <input className="input-field" type="text" placeholder="Id" name="Id" id="Id" value="1" disabled /> */}
 
                                     <label htmlFor="fullname"><b>Họ tên</b></label>      
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Họ tên" name="fullname" id="fullname"/>
+                                    <input maxLength={255} onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Họ tên" name="fullname" id="fullname"/>
                                     <p className="msg-error-register">{validationMsg.fullname}</p>
 
                                     <label htmlFor="username"><b>Tên đăng nhập</b></label>    
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Tên đăng nhập" name="username" id="username" />
+                                    <input maxLength={255} onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Tên đăng nhập" name="username" id="username" />
                                     <p className="msg-error-register">{validationMsg.username}</p>
 
                                     <label htmlFor="password"><b>Mật khẩu</b></label>
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="password" placeholder="Mật khẩu" name="password" id="password" />
+                                    <input maxLength={255} onChange={(event) => this.isChange(event)} className="input-field" type="password" placeholder="Mật khẩu" name="password" id="password" />
                                     <p className="msg-error-register">{validationMsg.password}</p>
 
                                     <label htmlFor="repeat_password"><b>Nhập lại mật khẩu</b></label>
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="password" placeholder="Nhập lại mật khẩu" name="repeat_password" id="repeat_password" />
+                                    <input maxLength={255} onChange={(event) => this.isChange(event)} className="input-field" type="password" placeholder="Nhập lại mật khẩu" name="repeat_password" id="repeat_password" />
                                     <p className="msg-error-register">{validationMsg.repeat_password}</p>
 
                                     <label htmlFor="email"><b>Email</b></label>
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="email" placeholder="Email" id="email" name="email" />
+                                    <input maxLength={255} onChange={(event) => this.isChange(event)} className="input-field" type="email" placeholder="Email" id="email" name="email" />
                                     <p className="msg-error-register">{validationMsg.email}</p>
 
                                     <label htmlFor="gender"><b>Giới tính</b></label>
                                         <div>
-                                            <input  onChange={(event) => this.isChange(event)} type="radio" id="nam" name="gender" value="Nam" defaultChecked />
+                                            <input onChange={(event) => this.isChange(event)} type="radio" id="nam" name="gender" value="Nam" defaultChecked />
                                             <label htmlFor="nam">&nbsp; Nam</label> &nbsp; &nbsp; &nbsp;
-                                            <input  onChange={(event) => this.isChange(event)} type="radio" id="nu" name="gender" value="Nữ" />
+                                            <input onChange={(event) => this.isChange(event)} type="radio" id="nu" name="gender" value="Nữ" />
                                             <label htmlFor="nu">&nbsp;  Nữ</label><br />
                                         </div>    
                                 </div>
@@ -250,11 +250,11 @@ class RegisterPage extends Component {
                                 {/* Right */}
                                 <div className="col-sm-6">
                                     <label htmlFor="address"><b>Địa chỉ</b></label>  
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Địa chỉ" name="address" id="address" />
+                                    <input maxLength={255} onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Địa chỉ" name="address" id="address" />
                                     <p className="msg-error-register">{validationMsg.address}</p>
                                     
                                     <label htmlFor="phonenumber"><b>Số điện thoại</b></label>  
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Số điện thoại" name="phonenumber" id="phonenumber" />
+                                    <input maxLength={255} type="number" onChange={(event) => this.isChange(event)} className="input-field" placeholder="Số điện thoại" name="phonenumber" id="phonenumber" />
                                     <p className="msg-error-register">{validationMsg.phonenumber}</p>
                                     
                                     <label htmlFor="birthday"><b>Ngày sinh</b></label>  

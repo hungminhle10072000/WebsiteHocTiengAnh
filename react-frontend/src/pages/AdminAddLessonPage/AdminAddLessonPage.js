@@ -237,11 +237,11 @@ class AdminAddLessonPage extends React.Component {
                         <label htmlFor="name"><b>Tên khoá học:</b></label>
 
                         <input  className="input-field" readOnly={true}
-                          value={this.state.lesson.courseName}  type="text" placeholder="Tên khoá học" name="nameCourse" id="lessonName" />
+                          value={this.state.lesson.courseName}  type="text" maxLength={255} placeholder="Tên khoá học" name="nameCourse" id="lessonName" />
 
 
                         <label htmlFor="name"><b>Tên chương:</b></label>
-                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text"
+                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255}
                             value={this.state.lesson.chapterName} placeholder="Nhập tên chương" name="name" id="name" />
                         <p className="msg-error">{this.state.validationMsg.chapterName}</p>
 
@@ -251,7 +251,7 @@ class AdminAddLessonPage extends React.Component {
                         <p className="msg-error">{this.state.validationMsg.number}</p>
               
                         <label htmlFor="name"><b>Tên bài học:</b></label>
-                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text"
+                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255}
                             value={this.state.lesson.name} placeholder="Nhập tên chương" name="name" id="name" />
                         <p className="msg-error">{this.state.validationMsg.name}</p>
                         <br></br>
@@ -281,9 +281,9 @@ class AdminAddLessonPage extends React.Component {
                                     <Row>
                                         <Col sm="12" style={{display: 'inline-block'}}>
                                             <br/>
-                                            <input id='linkLesson' name='video' style= {{width:'90%'}} placeholder='Nhập link bài giảng.'
+                                            <input id='linkLesson' maxLength={255} name='video' style= {{width:'90%'}} placeholder='Nhập link bài giảng.'
                                             onChange={(event)=> this.isChange(event)}  value={this.state.lesson.video}></input>
-                                            <button style={{marginLeft:'10px'}} onClick={()=> this.clearLink()}>Xoá</button>
+                                            <button className="btn btn-danger" style={{marginLeft:'10px',marginBottom:'5px', padding:'2px 15px'}} onClick={()=> this.clearLink()}>Xoá</button>
                                             <br/>
                                         </Col>
                                     </Row>
@@ -311,7 +311,7 @@ class AdminAddLessonPage extends React.Component {
                         {/* <SelectFrom onAttachmentData={this.handleAttachmentData}></SelectFrom> */}
                         <br/>
                         <div className="div-button-account">
-                                <button onClick={(event) => this.handleConfirmationBox(event)}
+                                <button onClick={(event) => this.handleConfirmationBox(event)} style={{paddingLeft:'25px',paddingRight:'25px'}}
                                     type="button" disabled={statusCheck} className="btn btn-success btn-save-account">
                                     {statusCheck && "Đang xử lý "}
                                         {statusCheck && <BiRefresh />}
@@ -324,6 +324,9 @@ class AdminAddLessonPage extends React.Component {
 
                     </div>
                     <div className="col-sm-3"></div>
+                </div>
+                <div style={{marginBottom:'50px'}}>
+
                 </div>
             </div>
         )

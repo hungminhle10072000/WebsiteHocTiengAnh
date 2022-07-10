@@ -201,6 +201,7 @@ public class StatisticalService {
     statisticalMasterDto.setFullname(user.getFullname());
     statisticalMasterDto.setAvatar(user.getAvartar());
     statisticalMasterDto.setUserId(user.getId());
+    statisticalMasterDto.setEmail(user.getEmail());
     if (statisticalEntities != null && statisticalEntities.size() > 0) {
       int indexDayCurrent = statisticalEntities.size()-1;
       StatisticalEntity statisticalCurrent = statisticalEntities.get(indexDayCurrent);

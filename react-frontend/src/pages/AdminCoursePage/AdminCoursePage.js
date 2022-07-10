@@ -1,6 +1,6 @@
 import React,{Component} from 'react'
 import { Link } from 'react-router-dom'
-import { BsFillPersonPlusFill } from "react-icons/bs";
+import {RiAddFill} from 'react-icons/ri'
 import AdminItemCourse from '../../components/AdminItemCourse/AdminItemCourse'
 import allActions from '../../actions';
 import {connect} from 'react-redux'
@@ -53,11 +53,11 @@ class AdminCoursePage extends Component {
                             </div>
                             
                             <Link to="/admin/course/add" style={{textDecoration:"none"}}>
-                                <button type="button" className="btn btn-success">Thêm mới<BsFillPersonPlusFill className="iconAddAccount"/></button> 
+                                <button type="button" className="btn btn-success">Thêm mới<RiAddFill className="iconWithText"/></button> 
                             </Link>
                          
                             <input onChange={(event) => this.callback(event.target.value)}
-                            type="text" name="search" placeholder="Tìm kiếm ..." className="searchAccount" />
+                            type="text" maxLength={255} name="search" placeholder="Tìm kiếm ..." className="searchAccount" />
                         </div>
                     </div>
                 </div>

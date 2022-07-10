@@ -42,6 +42,7 @@ import statusItemLoading from './statusItemLoading'
 import statusButtonLoading from './statusButtonLoading'
 import topicVocaNew from "./VocabularyTopicReducer/topicVocabuarlyNew"
 import courseNew from "./courseReducer/courseNew"
+import status_alert_loading_sendmail from "./status_alert_loading_sendmail"
 
 const appReducers = combineReducers({
     users,
@@ -79,6 +80,7 @@ const appReducers = combineReducers({
     statusItemLoading,
     statusButtonLoading,
     topicVocaNew,
-    courseNew
+    courseNew,
+    status_alert_loading_sendmail
 });
 export default appReducers;

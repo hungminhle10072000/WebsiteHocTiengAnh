@@ -52,11 +52,11 @@ function Question({data, onAnswerUpdate,numberOfQuestion, activeQuestion, onSetA
                         </Col>
                         <Col span={12}>
                             <div className="control" ref={radiosWrapper}>
-                            {isListening && <ReactAudioPlayer src={data.audio} controls/>}
+                                {isListening && <ReactAudioPlayer src={data.audio} controls/>}
                                 {data.choices.map((choice, i) => (
                                     <label className="radioimage has-background-light" key={i}>
-                                        <input type="radio" name={"answer" + index} value={choice} onChange={changeHandler} /> 
-                                        {choice}
+                                        <input type="radio" name={"answer" + index} value={choice} onChange={changeHandler} />
+                                        <span style={{marginLeft: '1rem'}}>{choice}</span>
                                     </label>
                                 ))}
                             </div>
@@ -66,9 +66,12 @@ function Question({data, onAnswerUpdate,numberOfQuestion, activeQuestion, onSetA
                     <div className="control" ref={radiosWrapper}>
                         {isListening && <ReactAudioPlayer className="myaudio"  src={data.audio} controls/>}
                         {data.choices.map((choice,i) => (
-                            choice.trim().length > 0 && <label className="radio has-background-light" key={i}>
-                                <input type="radio" name={"answer"+index} value={choice} onChange={changeHandler}/>
+                            // choice.trim().length > 0 && 
+                            <label className= {(choice.trim().length > 0) ? "radio has-background-light" : 'radio'} key={i}>
+                            <div>
+                                {choice.trim().length > 0 && <input type="radio" name={"answer"+index} value={choice} onChange={changeHandler} />}
                                 {choice}
+                            </div>
                             </label>
                         ))}
                     </div>

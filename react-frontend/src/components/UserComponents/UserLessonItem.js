@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 
 import { Row, Col } from 'antd';
+import { connect } from 'react-redux';
   
 class UserLessonItem extends Component {
     constructor(props){
@@ -29,11 +30,23 @@ class UserLessonItem extends Component {
         }
     }
 
+    
+    componentWillReceiveProps(nextProps) {
+        if(nextProps && nextProps.courseEditReducer){
+            this.setState({
+                lesson: {
+                    ...this.state.lesson,
+                    doneExercise: nextProps.courseEditReducer.chapters[this.props.lesson.chapterId]
+                    .lessons[this.props.lesson.id].doneExercise
+                }
+            })
+        }
+    }
+
     render() {
         let hasExercise = this.props.lesson.exerciseId;
         let hasVocabulary = this.props.lesson.vocabularyTopicId;
-        let isDoneExercise = this.props.lesson.doneExercise;
-        // console.log("isDoneExercise",isDoneExercise)
+        let isDoneExercise = this.state.lesson.doneExercise
         return(
             <div >
                 <Row className={!this.props.isSub ? 'lesson-item-disable' : ''}>
@@ -45,7 +58,7 @@ class UserLessonItem extends Component {
                     <Col span={21}>
                         <div style={{ padding: '0px' }} onClick={() => this.props.isSub && this.props.changedVideo(this.state.lesson.video, this.state.lesson.id, this.state.lesson.name)}>
                             <span style={{ fontWeight: 400 }}>{this.state.lesson.number}</span>
-                            <img src="/svg/schedule_black_24dp.svg" alt="" height="15" style={{ marginRight: '5px' }} />
+                            {/* <img src="/svg/schedule_black_24dp.svg" alt="" height="15" style={{ marginRight: '5px' }} /> */}
                             <label className={this.props.isSub ? 'title-lesson-name' : ''} title={this.state.lesson.name}>{this.state.lesson.name}</label>
                             <hr style={{ marginBottom: '8px', marginTop: '8px', color: '#dddddd', height: '1px' }} />
                         </div>
@@ -71,4 +84,11 @@ class UserLessonItem extends Component {
         )
     }
 }
-export default UserLessonItem
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        courseEditReducer: state.courseEditReducer,
+    }
+}
+
+export default connect(mapStateToProps, null) (UserLessonItem)

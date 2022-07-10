@@ -7,15 +7,30 @@ import {
 import {withRouter} from 'react-router-dom'
 import PropTypes from "prop-types"
 import { Spring, animated } from 'react-spring'
+import Swal from 'sweetalert2'
 
 class userItemTopicVocabulary extends Component {
+
+    //Button Click Function
+    opensweetalertdanger()
+    {
+        Swal.fire({
+        title: `Thông báo`,
+        text: "Yêu cầu đăng nhập để sử dụng chức năng này !!!",
+        type: 'warning',
+        })
+    }
 
     handleDetailTopic = () => {
         this.props.history.push('/user/topic-vocabulary/' + this.props.id + '/' + convertURL(this.props.name));
     }
 
     handleDetailPractice = () => {
-        this.props.history.push('/user/practice-vocabulary/' + this.props.id + '/' + convertURL(this.props.name));
+        if(localStorage.getItem('idUser') !== null){
+            this.props.history.push('/user/practice-vocabulary/' + this.props.id + '/' + convertURL(this.props.name));
+        } else {
+            this.opensweetalertdanger()
+        }
     }
 
     static propTypes = {

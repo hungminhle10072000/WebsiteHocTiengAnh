@@ -5,14 +5,15 @@ import StatisticalService from './../../services/StatisticalService'
 import './css/UserStatistical.css'
 import {GiTrophyCup} from  "react-icons/gi";
 import { useSelector,useDispatch } from 'react-redux';
+import { Spin } from 'antd';
 var scoreOfDays = [
-{ x: 2, y: 0 },
-{ x: 3, y: 0 },
-{ x: 4, y: 0 },
-{ x: 5, y: 0 },
-{ x: 6, y: 0 },
-{ x: 7, y: 0 },
-{ x: 8, y: 0 }]
+{ x: 2, y: 0, lable: 'Thứ 2' },
+{ x: 3, y: 0, lable: 'Thứ 3' },
+{ x: 4, y: 0, lable: 'Thứ 4' },
+{ x: 5, y: 0, lable: 'Thứ 5' },
+{ x: 6, y: 0, lable: 'Thứ 6' },
+{ x: 7, y: 0, lable: 'Thứ 7' },
+{ x: 8, y: 0, label:'Chủ nhật' }]
 
 var listFullName = [
     {
@@ -49,6 +50,7 @@ var listFullName = [
   
 
 const initialUserInfo = {
+    "userId": -1,
     "fullname": 'Bùi Văn Nghĩa',
     "process": 1,
     "streak": 1,
@@ -70,14 +72,20 @@ function UserStatisticalPage() {
         StatisticalService.getStatisticalByUserId(userId,weekAgo)
             .then(res => {         
                 let data = res.data;
+                let userIf = data.find(x=>x.userId==userId)
+                setUserInfo(userIf)
                 setStatisticalMasterList(data)
             })
     }, [weekAgo])
     for( let i=0; i< statisticalMasterList.length; i++) {
-        if (statisticalMasterList[i].statisticalDtoList[0].userId == userId) {
+        if (statisticalMasterList[i].userId == userId) {
             let statisticalDtoList = statisticalMasterList[i].statisticalDtoList;
             scoreOfDays = statisticalDtoList.map((item,index)=> {
-                return {x:index+2,y:item.score}
+                let label = 'Thứ '+( index+2)
+                if (index ===6) {
+                    label = 'Chủ nhật'
+                }
+                return {x:index+2,y:item.score,label: label}
             } )
         }
         listFullName[i].title = statisticalMasterList[i].fullname;
@@ -95,11 +103,11 @@ function UserStatisticalPage() {
             title: "Điểm",
             // suffix: "%"
         },
-        axisX: {
-            title: "Thứ trong tuần",
-            prefix: "Thứ ",
-            interval: 1
-        },
+        // axisX: {
+        //     title: "",
+        //     prefix: "Thứ",
+        //     interval: 1
+        // },
         data: [{
             type: "column",
             toolTipContent: "Thứ {x}: {y} điểm",
@@ -107,7 +115,8 @@ function UserStatisticalPage() {
         }]
     }
     return (
-        <>
+        <>      
+        {userInfo.userId == -1 &&  <Spin style={{position:'absolute', top:'50%', left:'50%', zIndex:2}} size="large" />}
         {userCurrent.id === -1 ?
             <div style={{textAlign:'center', marginTop:'150px'}}>
                 <h2> Vui lòng đăng nhập để sử dụng chức năng này.</h2>

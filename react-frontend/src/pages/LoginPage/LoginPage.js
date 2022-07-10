@@ -135,14 +135,14 @@ class LoginPage extends Component {
                         />
                         <p className="msg-error">{validationMsg.username}</p>
                         <div className="form-group-login">
-                            <input type="text" name="username" onChange={(event) => this.isChange(event)} placeholder="Tên đăng nhập" />
+                            <input type="text" name="username" maxLength={255} onChange={(event) => this.isChange(event)} placeholder="Tên đăng nhập" />
                             {/* <span className="input-icon"><i className="fa fa-envelope" /></span> */}
                             <span className="input-icon"><FaUser /></span>
                         </div>
 
                         <p className="msg-error">{validationMsg.psw}</p>  
                         <div className="form-group-login">
-                            <input type="password" name="psw"  onChange={(event) => this.isChange(event)} placeholder="Mật khẩu" />
+                            <input type="password" name="psw"  maxLength={255}   onChange={(event) => this.isChange(event)} placeholder="Mật khẩu" />
                             {/* <span className="input-icon"><i className="fa fa-lock" /></span> */}
                             <span className="input-icon"><RiLockPasswordFill /></span>
                         </div>
@@ -162,12 +162,8 @@ class LoginPage extends Component {
                                 </div>
                             </div>     
                         </div>     
-                        <div className="seperator"><b>or</b></div>
-                        <p>Đăng nhập bằng tài khoản</p>
-                        {/* Social login buttons */}
-                        <div className="social-icon">
-                            <FaFacebook className="icon-login-facebook" />
-                            {/* <button type="button"><i className="fa fa-twitter" />  </button> */}
+                        <div style={{height:'150px'}}>
+
                         </div>
                     </div>
                 </div>
@@ -178,13 +174,16 @@ class LoginPage extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <FormSendMail />
+                        <FormSendMail handleClose = {this.handleClose} />
+                        {/* <Button style={{display: 'inline-block !important'}} variant="secondary" onClick={this.handleClose}>
+                                Hủy
+                        </Button> */}
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary" onClick={this.handleClose}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
                 </div>
             </Hotkeys>

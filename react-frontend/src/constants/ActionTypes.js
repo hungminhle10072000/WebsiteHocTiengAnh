@@ -15,6 +15,8 @@ export const ResetPassWord = 'ResetPassWord';
 export const FORM_SEND_MAIL_ON = 'FORM_SEND_MAIL_ON';
 export const FORM_SEND_MAIL_OFF = 'FORM_SEND_MAIL_OFF';
 export const USER_UPDATE_PASSWORD = 'USER_UPDATE_PASSWORD';
+export const ALERT_OPEN_LOADING_SENDMAIL = 'ALERT_OPEN_LOADING_SENDMAIL';
+export const ALERT_OFF_LOADING_SENDMAIL = 'ALERT_OFF_LOADING_SENDMAIL';
 
 
 // Vocabulary Topic

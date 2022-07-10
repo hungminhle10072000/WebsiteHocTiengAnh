@@ -5,10 +5,11 @@ import allActions from '../../actions';
 import { connect } from 'react-redux';
 import Comments from '../../components/Comment/Comments'
 import './UserLearningPage.css'
+
 class UserLearningPage extends Component {
     constructor(props){
         super(props);
-        console.log('PROPS: ',props)
+        // console.log('PROPS: ',props)
 
         this.state = {
             isChapter:true,
@@ -20,7 +21,7 @@ class UserLearningPage extends Component {
             learningLessonName:'',
             comments:[],
             isLogin:true,
-            linkVideo:'https://web-english.s3.ap-southeast-1.amazonaws.com/1637087592056-trumua.mp4',
+            linkVideo:'https://www.youtube.com/watch?v=aXG9VizOJUk',
             course:{
                 id:this.props.match.params.id,
                 name:'Khoa Hoc 1',
@@ -126,7 +127,7 @@ class UserLearningPage extends Component {
         isComment: true})
     }
     showChapterItem = (isSub) => {
-        console.log("This.Props:", this.props.course)
+        // console.log("Chay show lesson: " + this.)
         return this.state.course.chapters.map((chapter)=><UserChapterItem key={chapter.id} chapter={chapter} changedVideo={this.changedVideo} isSub = {isSub}></UserChapterItem>)
     }
 
@@ -145,6 +146,7 @@ class UserLearningPage extends Component {
 
 
     render() {
+        let hasLesson = this.state.course.chapters.length > 0 && this.state.course.chapters[0].numOfLesson > 0
         var isSub = true;
         if (this.state.course.users != null && this.state.course.users.length > 0) {
             for (let x of this.state.course.users) {
@@ -173,8 +175,8 @@ class UserLearningPage extends Component {
                }
                <div className='row'>
                    <div className='col-3 col-btn-learn'>
-                        <button className='btn btn-success' onClick={() => this.changedIsChapter()} >Tổng quan</button>
-                        <button style={{marginLeft: '2%'}} className='btn btn-warning' onClick={() => this.changedIsComment()}>Bình luận</button>
+                        <button className={hasLesson ? 'btn btn-success' : 'btn btn-success disabled'}  onClick={() => this.changedIsChapter()} >Tổng quan</button>
+                        <button style={{marginLeft: '2%'}} className={hasLesson ? 'btn btn-warning' : 'btn btn-warning disabled'} onClick={() => this.changedIsComment()}>Bình luận</button>
                    </div>
                </div>
                <br/>
