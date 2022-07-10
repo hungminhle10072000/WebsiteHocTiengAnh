@@ -120,14 +120,6 @@ class AdminAccountEdit extends Component {
         if(validator.isEmpty(this.state.user.username)){
             msg.username = "Yêu cầu nhập tên đăng nhập !"
         }
-        // if(validator.isEmpty(this.state.user.password)){
-        //     msg.password = "Yêu cầu nhập mật khẩu !"
-        // }
-        // if(validator.isEmpty(this.state.user.repeat_password)){
-        //     msg.repeat_password = "Yêu cầu nhập lại mật khẩu !"
-        // } else if (!validator.equals(this.state.user.password, this.state.user.repeat_password)) {
-        //     msg.repeat_password = "Mật khẩu nhập lại không khớp !"
-        // }
         if(validator.isEmpty(this.state.user.phonenumber)){
             msg.phonenumber = "Yêu cầu nhập số điện thoại !"
         } else if (!validator.isMobilePhone(this.state.user.phonenumber)){
@@ -218,26 +210,15 @@ class AdminAccountEdit extends Component {
 
                                     <label htmlFor="fullname"><b>Họ tên</b></label>      
                                     <input onChange={(event) => this.isChange(event)}
-                                    className="input-field" value={this.state.user.fullname} type="text" placeholder="Họ tên" name="fullname" id="fullname"/>
+                                    className="input-field" value={this.state.user.fullname} type="text" maxLength={255} placeholder="Họ tên" name="fullname" id="fullname"/>
                                     <p className="msg-error">{validationMsg.fullname}</p>
 
                                     <label htmlFor="username"><b>Tên đăng nhập</b></label>    
                                     <input className="input-field" value={this.state.user.username} onChange={(event) => this.isChange(event)}
-                                    type="text" placeholder="Tên đăng nhập" name="username" id="username" />
+                                    type="text" maxLength={255} placeholder="Tên đăng nhập" name="username" id="username" />
                                     <p className="msg-error">{validationMsg.username}</p>
-
-                                    {/* <label htmlFor="password"><b>Mật khẩu</b></label>
-                                    <input className="input-field" type="password" value={this.state.user.password} onChange={(event) => this.isChange(event)}
-                                    placeholder="Mật khẩu" name="password" id="password" />
-                                    <p className="msg-error">{validationMsg.password}</p>
-
-                                    <label htmlFor="repeat_password"><b>Nhập lại mật khẩu</b></label>
-                                    <input className="input-field" type="password" value={this.state.user.repeat_password} onChange={(event) => this.isChange(event)}
-                                    placeholder="Nhập lại mật khẩu" name="repeat_password" id="repeat_password" />
-                                    <p className="msg-error">{validationMsg.repeat_password}</p> */}
-
                                     <label htmlFor="email"><b>Email</b></label>
-                                    <input className="input-field" type="email" value={this.state.user.email} onChange={(event) => this.isChange(event)}
+                                    <input className="input-field" type="email" maxLength={255} value={this.state.user.email} onChange={(event) => this.isChange(event)}
                                     placeholder="Email" id="email" name="email" />
                                     <p className="msg-error">{validationMsg.email}</p>
 
@@ -262,12 +243,12 @@ class AdminAccountEdit extends Component {
                                 {/* Right */}
                                 <div className="col-sm-6">
                                     <label htmlFor="address"><b>Địa chỉ</b></label>  
-                                    <input className="input-field" type="text" value={this.state.user.address} onChange={(event) => this.isChange(event)}
+                                    <input className="input-field" type="text" maxLength={255} value={this.state.user.address} onChange={(event) => this.isChange(event)}
                                     placeholder="Địa chỉ" name="address" id="address" />
                                     <p className="msg-error">{validationMsg.address}</p>
 
                                     <label htmlFor="phonenumber"><b>Số điện thoại</b></label>  
-                                    <input className="input-field" type="text" value={this.state.user.phonenumber} onChange={(event) => this.isChange(event)}
+                                    <input className="input-field" type="number" maxLength={255} value={this.state.user.phonenumber} onChange={(event) => this.isChange(event)}
                                     placeholder="Số điện thoại" name="phonenumber" id="phonenumber" />
                                     <p className="msg-error">{validationMsg.phonenumber}</p>
                                     

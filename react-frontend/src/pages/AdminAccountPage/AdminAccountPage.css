@@ -31,6 +31,12 @@ button.btn.btn-success.btn-add-account {
     margin-left: 0.5rem;
 }
 
+.iconWithText {
+    margin-left: 5px;
+    font-size: 18px;
+    font-weight: 900;
+}
+
 /* title */
 .jumbotron.manager-account {
     display: flex;
