@@ -25,9 +25,9 @@ class FormSendMail extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps && nextProps.statusItemLoading){
+        if(nextProps && nextProps.status_alert_loading_sendmail){
             this.setState({
-                statusCheckItemLoading: nextProps.statusItemLoading.statusCheck
+                statusCheckItemLoading: nextProps.status_alert_loading_sendmail.AlertEmailShow
             })
         }
     }
@@ -64,8 +64,11 @@ class FormSendMail extends Component {
                         required
                     />
                 </Form.Group>
-                <Button variant="success" type="submit">
+                <Button variant="success" type="submit" className='pl-5 pr-5'>
                     Gửi
+                </Button>
+                <Button variant="secondary" type="button" onClick={this.props.handleClose} className='ml-2 pl-5 pr-5'>
+                    Hủy
                 </Button>
             </Form>
         )
@@ -74,7 +77,7 @@ class FormSendMail extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        statusItemLoading: state.statusItemLoading
+        status_alert_loading_sendmail: state.status_alert_loading_sendmail
     }
 }
 
@@ -84,7 +87,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(allActions.userAction.actForgetPassWordRequest(username, email))
         },
         onOpenItemLoading: () => {
-            dispatch(allActions.userItemLoadingAction.openItemLoading())
+            dispatch(allActions.adminAlertInfoAction.changeOpenAlertSendMail())
         }
     }
 }

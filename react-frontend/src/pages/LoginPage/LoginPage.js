@@ -174,13 +174,16 @@ class LoginPage extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <FormSendMail />
+                        <FormSendMail handleClose = {this.handleClose} />
+                        {/* <Button style={{display: 'inline-block !important'}} variant="secondary" onClick={this.handleClose}>
+                                Hủy
+                        </Button> */}
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary" onClick={this.handleClose}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
                 </div>
             </Hotkeys>

@@ -301,10 +301,12 @@ const actForgetPassWordRequest = (username, email) => {
             .then(res => {
                 dispatch(adminAlertInfoAction.changeAdminAlertOn("Gửi password thành công ! Yêu cầu bạn kiểm tra email !!!","success"));
                 dispatch(openFormSendMail.changeFormSendMailOff())
-                dispatch(userItemLoadingAction.closeItemLoading())
+                // dispatch(userItemLoadingAction.closeItemLoading())
+                dispatch(adminAlertInfoAction.changeOffAlertSendMail())
             }).catch(
                 error => {
-                    dispatch(userItemLoadingAction.closeItemLoading())
+                    // dispatch(userItemLoadingAction.closeItemLoading())
+                    dispatch(adminAlertInfoAction.changeOffAlertSendMail())
                     dispatch(adminAlertInfoAction.changeAdminAlertOn("Tên đăng nhập hoặc email của bạn không chính xác !!!","danger"));
                 }
             )
