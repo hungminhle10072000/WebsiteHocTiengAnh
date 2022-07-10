@@ -145,7 +145,7 @@ class AdminAddCoursePage extends React.Component {
                         <br></br>
                         <label htmlFor="name"><b>Tên khoá học:</b></label>
                         <input onChange={(event) => this.isChange(event)} className="input-field" 
-                          value={this.state.course.name}  type="text" placeholder="Tên khoá học" name="name" id="courseName" />
+                          value={this.state.course.name}  type="text" maxLength={255} placeholder="Tên khoá học" name="name" id="courseName" />
                         <p className="msg-error">{this.state.validationMsg.name}</p>
                         <br></br>
                         <label htmlFor="image"><b>Ảnh khoá học:</b></label>
@@ -160,7 +160,7 @@ class AdminAddCoursePage extends React.Component {
 
                         <br></br>
                         <label htmlFor="introduce"><b>Giới thiệu:</b></label>
-                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text"
+                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255}
                             value={this.state.course.introduce} placeholder="Giới thiệu về khoá học" name="introduce" id="introduce" />
                         <p className="msg-error">{this.state.validationMsg.introduce}</p>
                         <br></br>
@@ -175,7 +175,7 @@ class AdminAddCoursePage extends React.Component {
                                         </button>
                             {/* </Link> */}
                             <button onClick = {(event) => this.resetForm(event)}
-                                type="reset" className="btn btn-warning" >Reset <BiReset /></button>
+                                type="reset" className="btn btn-warning" >Làm mới <BiReset /></button>
                         </div>
 
                     </div>

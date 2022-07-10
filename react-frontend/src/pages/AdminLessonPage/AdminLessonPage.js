@@ -5,6 +5,7 @@ import AdminItemLesson from '../../components/AdminItemLesson/AdminItemLesson';
 import allActions from '../../actions';
 import {connect} from 'react-redux'
 import Player from "../../components/reactPlayer";
+import {RiAddFill} from 'react-icons/ri'
 
 class AdminLessonPage extends Component {
     constructor(props) {
@@ -98,11 +99,11 @@ class AdminLessonPage extends Component {
                                 <h2>Quản lí bài học</h2>  
                             </div>
                             {this.props.match.params.id != -1 &&
-                            <Link to={`/admin/lesson/add/${this.state.id}`} style={{textDecoration:"none"}}>
-                                <button type="button" className="btn btn-success btn-add-account">Thêm mới<BsFillPersonPlusFill className="iconAddAccount"/></button> 
+                            <Link to={`/admin/lesson/add/${this.state.id}`} style={{textDecoration:"none", display: 'inline-block'}}>
+                                <button type="button" className="btn btn-success btn-add-account">Thêm mới<RiAddFill className="iconWithText"/></button> 
                             </Link>
                             }
-                            <input onChange={(event) => this.callback(event.target.value)}
+                            <input onChange={(event) => this.callback(event.target.value)} maxLength={255}
                             type="text" name="search" placeholder="Tìm kiếm ..." className="searchAccount" />
                         </div>
                     </div>
