@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import './../../App.css'
-
+import {isValidStringLength} from './../../utils/index.js'
 const CommentForm = ({handleSubmit,submitLabel,hasCancelButton = false,handleCancel,initialText=""}) => {
     const [text,setText] = useState(initialText)
     const isTextareaDisabled = text.length ===0
     const onSubmit = (event) => {
         event.preventDefault();
+        let isValid = isValidStringLength("COMMENT",text,255)
+        if (isValid == false) {
+            return ;
+        }
         handleSubmit(text);
         setText("")
     }
