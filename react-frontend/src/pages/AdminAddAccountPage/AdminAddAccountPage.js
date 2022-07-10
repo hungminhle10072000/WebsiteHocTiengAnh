@@ -212,22 +212,22 @@ class AdminAddAccountPage extends Component {
                                 {/* Left */}
                                 <div className="col-sm-6">
                                     {/* <label htmlFor="Id"><b>Id</b></label>         
-                                    <input className="input-field" type="text" placeholder="Id" name="Id" id="Id" value="1" disabled /> */}
+                                    <input className="input-field" type="text" maxLength={255} placeholder="Id" name="Id" id="Id" value="1" disabled /> */}
 
                                     <label htmlFor="fullname"><b>Họ tên</b></label>      
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Họ tên" name="fullname" id="fullname"/>
+                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255} placeholder="Họ tên" name="fullname" id="fullname"/>
                                     <p className="msg-error">{validationMsg.fullname}</p>
 
                                     <label htmlFor="username"><b>Tên đăng nhập</b></label>    
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Tên đăng nhập" name="username" id="username" />
+                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255} placeholder="Tên đăng nhập" name="username" id="username" />
                                     <p className="msg-error">{validationMsg.username}</p>
 
                                     <label htmlFor="password"><b>Mật khẩu</b></label>
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="password" placeholder="Mật khẩu" name="password" id="password" />
+                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="password" maxLength={255} placeholder="Mật khẩu" name="password" id="password" />
                                     <p className="msg-error">{validationMsg.password}</p>
 
                                     <label htmlFor="repeat_password"><b>Nhập lại mật khẩu</b></label>
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="password" placeholder="Nhập lại mật khẩu" name="repeat_password" id="repeat_password" />
+                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="password" maxLength={255} placeholder="Nhập lại mật khẩu" name="repeat_password" id="repeat_password" />
                                     <p className="msg-error">{validationMsg.repeat_password}</p>
 
                                     <label htmlFor="email"><b>Email</b></label>
@@ -246,11 +246,11 @@ class AdminAddAccountPage extends Component {
                                 {/* Right */}
                                 <div className="col-sm-6">
                                     <label htmlFor="address"><b>Địa chỉ</b></label>  
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Địa chỉ" name="address" id="address" />
+                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255} placeholder="Địa chỉ" name="address" id="address" />
                                     <p className="msg-error">{validationMsg.address}</p>
                                     
                                     <label htmlFor="phonenumber"><b>Số điện thoại</b></label>  
-                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="text" placeholder="Số điện thoại" name="phonenumber" id="phonenumber" />
+                                    <input onChange={(event) => this.isChange(event)} className="input-field" type="number" maxLength={255} placeholder="Số điện thoại" name="phonenumber" id="phonenumber" />
                                     <p className="msg-error">{validationMsg.phonenumber}</p>
                                     
                                     <label htmlFor="birthday"><b>Ngày sinh</b></label>  

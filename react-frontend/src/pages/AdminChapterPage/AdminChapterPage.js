@@ -4,6 +4,7 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import AdminItemChapter from '../../components/AdminItemChapter/AdminItemChapter'
 import allActions from '../../actions';
 import {connect} from 'react-redux'
+import {RiAddFill} from 'react-icons/ri'
 
 class AdminChapterPage extends Component {
     constructor(props) {
@@ -60,13 +61,13 @@ class AdminChapterPage extends Component {
                                 <h2>Quản lí chương học</h2>  
                             </div>
                             {this.props.match.params.id != -1 &&
-                            <Link to={`/admin/chapter/add/${this.state.id}`} style={{textDecoration:"none"}}>
-                            <button type="button" className="btn btn-success btn-add-account">Thêm mới<BsFillPersonPlusFill className="iconAddAccount"/></button> 
+                            <Link to={`/admin/chapter/add/${this.state.id}`} style={{textDecoration:"none", display:'inline-block'}}>
+                            <button type="button" className="btn btn-success btn-add-account">Thêm mới<RiAddFill className="iconWithText"/></button> 
                             </Link>
                             
                             }
                             <input onChange={(event) => this.callback(event.target.value)}
-                            type="text" name="search" placeholder="Tìm kiếm ..." className="searchAccount" />
+                            type="text" name="search" placeholder="Tìm kiếm ..." maxLength={255} className="searchAccount" />
                         </div>
                     </div>
                 </div>

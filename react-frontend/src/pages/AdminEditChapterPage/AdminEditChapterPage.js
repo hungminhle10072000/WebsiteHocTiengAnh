@@ -147,20 +147,20 @@ class AdminEditChapterPage extends React.Component {
                         <label htmlFor="name"><b>Tên khoá học:</b></label>
 
                         <input  className="input-field" readOnly={true}
-                          value={this.state.chapter.courseName}  type="text" placeholder="Tên khoá học" name="nameCourse" id="chapterName" />
+                          value={this.state.chapter.courseName}  type="text" maxLength={255} placeholder="Tên khoá học" name="nameCourse" id="chapterName" />
                         <label htmlFor="name"><b>Số thứ tự:</b></label>
                         <input onChange={(event) => this.isChange(event)} className="input-field" type="number"
                             value={this.state.chapter.numPriority} placeholder="Nhập STT" name="numPriority" id="numPriority" />
                         <p className="msg-error">{this.state.validationMsg.number}</p>
 
                         <label htmlFor="name"><b>Tên chương:</b></label>
-                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text"
+                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255}
                             value={this.state.chapter.name} placeholder="Nhập tên chương" name="name" id="name" />
                         <p className="msg-error">{this.state.validationMsg.name}</p>
                         <br></br>
                         <div className="div-button-account">
                    
-                                <button onClick={(event) => this.handleConfirmationBox(event)}
+                                <button onClick={(event) => this.handleConfirmationBox(event)} style={{paddingLeft:'25px',paddingRight:'25px'}}
                                     type="button"  disabled={statusCheck} className="btn btn-success btn-save-account">
                                           {statusCheck && "Đang xử lý "}
                                         {statusCheck && <BiRefresh />}
@@ -169,7 +169,7 @@ class AdminEditChapterPage extends React.Component {
                                         </button>
                    
                             <button onClick = {(event) => this.resetForm(event)}
-                                type="reset" className="btn btn-warning" >Reset <BiReset /></button>
+                                type="reset" className="btn btn-warning" >Làm mới <BiReset /></button>
                         </div>
 
                     </div>

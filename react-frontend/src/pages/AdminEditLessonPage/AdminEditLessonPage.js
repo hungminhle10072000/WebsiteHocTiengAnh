@@ -232,10 +232,10 @@ class AdminEditLessonPage extends React.Component {
                         <label htmlFor="name"><b>Tên khoá học:</b></label>
 
                         <input  className="input-field" readOnly={true}
-                          value={this.state.lesson.courseName}  type="text" placeholder="Tên khoá học" name="nameCourse" id="nameCourse" />
+                          value={this.state.lesson.courseName}  type="text" maxLength={255} placeholder="Tên khoá học" name="nameCourse" id="nameCourse" />
 
                         <label htmlFor="chapterName"><b>Tên chương:</b></label>
-                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" readOnly={true}
+                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255} readOnly={true}
                             value={this.state.lesson.chapterName} placeholder="Nhập tên chương" name="chapterName" id="chapterName" />
                         <p className="msg-error">{this.state.validationMsg.chapterName}</p>
 
@@ -246,7 +246,7 @@ class AdminEditLessonPage extends React.Component {
               
               
                         <label htmlFor="name"><b>Tên bài học:</b></label>
-                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" 
+                        <input onChange={(event) => this.isChange(event)} className="input-field" type="text" maxLength={255} 
                             value={this.state.lesson.name} placeholder="Nhập tên bài học" name="name" id="name" />
                         <p className="msg-error">{this.state.validationMsg.name}</p>
                         <br></br>
@@ -275,9 +275,9 @@ class AdminEditLessonPage extends React.Component {
                                     <Row>
                                         <Col sm="12" style={{display: 'inline-block'}}>
                                             <br/>
-                                            <input id='linkLesson' name='video' style= {{width:'90%'}} placeholder='Nhập link bài giảng.'
+                                            <input id='linkLesson' maxLength={255} name='video' style= {{width:'90%'}} placeholder='Nhập link bài giảng.'
                                             onChange={(event)=> this.isChange(event)}  value={this.state.lesson.video}></input>
-                                            <button style={{marginLeft:'10px'}} onClick={()=> this.clearLink()}>Xoá</button>
+                                            <button className="btn btn-danger" style={{marginLeft:'10px',marginBottom:'5px', padding:'2px 15px'}} onClick={()=> this.clearLink()}>Xoá</button>
                                             <br/>
                                         </Col>
                                     </Row>
@@ -306,20 +306,22 @@ class AdminEditLessonPage extends React.Component {
                         grammarId = {this.state.lesson.grammarId}
                         />
                         <div className="div-button-account">
-                            {/* <Link to="/admin/lesson"> */}
-                                <button onClick={(event) => this.handleConfirmationBox(event)}
+                        
+                                <button onClick={(event) => this.handleConfirmationBox(event)} style={{paddingLeft:'25px',paddingRight:'25px'}}
                                     type="button" disabled={statusCheck} className="btn btn-success btn-save-account">
                                         {statusCheck && "Đang xử lý "}
                                         {statusCheck && <BiRefresh />}
                                         {!statusCheck && "Lưu "}
                                         {!statusCheck && <BiSave />}
                                         </button>
-                            {/* </Link> */}
                             <button onClick = {(event) => this.resetForm(event)}
                                 type="reset" className="btn btn-warning" >Làm mới <BiReset /></button>
                         </div>
                     </div>
                     <div className="col-sm-3"></div>
+                </div>
+                <div style={{marginBottom:'50px'}}>
+
                 </div>
             </div>
         )
