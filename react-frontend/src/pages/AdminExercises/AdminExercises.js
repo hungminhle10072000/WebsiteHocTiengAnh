@@ -114,7 +114,7 @@ class AdminExercises extends Component {
                                     <th>Tên bài tập</th>
                                     <th>Ảnh</th>
                                     <th>Loại</th>
-                                    <th>Mô tả</th>
+                                    <th className='th-description'>Mô tả</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -142,13 +142,13 @@ class AdminExercises extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormEditExercise />
+                        <AdminFormEditExercise handleCloseEdit={this.handleCloseEdit}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleCloseEdit()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
                 <Modal show={this.state.showForm} onHide={() => this.handleClose()}>
                     <Modal.Header closeButton>
@@ -157,13 +157,13 @@ class AdminExercises extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormAddExercise />
+                        <AdminFormAddExercise handleClose={this.handleClose}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleClose()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
             </div>          
         )

@@ -278,7 +278,7 @@ class AdminAccountEdit extends Component {
                                     </button> 
 
                                     <button type="reset" onClick={(event) =>  this.resetForm(event)}
-                                    className="btn btn-warning">Reset <BiReset /></button> 
+                                    className="btn btn-warning">Làm mới <BiReset /></button> 
                             </div>
                         </form>
                     </div>

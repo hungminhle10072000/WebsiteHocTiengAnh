@@ -106,7 +106,7 @@ class AdminItemContentGrammar extends Component {
                         {!statusCheck && "Cập nhật "}
                         {!statusCheck && <BiSave />}
                     </button>
-                    <button className="btn btn-warning btn-reset-content-grammar" type="reset" onClick={() => this.handleReset()}>Reset</button>
+                    <button className="btn btn-warning btn-reset-content-grammar" type="reset" onClick={() => this.handleReset()}>Làm mới</button>
                 </div>
             </div>
         )

@@ -275,15 +275,15 @@ class RegisterPage extends Component {
                             <div className="div-button-account">
                                 <Link to="/">
                                     <button onClick={(event) => this.hadnleRegister(event)} 
-                                    type="button" className="btn btn-success btn-save-account">Tạo tài khoản <BiSave /></button> 
+                                    type="button" className="btn btn-success btn-save-account mb-5">Tạo tài khoản <BiSave /></button> 
                                 </Link>
 
                                 <Link to="/login">
-                                    <button type="button" className="btn btn-success btn-return-login">Đăng nhập<BiLogIn /></button> 
+                                    <button type="button" className="btn btn-success btn-return-login mb-5">Đăng nhập<BiLogIn /></button> 
                                 </Link>
 
                                 <button onClick={() => this.handleResest()} 
-                                type="reset" className="btn btn-warning">Reset <BiReset /></button>
+                                type="reset" className="btn btn-warning mb-5">Làm mới <BiReset /></button>
                                  
                             </div>
                         </form>

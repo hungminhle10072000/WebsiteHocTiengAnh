@@ -59,6 +59,9 @@ class AdminFormAddGrammar extends Component {
                     {!statusCheck && "Thêm "}
                     {!statusCheck && <BiSave />}
                 </Button>
+                <Button variant="secondary"  onClick={this.props.handleClose} className="ml-2" style={{marginTop: '1rem'}}>
+                    Hủy
+                </Button>
             </Form>
         )
     }

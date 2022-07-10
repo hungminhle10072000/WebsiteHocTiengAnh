@@ -288,7 +288,7 @@ class AdminAddAccountPage extends Component {
                                         {!statusCheck && <BiSave />}
                                     </button> 
                                 {/* </Link> */}
-                                <button type="reset" className="btn btn-warning">Reset <BiReset /></button> 
+                                <button type="reset" className="btn btn-warning">Làm mới <BiReset /></button> 
                             </div>
                         </form>
                     </div>

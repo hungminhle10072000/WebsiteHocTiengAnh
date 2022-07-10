@@ -182,7 +182,7 @@ class AdminEditCoursePage extends React.Component {
                                         </button>
     
                             <button onClick = {(event) => this.resetForm(event)}
-                                type="reset" className="btn btn-warning" >Reset <BiReset /></button>
+                                type="reset" className="btn btn-warning" >Làm mới <BiReset /></button>
                         </div>
 
                     </div>

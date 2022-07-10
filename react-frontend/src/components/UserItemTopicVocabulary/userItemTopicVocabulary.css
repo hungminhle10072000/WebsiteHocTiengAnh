@@ -18,7 +18,7 @@ img.card-img-top.img-user-topic {
 
 .card-item-vocabulary:hover .btn-detail-topic {
     display: block !important;
-    z-index: 100;
+    z-index: 10;
 }
 
 
@@ -65,5 +65,5 @@ img.card-img-top.img-user-topic {
 
 .card-item-vocabulary:hover .btn-practice-topic {
     display: block !important;
-    z-index: 100;
+    z-index: 10;
 }

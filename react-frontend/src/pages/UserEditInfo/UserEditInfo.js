@@ -311,7 +311,7 @@ class UserEditInfo extends Component {
                                     className="btn btn-danger">Đổi mật khẩu <BiKey /></button> 
 
                                     <button type="reset" onClick={(event) =>  this.resetForm(event)} style={{marginLeft: '1%'}}
-                                    className="btn btn-warning">Reset <BiReset /></button> 
+                                    className="btn btn-warning">Làm mới <BiReset /></button> 
                             </div>
                         </form>
                         {this.state.openFormResetPassword && 
