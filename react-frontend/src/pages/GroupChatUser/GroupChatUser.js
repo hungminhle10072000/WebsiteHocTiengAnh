@@ -4,7 +4,7 @@ import "./GroupChatUser.css";
 import { BiSend } from "react-icons/bi";
 import { BiImageAlt } from "react-icons/bi";
 import { BsPersonCircle } from "react-icons/bs";
-import avata from "../../assets/images/logo.jpg";
+// import avata from "../../assets/images/logo.jpg";
 import { Button, Modal } from "react-bootstrap";
 import {AiFillCloseCircle} from "react-icons/ai"
 import {
@@ -48,6 +48,7 @@ function GroupChatUser() {
         message: msg || null,
         time: serverTimestamp(),
         type: "text" || null,
+        avatar: userCurrent.avartar || null,
       });
       setMsg("");
     }
@@ -164,23 +165,23 @@ function GroupChatUser() {
             className="group-content"
             ref={messageRef}
           >
-            {messages.map(({ time, message, type, email }) => {
+            {messages.map(({ time, message, type, email, avatar }) => {
               const checkUser = email === userCurrent.username;
               return type === "text" ? (
                 <div className={checkUser ? "mes me" : "mes"} key={time}>
                   <div className="mes-content">
-                  {/* {checkUser ? null : (
-                    <img className="mes-avatar" src={avata} />
-                  )} */}
+                  {checkUser ? null : (
+                    <img className="mes-avatar" src={avatar} />
+                  )}
 
                   {/* new */}
-                  {checkUser ? null : (
+                  {/* {checkUser ? null : (
                     !mapColors.has(email) && mapColors.set(email, randomColor()),
                     <div class="circle" 
                     style={{backgroundColor: mapColors.get(email)}}>
                       {email.charAt(0).toUpperCase()}
                     </div>
-                  )}
+                  )} */}
                     <div className="mes-value"> {message}</div>
                   </div>
                   <span className="mes-name">
@@ -190,18 +191,18 @@ function GroupChatUser() {
                 </div>
               ) : (
                 <div className={checkUser ? "mes me" : "mes"} key={time}>
-                  {/* {checkUser ? null : (
-                    <img className="mes-avatar" src={avata} />
-                  )} */}
+                  {checkUser ? null : (
+                    <img className="mes-avatar" src={avatar} />
+                  )}
 
                   {/* new */}
-                  {checkUser ? null : (
+                  {/* {checkUser ? null : (
                     !mapColors.has(email) && mapColors.set(email, randomColor()),
                     <div class="circle" 
                     style={{backgroundColor: mapColors.get(email)}}>
                       {email.charAt(0).toUpperCase()}
                     </div>
-                  )}
+                  )} */}
                   <div className="mes-content">
                     <img
                       src={message}
