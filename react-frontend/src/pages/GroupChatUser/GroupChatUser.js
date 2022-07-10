@@ -20,6 +20,7 @@ import {
 import {ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import { db, storage} from "../firebase";
 import { async } from "@firebase/util";
+import randomColor from "randomcolor";
 
 function GroupChatUser() {
   const [show, setShow] = useState(false);
@@ -34,6 +35,8 @@ function GroupChatUser() {
   };
   const [messages, setMessages] = useState([]);
   const userCurrent = useSelector((state) => state.itemUserLogin);
+  // const [mapColors, setMapColors] = useState(new Map());
+  const mapColors =  new Map();
 
   const messageRef = useRef();
 
@@ -166,8 +169,17 @@ function GroupChatUser() {
               return type === "text" ? (
                 <div className={checkUser ? "mes me" : "mes"} key={time}>
                   <div className="mes-content">
-                  {checkUser ? null : (
+                  {/* {checkUser ? null : (
                     <img className="mes-avatar" src={avata} />
+                  )} */}
+
+                  {/* new */}
+                  {checkUser ? null : (
+                    !mapColors.has(email) && mapColors.set(email, randomColor()),
+                    <div class="circle" 
+                    style={{backgroundColor: mapColors.get(email)}}>
+                      {email.charAt(0).toUpperCase()}
+                    </div>
                   )}
                     <div className="mes-value"> {message}</div>
                   </div>
@@ -178,8 +190,17 @@ function GroupChatUser() {
                 </div>
               ) : (
                 <div className={checkUser ? "mes me" : "mes"} key={time}>
-                  {checkUser ? null : (
+                  {/* {checkUser ? null : (
                     <img className="mes-avatar" src={avata} />
+                  )} */}
+
+                  {/* new */}
+                  {checkUser ? null : (
+                    !mapColors.has(email) && mapColors.set(email, randomColor()),
+                    <div class="circle" 
+                    style={{backgroundColor: mapColors.get(email)}}>
+                      {email.charAt(0).toUpperCase()}
+                    </div>
                   )}
                   <div className="mes-content">
                     <img
