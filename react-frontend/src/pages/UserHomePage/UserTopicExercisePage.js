@@ -17,7 +17,7 @@ function UserTopicExercisePage() {
     },[userCurrent])
     return(  
         <>
-        {exercises.length < 1 && <Spin style={{position:'absolute', top:'50%', left:'50%'}} size="large" /> }    
+        {exercises.length < 1 && userCurrent.id !== -1 && <Spin style={{position:'absolute', top:'50%', left:'50%'}} size="large" /> }    
             <div className='title-size-l ml--25 mr--25'>Bài tập rèn luyện</div>
             
             {userCurrent.id === -1 ?
