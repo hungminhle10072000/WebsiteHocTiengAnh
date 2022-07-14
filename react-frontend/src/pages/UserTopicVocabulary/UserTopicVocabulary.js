@@ -50,7 +50,7 @@ class UserTopicVocabulary extends Component {
         const resultSearch = []
         if(dataTable.length > 0){
             dataTable.forEach((item) => {
-                if(item.name.indexOf(dataSearch) !== -1){
+                if(item.name.toUpperCase().indexOf(dataSearch) !== -1){
                     resultSearch.push(item);
                 }
             })
@@ -62,7 +62,7 @@ class UserTopicVocabulary extends Component {
                         <h6 className='text-title-topic'>Mời bạn chọn chủ đề cần học nhé!</h6>
                         <Form>
                             <FormControl maxLength={255}
-                            onChange={(event) => this.callback(event.target.value)} name="searchTopic"
+                            onChange={(event) => this.callback(event.target.value.toUpperCase())} name="searchTopic"
                             type="text" placeholder="Tìm kiếm ..." className='userSearchTopic'/>
                         </Form>
                     </div>
