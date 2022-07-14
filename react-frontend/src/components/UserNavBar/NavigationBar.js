@@ -68,7 +68,7 @@ class NavigationBar extends Component {
                             </animated.div>}
                     </Spring>
                     {' '}
-                    <span className="text-brand">Cùng nhau học tiếng anh</span>
+                    <span className="text-brand">Cùng nhau học tiếng Anh</span>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 </div>
 
