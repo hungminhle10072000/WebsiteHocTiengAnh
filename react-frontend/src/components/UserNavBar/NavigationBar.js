@@ -84,6 +84,7 @@ class NavigationBar extends Component {
                         <Nav className="div-setting-user ml-auto">
                             <Nav.Item>
                                 <img className='icon-user-login' src={this.props.itemUserLogin.avartar}/>
+                                <div class="arrow-up"></div>
                                 {/* <BiUserCircle color='black' className='icon-user-login'/> */}
                             </Nav.Item> 
                             <div className="setting-user">
