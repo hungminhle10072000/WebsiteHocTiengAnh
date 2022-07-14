@@ -55,7 +55,7 @@ span.text-brand {
    position: absolute;
    background-color: #d5d4c7;
    width: 260px;
-   top: 66%;
+   top: 57%;
    right: 0%;
    z-index: 10000;
    border-radius: 10px;
@@ -82,16 +82,28 @@ span.text-brand {
     border-radius: 50%;
 }
 
-.setting-user:before {
+/* .setting-user:before {
 	content: "";
     position: absolute;
     top: 50%;
-    margin-top: -151px;
-    left: 199px;
+    margin-top: -58%;
+    left: 76%;
     border: solid 15px transparent;
     border-bottom-color: #d5d4c7;
     z-index: 1;
-}
+} */
+
+.arrow-up {
+    position: relative;
+    display: none;
+    width: 0; 
+    height: 0; 
+    margin-left: 0.9rem;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    transition: all 0.2s ease;
+    border-bottom: 15px solid #d5d4c7;
+  }
 
 .div-setting-user:hover .setting-user {
 	display: flex;
@@ -100,6 +112,10 @@ span.text-brand {
  	justify-content: center;
  	align-items: center;
  	padding-bottom: 1rem;
+}
+
+.div-setting-user:hover .arrow-up {
+    display: block;
 }
 
 .setting-user-item {

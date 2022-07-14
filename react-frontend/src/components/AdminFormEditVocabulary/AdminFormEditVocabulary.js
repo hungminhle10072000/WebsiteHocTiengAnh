@@ -244,7 +244,10 @@ class AdminFormEditVocabulary extends Component {
                     {!statusCheck && <BiSave />}
                 </Button>
                 <Button style={{marginLeft: 5}} variant="warning" type="reset" className="button-reset-vocabulary" onClick={() => this.handleReset()}>
-                    Reset
+                    Làm mới
+                </Button>
+                <Button variant="secondary"  onClick={this.props.handleCloseFormEdit} className="ml-2">
+                    Hủy
                 </Button>
             </Form>
         )

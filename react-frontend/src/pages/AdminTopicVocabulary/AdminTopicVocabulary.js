@@ -136,13 +136,13 @@ class AdminTopicVocabulary extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormEditTopicVocabulary />
+                        <AdminFormEditTopicVocabulary handleCloseEdit={this.handleCloseEdit}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleCloseEdit()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
                 <Modal show={this.state.showForm} onHide={() => this.handleClose()}>
                     <Modal.Header closeButton>
@@ -151,13 +151,13 @@ class AdminTopicVocabulary extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormAddTopicVocabulary />
+                        <AdminFormAddTopicVocabulary handleClose = {this.handleClose}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleClose()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
             </div>          
         )

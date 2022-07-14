@@ -77,7 +77,10 @@ class AdminFormEditGrammar extends Component {
                     {!statusCheck && <BiSave />}
                 </Button>
                 <Button variant="warning" type="reset" className="button-reset-grammar" onClick={() => {this.resetForm()}}>
-                    Reset
+                    Làm mới
+                </Button>
+                <Button variant="secondary"  onClick={this.props.handleCloseEdit} className="ml-2" style={{marginTop: '1rem'}}>
+                    Hủy
                 </Button>
             </Form>
         )

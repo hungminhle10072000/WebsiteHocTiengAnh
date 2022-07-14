@@ -130,13 +130,13 @@ class AdminGrammar extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormAddGrammar />
+                        <AdminFormAddGrammar handleClose={this.handleClose}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleClose()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
                 <Modal show={this.state.showFormEdit} onHide={() => this.handleCloseEdit()}>
                     <Modal.Header closeButton>
@@ -145,13 +145,13 @@ class AdminGrammar extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormEditGrammar />
+                        <AdminFormEditGrammar handleCloseEdit={this.handleCloseEdit}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleCloseEdit()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
             </div>
         )

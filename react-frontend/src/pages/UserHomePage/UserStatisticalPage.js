@@ -116,7 +116,7 @@ function UserStatisticalPage() {
     }
     return (
         <>      
-        {userInfo.userId == -1 &&  <Spin style={{position:'absolute', top:'50%', left:'50%', zIndex:2}} size="large" />}
+        {userInfo.userId == -1 && userCurrent.id !== -1 && <Spin style={{position:'absolute', top:'50%', left:'50%', zIndex:2}} size="large" />}
         {userCurrent.id === -1 ?
             <div style={{textAlign:'center', marginTop:'150px'}}>
                 <h2> Vui lòng đăng nhập để sử dụng chức năng này.</h2>
@@ -144,7 +144,7 @@ function UserStatisticalPage() {
                                         <span className='font-weight-bold'></span>
                                     </div>
                                     <div>
-                                        <label className='span__lbl--item font-weight-bold cl--green'>{userInfo ? userInfo.currentScore : ''} XP</label>
+                                        <label className='span__lbl--item font-weight-bold cl--green'>{userInfo ? userInfo.currentScore : ''}/1000 XP</label>
                                         <span className='font-weight-bold'></span>
                                     </div>
                                 </div>

@@ -224,7 +224,7 @@ class AdminEditQuestionRead extends Component {
                                         {!statusCheck && "Cập nhật "}
                                         {!statusCheck && <BiSave />}
                                     </button> 
-                                    <button type="reset" className="btn btn-warning" onClick={(event) =>  this.resetForm(event)}>Reset <BiReset /></button>
+                                    <button type="reset" className="btn btn-warning" onClick={(event) =>  this.resetForm(event)}>Làm mới <BiReset /></button>
                                     <Link to={"/admin/exercise/" + this.state.idExercise + "/" + convertURL(this.state.nameExercise) }>
                                         <button type="button" className='btn btn-danger ml-3'>Quay lại</button>
                                     </Link>  

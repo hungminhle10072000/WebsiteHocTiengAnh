@@ -178,6 +178,9 @@ class AdminFormAddVocabulary extends Component {
                     {!statusCheck && "Thêm "}
                     {!statusCheck && <BiSave />}
                 </Button>
+                <Button variant="secondary"  onClick={this.props.handleCloseAdd} className="ml-2" style={{marginTop: '5%'}}>
+                    Hủy
+                </Button>
             </Form>
         )
     }

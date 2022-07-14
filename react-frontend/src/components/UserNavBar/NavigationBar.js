@@ -68,7 +68,7 @@ class NavigationBar extends Component {
                             </animated.div>}
                     </Spring>
                     {' '}
-                    <span className="text-brand">Cùng nhau học tiếng anh</span>
+                    <span className="text-brand">Cùng nhau học tiếng Anh</span>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                 </div>
 
@@ -84,6 +84,7 @@ class NavigationBar extends Component {
                         <Nav className="div-setting-user ml-auto">
                             <Nav.Item>
                                 <img className='icon-user-login' src={this.props.itemUserLogin.avartar}/>
+                                <div class="arrow-up"></div>
                                 {/* <BiUserCircle color='black' className='icon-user-login'/> */}
                             </Nav.Item> 
                             <div className="setting-user">

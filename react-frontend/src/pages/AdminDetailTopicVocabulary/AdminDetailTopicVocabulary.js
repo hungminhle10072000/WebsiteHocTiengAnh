@@ -116,13 +116,13 @@ class AdminDetailTopicVocabulary extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormAddVocabulary idTopic={this.state.idTopic}/>
+                        <AdminFormAddVocabulary idTopic={this.state.idTopic} handleCloseAdd = {this.handleCloseAdd}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleCloseAdd()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
                 <Modal show={this.state.showFormEditVoca} onHide={() => this.handleCloseFormEdit()}>
                     <Modal.Header closeButton>
@@ -131,13 +131,13 @@ class AdminDetailTopicVocabulary extends Component {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <AdminFormEditVocabulary />
+                        <AdminFormEditVocabulary handleCloseFormEdit={this.handleCloseFormEdit}/>
                     </Modal.Body>
-                    <Modal.Footer>
+                    {/* <Modal.Footer>
                             <Button variant="secondary"  onClick={() => this.handleCloseFormEdit()}>
                                 Hủy
                             </Button>
-                    </Modal.Footer>
+                    </Modal.Footer> */}
                 </Modal>
                 <IoAddCircle className="btn-admin-add-voca" onClick={() => this.handleAddVoca()}/>
             </div>
