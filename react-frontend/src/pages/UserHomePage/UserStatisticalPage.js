@@ -144,7 +144,7 @@ function UserStatisticalPage() {
                                         <span className='font-weight-bold'></span>
                                     </div>
                                     <div>
-                                        <label className='span__lbl--item font-weight-bold cl--green'>{userInfo ? userInfo.currentScore : ''} XP</label>
+                                        <label className='span__lbl--item font-weight-bold cl--green'>{userInfo ? userInfo.currentScore : ''}/1000 XP</label>
                                         <span className='font-weight-bold'></span>
                                     </div>
                                 </div>

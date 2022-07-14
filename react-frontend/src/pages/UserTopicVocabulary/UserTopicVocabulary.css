@@ -11,7 +11,7 @@
 
 input.userSearchTopic.form-control {
     width: 546px; 
-    margin-left: 26%;
+    margin: 0 auto;
 }
 
 .text-title-topic {

@@ -33,7 +33,7 @@ class UserGrammarSelect extends Component {
     render() {
         return (
             <Fragment>
-               <h6 className='text-title-grammar'>Mời bạn chọn bài bên dưới để học NGỮ PHÁP TOEIC nhé!</h6>
+               <h6 style={{textAlign : 'center'}}>Mời bạn chọn bài bên dưới để học NGỮ PHÁP TOEIC nhé!</h6>
                <div className='group-select-grammar'>
                     <Select className='class-select-grammar' onChange={(event) => this.hadnleOnChange(event)} options={this.props.userValueSelectGrammar} defaultValue={this.props.userValueSelectGrammar[0]}/>
                     <button className='btnn btnn--normal btnn--size-s ml--15' onClick={() => this.hadnleButtonLearn()}>Học</button>
