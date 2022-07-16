@@ -65,6 +65,13 @@ function UserPracticeVocabulary() {
     }
   }
 
+  const handleKeyPress = e => {
+    console.log(e.keyCode)
+    e.keyCode===13 && !checkOpenSuggest && checkAnswer()
+    e.keyCode === 39 && !checkOpenSuggest && e.ctrlKey  && incrementQuestion()
+    e.keyCode === 37 && !checkOpenSuggest && e.ctrlKey  && decrementQuestion()
+  }
+
   const countCorrectAnswer = async () => {
     dispatch(allActions.userItemLoadingAction.openItemLoading())
     btnWriteScore.current.disabled = true;
@@ -179,7 +186,9 @@ function UserPracticeVocabulary() {
                   <span style={{fontWeight: 'bold'}}>Từ loại: </span>{userVocabularyWithTopic.vocasWithTopic[indexQuestion].mean}
               </div>
               <div className="mt-3">
-                  <input type="text"
+                  <input 
+                  onKeyDown={handleKeyPress}
+                  type="text"
                   style={{
                     width: '50%',
                     padding: '12px 20px',
