@@ -47,7 +47,7 @@ public class ResultService {
             return false;
         } else {
             for(ResultDto item : resultDtos) {
-                if (item.getTotalRight() + item.getTotalWrong() > 0) {
+                if (item.getTotalRight() > item.getTotalWrong()) {
                     return  true;
                 }
             }
